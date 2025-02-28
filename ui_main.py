@@ -221,7 +221,9 @@ class MainScreen(QDialog):
     def poisk(self, peleng):
         self.search(peleng)
         # self.signal_poisk.emit()
-        self.peleng_window.set_found(self.found)
+        if peleng:
+            if len(self.found) != 0:
+                self.peleng_window.set_found(self.found)
 
     def show_rabota(self):
         self.rabota_window.show()

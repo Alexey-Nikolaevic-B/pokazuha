@@ -58,6 +58,7 @@ class PelengScreen(QDialog):
     def set_found(self, found):
         self.found.append(found)
         self.found = [list(t) for t in set(tuple(sublist) for sublist in  self.found)]
+        
         self.update_angles()
         self.plot_()
 
