@@ -184,6 +184,8 @@ class MainScreen(QDialog):
 
         self.selected_freq = 150
 
+        self.found = []
+
         self.rabota_window         = ui_rabota.RabotaScreen()
         self.administrator_window  = ui_administrator.AdministratorScreen()
         self.peleng_window         = ui_peleng.PelengScreen()
@@ -202,8 +204,9 @@ class MainScreen(QDialog):
 
         self.btn_tehanaliz.clicked.connect(self.update_perehvat)
 
-        self.btn_poisk.clicked.connect(self.poisk)
-        self.btn_poisk2.clicked.connect(self.poisk2)
+
+        self.btn_poisk.clicked.connect(lambda: self.poisk(False))
+        self.btn_poisk2.clicked.connect(lambda: self.poisk(True))
 
 
     def goto_theory(self):
@@ -215,14 +218,10 @@ class MainScreen(QDialog):
     def update_perehvat(self):
         self.perehvat_window.set_data(signals, filtered_freqs, self.selected_freq)
     
-    def poisk(self):
-        self.search()
-        self.signal_poisk.emit()
-        self.lbl_peleng.setText("-")
-        
-    def poisk2(self):
-        self.search()
-        self.lbl_peleng.setText(str(data[str(self.selected_id)]["bearing"]))
+    def poisk(self, peleng):
+        self.search(peleng)
+        # self.signal_poisk.emit()
+        self.peleng_window.set_found(self.found)
 
     def show_rabota(self):
         self.rabota_window.show()
@@ -349,7 +348,7 @@ class MainScreen(QDialog):
         self.canvas.mpl_connect("button_press_event", self.on_click)
         self.canvas.mpl_connect("scroll_event", self.on_scroll)
 
-        self.ani = animation.FuncAnimation(self.figure, self.update, interval=25, blit=False)
+        self.ani = animation.FuncAnimation(self.figure, self.update, interval=100, blit=False)
 
         radial = FigureCanvas(self.figure)
 
@@ -398,7 +397,7 @@ class MainScreen(QDialog):
         self.ax.set_title(f"RF Spectrum ({low_freq:.1f} - {high_freq:.1f} MHz)")
         self.canvas.draw()
 
-    def search(self):
+    def search(self, peleng):
         global threshold, max_power, search_low, search_hight, last_freq
         global low_freq, high_freq
 
@@ -440,8 +439,15 @@ class MainScreen(QDialog):
             for id, sig in signals.items():
                 if (down <= sig.freq <= up): # and (data[str(id)]["mod"] == mod)
                     self.selected_id = id
-                    # print(self.selected_id)
-                    # self.lbl_peleng.setText(str(data[str(self.selected_id)]["bearing"]))
+
+                    if peleng == True:
+                        self.lbl_peleng.setText(str(data[str(self.selected_id)]["bearing"]))
+                        self.found = [data[str(self.selected_id)]["bearing"],  self.selected_freq]
+                        # self.found.append([data[str(self.selected_id)]["bearing"],  self.selected_freq])
+                        # self.found = [list(t) for t in set(tuple(sublist) for sublist in  self.found)]
+                    else:
+                        self.lbl_peleng.setText("-")
+
                     if data[str(id)]["mod"] == mod:
                         self.lbl_output.setText(data[str(id)]["text"])  # Обновляем поле id
                     else:
@@ -449,7 +455,7 @@ class MainScreen(QDialog):
                     found = True
                     break
             self.lbl_frequency.setText(f"{self.selected_freq:.2f}")
-
+            
             if self.selected_freq > 30:
                 low_freq = self.selected_freq - 10
             else:
@@ -466,3 +472,4 @@ class MainScreen(QDialog):
             self.ax.set_title(f"RF Spectrum ({low_freq:.1f} - {high_freq:.1f} MHz)")
             self.canvas.draw()
             self.update(None)
+

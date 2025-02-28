@@ -1,5 +1,17 @@
 from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import*
+
 from PyQt5.uic import loadUi
+
+from PyQt5 import QtWidgets
+from PyQt5 import QtCore
+
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+
+import numpy as np
+
+import time
 
 class RabotaScreen(QDialog):
 
@@ -7,29 +19,41 @@ class RabotaScreen(QDialog):
         super(RabotaScreen, self).__init__()
         self.init_ui()
 
+        self.btn_save.clicked.connect(self.progress)
+
+    def progress(self):
+        self.w_progress.show()
+        self.frame.hide()
+
+        for x in range(100):
+            self.pb_progressBar.setValue(x)
+            time.sleep(0.001)
+
+        self.w_progress.hide()
+        self.frame.show()
+
     def init_ui(self):
         loadUi('qt/rabota.ui', self)
 
+        self.w_progress.hide()
 
-        # self.control_tab = self.Twidget
-        # self.control_layer = QVBoxLayout(self.control_tab)
-        # self.Qbox = QHBoxLayout()
-        # self.control_layer.addLayout(self.Qbox)
+        table = self.tableWidget
+        table.setStyleSheet("background-color: rgb(255,255,255)")
+        table.setRowCount(20)
+        
+        header = table.horizontalHeader()
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
 
-        # bar_colors     = ['#333333', '#444444', '#555555', '#666666', '#777777', '#888888', '#999999', '#AA0000']
-        # num_obs        = len(bar_colors)
+        delegate = AlignCenter(table)
+        table.setItemDelegateForColumn(0, delegate)
+        table.setItemDelegateForColumn(1, delegate)
 
-        # # Make up some data
-        # wind_direction = (2*3.14)*(np.random.random_sample(num_obs))
-        # wind_speed = 50 * np.random.random_sample(num_obs)
-        # wind = zip(wind_direction, wind_speed, bar_colors) # polar(theta,r)
 
-        # fig_test_modulation, ax = plt.subplots(subplot_kw={'projection': 'polar'})
-        # # fig_test_modulation.set_theta_zero_location('N')
-        # ax.vlines(wind_direction, 0, wind_speed, colors=bar_colors, zorder=3)
-        # ax.grid(True)
-        # # Add the figure to a canvas
-        # radial = FigureCanvas(fig_test_modulation)
-        # self.Qbox.addWidget(radial)
+class AlignCenter(QtWidgets.QStyledItemDelegate):
+    def initStyleOption(self, option, index):
+        super(AlignCenter, self).initStyleOption(option, index)
+        option.displayAlignment = QtCore.Qt.AlignCenter
+
 
 
