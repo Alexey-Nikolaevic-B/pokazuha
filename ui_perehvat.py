@@ -93,31 +93,31 @@ class PerehvatScreen(QDialog):
             signal = np.zeros_like(t)
             for signal_data in self.signals.values():
                 if signal_data.freq >= low_sp and signal_data.freq <= up_sp:
-                    if signal_data.source == 'radio':
+                    if signal_data.source == 'Радио':
                         modulating = 0.5*np.sin(2*np.pi*100*t) + 0.2*np.sin(2*np.pi*250*t) + 0.7*np.sin(2*np.pi*300*t)     
-                        if signal_data.mod == "am":
+                        if signal_data.mod == "АМ":
                             modulating = 0.5*np.sin(2*np.pi*100*t) + 0.2*np.sin(2*np.pi*250*t) + 0.7*np.sin(2*np.pi*300*t) +\
                                          0.5*np.sin(2*np.pi*101*t) + 0.2*np.sin(2*np.pi*279*t) + 0.7*np.sin(2*np.pi*299*t)
                             signal += signal_data.power * (1 + 0.15*modulating) * (np.sin(2*np.pi*1000*t))   # Амплитудно-модулированный сигнал
-                        elif signal_data.mod == "fm":
+                        elif signal_data.mod == "ФМ":
                             modulating = 0.5*np.sin(2*np.pi*10*t) + 0.2*np.sin(2*np.pi*25*t) + 0.7*np.sin(2*np.pi*30*t) + 0.7*np.sin(2*np.pi*50*t)
                             signal += signal_data.power * np.sin(2*np.pi*1000*t + 0.3*2*np.pi*modulating)  # Частотно-модулированный сигнал
-                        elif signal_data.mod == "om":
+                        elif signal_data.mod == "ОМ":
                             modulating = 0.5*np.sin(2*np.pi*100*t) + 0.2*np.sin(2*np.pi*250*t) + 0.7*np.sin(2*np.pi*300*t) +\
                                          0.5*np.sin(2*np.pi*101*t) + 0.2*np.sin(2*np.pi*279*t) + 0.7*np.sin(2*np.pi*299*t)
                             signal += signal_data.power * (0.15*modulating) * (np.sin(2*np.pi*1000*t))   # Амплитудно-модулированный сигнал
-                        elif signal_data.mod == "fmn":
+                        elif signal_data.mod == "ЧМн":
                             modulating = np.sign(np.sin(2 * np.pi * 10 * t))  # Двоичный модулирующий сигнал
                             integral_mod = np.cumsum(modulating) / Fs  # Интеграл от модулирующего сигнала
                             signal += signal_data.power * np.sin(2 * np.pi * 1000 * t + 2000*0.3*np.pi * integral_mod)  # ЧМн сигнал
-                        elif signal_data.mod == "pmn":
+                        elif signal_data.mod == "ФМн":
                             modulating = np.sign(np.sin(2 * np.pi * 5 * t))  # Двоичный модулирующий сигнал
                             signal += signal_data.power * np.cos(2 * np.pi * 1000 * t + (np.pi * (modulating + 1) / 2))  # ФМн сигнал
-                    elif signal_data.source == 'sputnik':
+                    elif signal_data.source == 'Спутник':
                         for i in range(0,11,2):
                             signal +=  random.randint(int(signal_data.power) - 10, int(signal_data.power)) * np.sin(2*np.pi*(1000 - i)*t)
                             signal +=  random.randint(int(signal_data.power) - 10, int(signal_data.power) ) * np.sin(2*np.pi*(1000 + i)*t)
-                    elif signal_data.source == 'sotovy':
+                    elif signal_data.source == 'Сотовый':
                         for i in range(0,200,5):
                             signal +=  random.randint(int(signal_data.power) - 15, int(signal_data.power)) * np.sin(2*np.pi*(1000 - i)*t)
                             signal +=  random.randint(int(signal_data.power) - 15, int(signal_data.power) ) * np.sin(2*np.pi*(1000 + i)*t)

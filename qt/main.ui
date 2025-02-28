@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1695</width>
+    <width>2030</width>
     <height>994</height>
    </rect>
   </property>
@@ -33,7 +33,7 @@
     <rect>
      <x>0</x>
      <y>40</y>
-     <width>711</width>
+     <width>861</width>
      <height>101</height>
     </rect>
    </property>
@@ -43,8 +43,8 @@
    <widget class="QLineEdit" name="lbl_search_low">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>40</y>
+      <x>490</x>
+      <y>36</y>
       <width>160</width>
       <height>30</height>
      </rect>
@@ -64,8 +64,8 @@ border-radius: 10px;
    <widget class="QLineEdit" name="lbl_search_hight">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>40</y>
+      <x>680</x>
+      <y>36</y>
       <width>160</width>
       <height>30</height>
      </rect>
@@ -123,8 +123,8 @@ border-radius: 10px;</string>
    <widget class="QLabel" name="lbl_19">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>20</y>
+      <x>490</x>
+      <y>16</y>
       <width>161</width>
       <height>16</height>
      </rect>
@@ -142,8 +142,8 @@ border-radius: 10px;</string>
    <widget class="QLabel" name="lbl_20">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>20</y>
+      <x>680</x>
+      <y>16</y>
       <width>161</width>
       <height>16</height>
      </rect>
@@ -161,8 +161,8 @@ border-radius: 10px;</string>
    <widget class="QLabel" name="l_begining_3">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>-10</y>
+      <x>630</x>
+      <y>-14</y>
       <width>61</width>
       <height>30</height>
      </rect>
@@ -180,8 +180,8 @@ border-radius: 10px;</string>
    <widget class="Line" name="line_16">
     <property name="geometry">
      <rect>
-      <x>535</x>
-      <y>4</y>
+      <x>695</x>
+      <y>0</y>
       <width>144</width>
       <height>3</height>
      </rect>
@@ -196,8 +196,8 @@ border-radius: 10px;</string>
    <widget class="Line" name="line_17">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>4</y>
+      <x>490</x>
+      <y>0</y>
       <width>138</width>
       <height>3</height>
      </rect>
@@ -213,7 +213,7 @@ border-radius: 10px;</string>
   <widget class="QWidget" name="widget_9" native="true">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>970</x>
      <y>50</y>
      <width>861</width>
      <height>71</height>
@@ -276,27 +276,27 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <item>
      <property name="text">
-      <string>АМ</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>ОМ</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
       <string>ЧМ</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>ЧМн</string>
+      <string>АМ</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>ФМн</string>
+      <string>ППРЧ</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>qphase</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>freq</string>
      </property>
     </item>
    </widget>
@@ -421,7 +421,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
     <rect>
      <x>-1</x>
      <y>0</y>
-     <width>1851</width>
+     <width>2061</width>
      <height>29</height>
     </rect>
    </property>
@@ -497,7 +497,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
     <rect>
      <x>10</x>
      <y>130</y>
-     <width>711</width>
+     <width>851</width>
      <height>691</height>
     </rect>
    </property>
@@ -512,12 +512,13 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>691</width>
+      <width>831</width>
       <height>30</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);
+font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
      <string>Частотная панорама</string>
@@ -531,7 +532,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>691</width>
+      <width>831</width>
       <height>591</height>
      </rect>
     </property>
@@ -539,7 +540,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>80</x>
       <y>650</y>
       <width>691</width>
       <height>31</height>
@@ -559,7 +560,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
   <widget class="QFrame" name="frame_7">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>80</x>
      <y>860</y>
      <width>711</width>
      <height>91</height>
@@ -755,7 +756,7 @@ font: 100pt &quot;MS Shell Dlg 2&quot;;</string>
   <widget class="QFrame" name="frame_8">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>910</x>
      <y>130</y>
      <width>7</width>
      <height>751</height>
@@ -771,7 +772,7 @@ font: 100pt &quot;MS Shell Dlg 2&quot;;</string>
   <widget class="QFrame" name="frame_10">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>970</x>
      <y>840</y>
      <width>858</width>
      <height>91</height>
@@ -1031,7 +1032,7 @@ font: 100pt &quot;MS Shell Dlg 2&quot;;</string>
   <widget class="QFrame" name="frame_11">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>970</x>
      <y>540</y>
      <width>858</width>
      <height>288</height>
@@ -1470,9 +1471,6 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
       <property name="text">
        <string/>
       </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
      </widget>
      <widget class="QRadioButton" name="radioButton">
       <property name="geometry">
@@ -1485,9 +1483,6 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
       </property>
       <property name="text">
        <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -1551,7 +1546,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
   <widget class="QFrame" name="frame_12">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>970</x>
      <y>310</y>
      <width>858</width>
      <height>209</height>
@@ -1932,7 +1927,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
   <widget class="QFrame" name="frame_13">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>970</x>
      <y>130</y>
      <width>858</width>
      <height>158</height>
