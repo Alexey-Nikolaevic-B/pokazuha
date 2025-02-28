@@ -1,6 +1,10 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtWidgets import*
 
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+
 from PyQt5.uic import loadUi
 
 from PyQt5 import QtWidgets
@@ -24,7 +28,7 @@ class AdministratorScreen(QDialog):
         self.init_ui()
 
         self.posts = [[0, 5, "Ольха"], [-1, -4, "Юпитер"], [-3, -4, "Маджахет"], [-1, -1, "Сатурн"]] # [X, Y, ПОЗЫВНОЙ]
-        self.pelengs = [[1, 2, 190, 89], [ 2, -1, 180, 890]]                                         # [X, Y, ПЕЛЕНГ, ЧАСТОТА]
+        self.pelengs = []                                         # [X, Y, ПЕЛЕНГ, ЧАСТОТА]
 
         self.fig, self.ax = plt.subplots(figsize=(5, 5))
         self.ax.set_facecolor((1.0, 0.47, 0.42))
@@ -39,14 +43,16 @@ class AdministratorScreen(QDialog):
         pass
 
     def set_peleng(self, pelengs):
-        pass
-                
+        self.pelengs.append(pelengs)
+        self.pelengs = [list(t) for t in set(tuple(sublist) for sublist in  self.pelengs)]
+        # print(self.pelengs)
+        self.plot_map()                
 
     def plot_map(self):
         self.ax.clear()
         self.ax.set_facecolor((1.0, 0.47, 0.42))
 
-        img = Image.open("img\map.jpg")
+        img = Image.open("img\photo_5334776400621726228_y.jpg")
         
         self.ax.set_xticks([])
         self.ax.set_yticks([])
@@ -60,8 +66,8 @@ class AdministratorScreen(QDialog):
         
         # НАШИ ПОСТЫ
         for post in self.posts: 
-            x = post[0] / scale
-            y = post[1] / scale
+            x = int(post[0]) / scale
+            y = int(post[1]) / scale
             
             if abs(x) > 1 or abs(y) > 1:
                 factor = max(abs(x) + 0.1, abs(y) + 0.1)
@@ -79,11 +85,8 @@ class AdministratorScreen(QDialog):
         
         for peleng in self.pelengs:
             # Высчитываем координаты относительно масштаба 
-            x = peleng[0] / scale
-            y = peleng[1] / scale
-
-            print(x)
-            print(y)
+            x = int(peleng[0]) / scale
+            y = int(peleng[1]) / scale
             
             # Проверяем что точно находится в границах отображаемой карты
             # Иначе рисуем на границе карты
@@ -146,5 +149,7 @@ class AdministratorScreen(QDialog):
 
         self.control_layer = self.Twidget
         self.control_layer = QGridLayout(self.control_layer)
+
+        self.setWindowFlags(Qt.WindowStaysOnTopHint)
             
 

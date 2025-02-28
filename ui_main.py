@@ -444,9 +444,14 @@ class MainScreen(QDialog):
 
                     if peleng == True:
                         self.lbl_peleng.setText(str(data[str(self.selected_id)]["bearing"]))
-                        self.found = [data[str(self.selected_id)]["bearing"],  self.selected_freq]
-                        # self.found.append([data[str(self.selected_id)]["bearing"],  self.selected_freq])
-                        # self.found = [list(t) for t in set(tuple(sublist) for sublist in  self.found)]
+                        id = str(self.selected_id)
+                        bearing = data[id]["bearing"]
+                        x = data[str(self.selected_id)]["X"]
+                        y = data[str(self.selected_id)]["Y"]
+                        self.found = [bearing,  self.selected_freq]
+
+                        self.administrator_window.set_peleng([x, y, bearing,  self.selected_freq])
+
                     else:
                         self.lbl_peleng.setText("-")
 

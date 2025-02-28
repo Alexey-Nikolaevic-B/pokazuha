@@ -8,8 +8,8 @@
         "bearing": 101,
         "text": "Первый! ПервыЙ! Я второй!",
         "source": "radio",
-        "X": "10",
-        "Y": "12"
+        "X": "4",
+        "Y": "2"
     },
     "1": {
         "freq": 902,
@@ -17,10 +17,58 @@
         "power": 65.0,
         "signal_type": "points",
         "mod": "None",
-        "bearing": 325,
+        "bearing": 1,
         "text": ".. ^ .. ^ .. ^ ..",
         "source": "dron",
-        "X": "10",
-        "Y": "12"
+        "X": "-3",
+        "Y": "-8"
+    },
+    "2": {
+        "freq": 1130,
+        "bandwidth": 0.500,
+        "power": 35.0,
+        "signal_type": "smooth",
+        "mod": "ФМн",
+        "bearing": 270,
+        "text": "Первый! ПервыЙ! Я второй!",
+        "source": "radio",
+        "X": "0",
+        "Y": "1"
+    },
+    "3": {
+        "freq": 9202,
+        "bandwidth": 10,
+        "power": 65.0,
+        "signal_type": "points",
+        "mod": "None",
+        "bearing": 34,
+        "text": ".. ^ .. ^ .. ^ ..",
+        "source": "dron",
+        "X": "-1",
+        "Y": "-6"
+    },
+    "4": {
+        "freq": 1110,
+        "bandwidth": 0.500,
+        "power": 35.0,
+        "signal_type": "smooth",
+        "mod": "ФМн",
+        "bearing": 200,
+        "text": "Первый! ПервыЙ! Я второй!",
+        "source": "radio",
+        "X": "-9",
+        "Y": "1"
+    },
+    "5": {
+        "freq": 9402,
+        "bandwidth": 10,
+        "power": 65.0,
+        "signal_type": "points",
+        "mod": "None",
+        "bearing": 50,
+        "text": ".. ^ .. ^ .. ^ ..",
+        "source": "dron",
+        "X": "-3",
+        "Y": "-3"
     }
 }
