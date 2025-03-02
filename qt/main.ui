@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>2030</width>
-    <height>994</height>
+    <height>968</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -276,27 +276,27 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <item>
      <property name="text">
-      <string>ЧМ</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
       <string>АМ</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>ППРЧ</string>
+      <string>ОМ</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>qphase</string>
+      <string>ЧМ</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>freq</string>
+      <string>ЧМн</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>ФМн</string>
      </property>
     </item>
    </widget>
@@ -413,7 +413,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
     <string notr="true">background-color: rgb(210, 210, 210)</string>
    </property>
    <property name="text">
-    <string>Пеленг</string>
+    <string>Пеленгатор</string>
    </property>
   </widget>
   <widget class="QFrame" name="frame_5">
@@ -437,7 +437,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
    <widget class="QPushButton" name="btn_theory">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>700</x>
       <y>0</y>
       <width>140</width>
       <height>30</height>
@@ -456,7 +456,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
    <widget class="QPushButton" name="btn_test">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>840</x>
       <y>0</y>
       <width>140</width>
       <height>30</height>
@@ -489,6 +489,25 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
      <string>Перехват</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_frequencies">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>0</y>
+      <width>140</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(210, 210, 210)</string>
+    </property>
+    <property name="text">
+     <string>Частоты</string>
     </property>
    </widget>
   </widget>

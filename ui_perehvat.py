@@ -147,6 +147,7 @@ class PerehvatScreen(QDialog):
 
     def init_ui(self):
         loadUi('qt/perehvat.ui', self)
+        self.setWindowTitle("Перехват")
 
         self.control_layer = self.widget
         self.control_layer = QGridLayout(self.control_layer)

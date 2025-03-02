@@ -1,18 +1,25 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QObject, pyqtSignal
 
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+
+from PyQt5.uic import loadUi
+
 import ui_main 
 import ui_theory
 import ui_perehvat
 import ui_rabota
+import ui_peleng
 
 class QT_Controler(QObject):
 
-    signal_goto_theory  = pyqtSignal()
-    signal_goto_test    = pyqtSignal()
-    signal_goto_main    = pyqtSignal()
-    signal_goto_rabota  = pyqtSignal()
-    signal_current_freq = pyqtSignal(float)
+    signal_goto_theory      = pyqtSignal()
+    signal_goto_test        = pyqtSignal()
+    signal_goto_main        = pyqtSignal()
+    signal_goto_rabota      = pyqtSignal()
+    signal_save_posts    = pyqtSignal(list)
 
     def __init__(self):
         QObject.__init__(self)
@@ -21,6 +28,7 @@ class QT_Controler(QObject):
         self.main   = ui_main.MainScreen()
         self.theory = ui_theory.TheoryScreen()
         self.rabota = ui_rabota.RabotaScreen()
+        self.peleng = ui_peleng.PelengScreen()
         # self.perehvat = ui_perehvat.PerehvatScreen()
         
         self.signals()
@@ -31,7 +39,9 @@ class QT_Controler(QObject):
         self.main.signal_goto_rabota.connect(self.gotoRabotaScreen)
 
         self.theory.signal_goto_main.connect(self.gotoMainScreen)
-        self.rabota.signal_goto_main.connect(self.gotoMainScreen)
+        
+        self.rabota.signal_goto_main.connect(self.gotoMainScreen)        
+        self.rabota.signal_save_posts.connect(self.gotoMainScreen_posts)
 
     def run(self):
         self.widget.addWidget(self.main)
@@ -48,3 +58,9 @@ class QT_Controler(QObject):
     def gotoMainScreen(self):
         self.widget.addWidget(self.main)
         self.widget.setCurrentIndex(self.widget.currentIndex()+1)
+
+    def gotoMainScreen_posts(self, data):
+        self.posts = data
+        self.signal_save_posts.emit(self.posts)
+
+        self.main.set_posts(data)

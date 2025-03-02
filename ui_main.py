@@ -20,6 +20,7 @@ import math
 import ui_rabota
 import ui_administrator
 import ui_peleng
+import ui_frequencies
 import ui_perehvat
 import ui_test
 
@@ -193,7 +194,7 @@ class MainScreen(QDialog):
         self.peleng_window         = ui_peleng.PelengScreen()
         self.perehvat_window       = ui_perehvat.PerehvatScreen()
         self.test_window           = ui_test.TestScreen()
-
+        self.frequencies_window    = ui_frequencies.FrequenciesScreen()
         self.perehvat_window.set_data(signals, filtered_freqs, self.selected_freq)
 
         self.btn_theory.clicked.connect(self.goto_theory)
@@ -202,6 +203,7 @@ class MainScreen(QDialog):
         self.btn_administrator.clicked.connect(self.show_administrator)
         self.btn_peleng.clicked.connect(self.show_peleng)
         self.btn_perehvat.clicked.connect(self.show_perehvat)
+        self.btn_frequencies.clicked.connect(self.show_frequencies)
         self.btn_test.clicked.connect(self.show_test)
 
         self.btn_tehanaliz.clicked.connect(self.update_perehvat)
@@ -210,10 +212,11 @@ class MainScreen(QDialog):
         self.btn_poisk.clicked.connect(lambda: self.poisk(False))
         self.btn_poisk2.clicked.connect(lambda: self.poisk(True))
 
+    def set_posts(self, data):  
+        self.administrator_window.set_posts(data)
 
     def goto_theory(self):
         self.signal_goto_theory.emit()
-
     
     def goto_rabota(self):
         self.signal_goto_rabota.emit()
@@ -244,10 +247,12 @@ class MainScreen(QDialog):
     def show_perehvat(self):
         self.perehvat_window.show()
 
+    def show_frequencies(self):
+        self.frequencies_window.show()
+
     def init_ui(self):
         loadUi('qt\main.ui', self)
-        self.setWindowTitle("RF Spectrum Analyzer")
-        self.setGeometry(100, 100, 1000, 600)
+        self.setWindowTitle("Лорандит")
 
         self.lbl_search_low.setValidator(QIntValidator(1, 10000, self))
         self.lbl_search_hight.setValidator(QIntValidator(1, 10000, self))
@@ -262,6 +267,7 @@ class MainScreen(QDialog):
         self.btn_rabota.setStyleSheet(style_btn)
         self.btn_administrator.setStyleSheet(style_btn)
         self.btn_peleng.setStyleSheet(style_btn)
+        self.btn_frequencies.setStyleSheet(style_btn)
         self.btn_theory.setStyleSheet(style_btn)
         self.btn_perehvat.setStyleSheet(style_btn)
         self.btn_test.setStyleSheet(style_btn)

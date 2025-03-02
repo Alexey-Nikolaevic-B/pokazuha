@@ -172,6 +172,7 @@ class TestScreen(QDialog):
 
     def init_ui(self):
         loadUi('qt/test.ui', self)
+        self.setWindowTitle("Тестирование")
 
         self.butttons = [self.answ_1, self.answ_2, self.answ_3, self.answ_4, self.answ_5]
 

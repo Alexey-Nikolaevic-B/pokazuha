@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1429</width>
-    <height>699</height>
+    <height>714</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -51,7 +51,7 @@
      <x>5</x>
      <y>639</y>
      <width>1420</width>
-     <height>51</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -63,17 +63,24 @@
    <widget class="QComboBox" name="cb_diapozon">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>10</y>
-      <width>591</width>
-      <height>30</height>
+      <x>605</x>
+      <y>13</y>
+      <width>211</width>
+      <height>35</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(212, 111, 68)</string>
+     <string notr="true">background-color: rgb(212, 111, 68);
+font: 17pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
     </property>
     <item>
      <property name="text">

@@ -224,6 +224,8 @@ class TheoryScreen(QDialog):
 
     def init_ui(self):
         loadUi('qt/theory.ui', self)
+        self.setWindowTitle("Теория")
+        
         self.control_layer_4 = self.widget_4
         self.control_layer_4 = QGridLayout(self.control_layer_4)
         self.graph_1()

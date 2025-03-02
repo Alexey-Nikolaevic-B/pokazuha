@@ -96,6 +96,7 @@ class PelengScreen(QDialog):
 
     def init_ui(self):
         loadUi('qt/peleng.ui', self)
+        self.setWindowTitle("Круговая пеленговая панорам")
 
         self.control_layer = self.Twidget
         self.control_layer = QGridLayout(self.control_layer)   

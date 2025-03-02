@@ -31,7 +31,8 @@ class AdministratorScreen(QDialog):
         self.img_path = 'img\map_4.png'
         self.draw_path = True
 
-        self.posts = [[0.2, 0.2, "Маджахет"], [0.7, 1.3, "Сатурн"]] # [X, Y, ПОЗЫВНОЙ]
+        self.posts  = []
+        # self.posts = [[0.2, 0.2, "Маджахет"], [0.7, 1.3, "Сатурн"]] # [X, Y, ПОЗЫВНОЙ]
         self.pelengs = []                                         # [X, Y, ПЕЛЕНГ, ЧАСТОТА]
 
         with plt.ioff():
@@ -47,14 +48,16 @@ class AdministratorScreen(QDialog):
         self.control_layer.addWidget(radial,0,0)
         self.plot_map()
 
-        self.btn_clear.clicked.connect(self.clear_signals)
+        # self.btn_clear.clicked.connect(self.clear_signals)
 
         # self.btn_scale_50.clicked.connect(self.set_scale_1)
         # self.btn_scale_100.clicked.connect(self.set_scale_2)
         # self.btn_scale_200.clicked.connect(self.set_scale_4)
 
     def set_posts(self, posts):
-        pass
+        self.posts = posts
+
+        self.plot_map()
 
     def set_peleng(self, pelengs):
         self.pelengs.append(pelengs)
@@ -68,19 +71,17 @@ class AdministratorScreen(QDialog):
         img = Image.open(self.img_path)
         self.ax.set_facecolor((80/256, 80/256, 80/256))
         
-        # self.ax.set_xticks([])
-        # self.ax.set_yticks([])
-        # self.ax.set_frame_on(False)
+        self.ax.set_xticks([])
+        self.ax.set_yticks([])
+        self.ax.set_frame_on(False)
 
         self.ax.imshow(img, extent=[0, 1, 0, 1], aspect='auto')
         center_x, center_y = 0.5, 0.5
         coord_cent_x, coord_cent_y = 37*60 + 30, 55*60 + 50
         coord_dif_x, coord_dif_y = 1 * 60 * self.scale, 4 * 60 * self.scale
         self.ax.plot(center_x, center_y, 'r^', markersize=15, label="Center")
-        # self.ax.text(-1, -1, f"({(coord_cent_y-coord_dif_y)//60}°{(coord_cent_y-coord_dif_y)%60}',
-        #             {(coord_cent_x-coord_dif_x)//60}°{(coord_cent_x-coord_dif_x)%60}')", fontsize=8, color='black', ha='left', va='bottom')
-        # self.ax.text(-1, -1, f"({(coord_cent_y+coord_dif_y)//60}°{(coord_cent_y+coord_dif_y)%60}',
-        #             {(coord_cent_x+coord_dif_x)//60}°{(coord_cent_x+coord_dif_x)%60}')", fontsize=8, color='black', ha='left', va='bottom')
+        self.ax.text(-1, -1, f"({(coord_cent_y-coord_dif_y)//60}°{(coord_cent_y-coord_dif_y)%60}', {(coord_cent_x-coord_dif_x)//60}°{(coord_cent_x-coord_dif_x)%60}')", fontsize=8, color='black', ha='left', va='bottom')
+        self.ax.text(-1, -1, f"({(coord_cent_y+coord_dif_y)//60}°{(coord_cent_y+coord_dif_y)%60}', {(coord_cent_x+coord_dif_x)//60}°{(coord_cent_x+coord_dif_x)%60}')", fontsize=8, color='black', ha='left', va='bottom')
         
         # НАШИ ПОСТЫ
         for post in self.posts: 
@@ -94,9 +95,8 @@ class AdministratorScreen(QDialog):
             
             self.ax.plot(x, y, 'rs', markersize=10)  # ставим точку
 
-            # self.ax.text(x, y, f"({(coord_cent_y+coord_dif_y*y)//60}°{(coord_cent_y+coord_dif_y*y)%60}',
-            #         {(coord_cent_x+coord_dif_x*x)//60}°{(coord_cent_x+coord_dif_x*x)%60}')", fontsize=8, color='black', ha='left', va='bottom')
-            self.ax.text(x-0.05, y+0.02, f"{post[2]}", fontsize=14, color='red', ha='left', va='bottom')
+            self.ax.text(x, y, f"({(coord_cent_y+coord_dif_y*y)//60}°{(coord_cent_y+coord_dif_y*y)%60}',{(coord_cent_x+coord_dif_x*x)//60}°{(coord_cent_x+coord_dif_x*x)%60}')", fontsize=8, color='black', ha='left', va='bottom')
+            self.ax.text(x, y+0.02, f"{post[2]}", fontsize=14, color='red', ha='left', va='bottom')
             # last_x, last_y = x, y
         
         # ПЕЛЕНГИ
@@ -117,14 +117,13 @@ class AdministratorScreen(QDialog):
             self.ax.plot(x, y, 'bo', markersize=8)  # ставим точку
 
             # подписываем координаты
-            # self.ax.text(x, y, f"({(coord_cent_y+coord_dif_y*float(peleng[0]))//60}°{(coord_cent_y+coord_dif_y*float(peleng[0]))%60}',
-            #         {(coord_cent_x+coord_dif_x*float(peleng[1]))//60}°{(coord_cent_x+coord_dif_x*float(peleng[1]))%60}')", fontsize=8, color='black', ha='left', va='bottom')
+            self.ax.text(x, y, f"({(coord_cent_y+coord_dif_y*float(peleng[0]))//60}°{(coord_cent_y+coord_dif_y*float(peleng[0]))%60}', {(coord_cent_x+coord_dif_x*float(peleng[1]))//60}°{(coord_cent_x+coord_dif_x*float(peleng[1]))%60}')", fontsize=8, color='black', ha='left', va='bottom')
             last_x, last_y = x, y
         
             # Если поставлена галочка на отрисовку пеленга на карте
             if draw_path and last_x is not None:
                 self.ax.plot([center_x, last_x], [center_y, last_y], 'b--', linewidth=2)
-                self.ax.text(x-0.05, y+0.02, f"{peleng[3]} МГц", 
+                self.ax.text(x, y+0.02, f"{peleng[3]} МГц", 
                         fontsize=12, color='blue', ha='left', va='bottom')
 
         self.fig.canvas.draw()
@@ -136,9 +135,9 @@ class AdministratorScreen(QDialog):
     #         self.draw_path = True
     #     self.plot_map()
 
-    def clear_signals(self):
-        self.pelengs = []
-        self.plot_map()
+    # def clear_signals(self):
+    #     self.pelengs = []
+    #     self.plot_map()
 
     # def set_scale_1(self):
     #     self.scale = 1
@@ -178,10 +177,12 @@ class AdministratorScreen(QDialog):
 
     def init_ui(self):
         loadUi('qt/administrator.ui', self)
+        self.setWindowTitle("Администратор")
 
         self.control_layer = self.Twidget
         self.control_layer = QGridLayout(self.control_layer)
 
         self.setWindowFlags(Qt.WindowStaysOnTopHint)
+        
             
 
