@@ -17,8 +17,8 @@ class TheoryScreen(QDialog):
     T = 1  # Длительность сигнала в секундах
     t = np.linspace(0, T, int(fs*T), endpoint=False)  # Временная ось
     Ac = 400
-    Am = [1, 0.1, 0.3, 0.2, 0.1] # амплитуды модулирующих сигналов
-    fm = [10, 55, 78, 99, 76] # частоты модулирующих сигналов
+    Am = [1, 0.5, 0.3, 0.2, 0.1] # амплитуды модулирующих сигналов
+    fm = [10, 20, 30, 40, 50] # частоты модулирующих сигналов
     
 
     signal_goto_main   = pyqtSignal()
@@ -203,7 +203,7 @@ class TheoryScreen(QDialog):
                 modulating += self.Am[i] * np.sin(2*np.pi*self.fm[i]*(x + 0.0003 * i))
 
         if mod_type == "АМ":
-            y = (1 + (m + 0.12)* modulating) * carrier
+            y = (1 + m * modulating) * carrier
         elif mod_type == "ОМ":
             y = (m * modulating) * carrier
         elif mod_type == "ЧМ":
