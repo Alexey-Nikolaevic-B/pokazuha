@@ -1,11 +1,12 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtCore import pyqtSignal
-from PyQt5.QtWidgets import*
 from PyQt5.uic import loadUi
+from PyQt5 import QtCore
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+
 
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.colors import LinearSegmentedColormap
@@ -172,6 +173,7 @@ class MainScreen(QDialog):
 
     signal_goto_theory   = pyqtSignal()
     signal_goto_test     = pyqtSignal()
+    signal_goto_rabota   = pyqtSignal()
     signal_current_freq  = pyqtSignal(float)
 
     signal_poisk = pyqtSignal()
@@ -196,7 +198,7 @@ class MainScreen(QDialog):
 
         self.btn_theory.clicked.connect(self.goto_theory)
 
-        self.btn_rabota.clicked.connect(self.show_rabota)
+        self.btn_rabota.clicked.connect(self.goto_rabota)
         self.btn_administrator.clicked.connect(self.show_administrator)
         self.btn_peleng.clicked.connect(self.show_peleng)
         self.btn_perehvat.clicked.connect(self.show_perehvat)
@@ -212,6 +214,10 @@ class MainScreen(QDialog):
     def goto_theory(self):
         self.signal_goto_theory.emit()
 
+    
+    def goto_rabota(self):
+        self.signal_goto_rabota.emit()
+
     def goto_test(self):
         self.signal_goto_test.emit()
 
@@ -224,9 +230,6 @@ class MainScreen(QDialog):
         if peleng:
             if len(self.found) != 0:
                 self.peleng_window.set_found(self.found)
-
-    def show_rabota(self):
-        self.rabota_window.show()
 
     def show_administrator(self):
         self.administrator_window.show()  
@@ -250,6 +253,8 @@ class MainScreen(QDialog):
         self.lbl_search_hight.setValidator(QIntValidator(1, 10000, self))
 
         self.graph()
+
+        self.setWindowState(QtCore.Qt.WindowMaximized)
 
         style_btn = "QPushButton {color: rgb(0, 0, 0); background-color : rgb(200, 200, 200)} QPushButton::hover {background-color: rgb(255, 255, 255)}"
 

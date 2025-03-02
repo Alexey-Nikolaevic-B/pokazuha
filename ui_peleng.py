@@ -28,7 +28,6 @@ class PelengScreen(QDialog):
         self.init_ui()
 
         self.fig, self.ax = plt.subplots(figsize=(5, 5))
-        self.ax.set_facecolor((1.0, 0.47, 0.42))
         self.fig.patch.set_facecolor((35/256, 38/256, 50/256))
         self.ax.axis('off')  
         self.polar_ax = self.fig.add_axes(self.ax.get_position(), projection='polar', frameon=False)
