@@ -47,7 +47,7 @@ class PerehvatScreen(QDialog):
             up_sp = low_sp + 100
 
             Fs = 10 * up_sp
-            T = 2  # Длительность сигнала, секунда
+            T = 1  # Длительность сигнала, секунда
             t = np.linspace(0, T, int(Fs * T), endpoint=False)  # Временной вектор
         
             signal = np.zeros_like(t)
@@ -87,7 +87,7 @@ class PerehvatScreen(QDialog):
             up_sp = low_sp + 6
 
             Fs = 10000
-            T = 1  # Длительность сигнала, секунда
+            T = 0.5  # Длительность сигнала, секунда
             t = np.linspace(0, T, int(Fs * T), endpoint=False)  # Временной вектор
         
             signal = np.zeros_like(t)
@@ -99,7 +99,7 @@ class PerehvatScreen(QDialog):
                             modulating = 0.5*np.sin(2*np.pi*100*t) + 0.2*np.sin(2*np.pi*250*t) + 0.7*np.sin(2*np.pi*300*t) +\
                                          0.5*np.sin(2*np.pi*101*t) + 0.2*np.sin(2*np.pi*279*t) + 0.7*np.sin(2*np.pi*299*t)
                             signal += signal_data.power * (1 + 0.15*modulating) * (np.sin(2*np.pi*1000*t))   # Амплитудно-модулированный сигнал
-                        elif signal_data.mod == "ФМ":
+                        elif signal_data.mod == "ЧМ":
                             modulating = 0.5*np.sin(2*np.pi*10*t) + 0.2*np.sin(2*np.pi*25*t) + 0.7*np.sin(2*np.pi*30*t) + 0.7*np.sin(2*np.pi*50*t)
                             signal += signal_data.power * np.sin(2*np.pi*1000*t + 0.3*2*np.pi*modulating)  # Частотно-модулированный сигнал
                         elif signal_data.mod == "ОМ":
