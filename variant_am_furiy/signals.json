@@ -1,6 +1,6 @@
 {
     "0": {
-        "freq": 61,
+        "freq": 54,
         "bandwidth": 0.350,
         "power": 71.0,
         "signal_type": "ragged",
@@ -11,7 +11,7 @@
         "Y": "0.6"
     },
     "1": {
-        "freq": 83,
+        "freq": 78,
         "bandwidth": 0.350,
         "power": 50.0,
         "signal_type": "ragged",
@@ -22,7 +22,7 @@
         "Y": "0.57"
     },
     "2": {
-        "freq": 117,
+        "freq": 127,
         "bandwidth": 0.250,
         "power": 70.0,
         "signal_type": "smooth",
@@ -33,7 +33,7 @@
         "Y": "0.66"
     },
     "3": {
-        "freq": 145,
+        "freq": 198,
         "bandwidth": 0.350,
         "power": 50.0,
         "signal_type": "ragged",
@@ -44,7 +44,7 @@
         "Y": "0.31"
     },
     "4": {
-        "freq": 173,
+        "freq": 213,
         "bandwidth": 0.250,
         "power": 45.0,
         "signal_type": "smooth",
@@ -55,19 +55,19 @@
         "Y": "0.4"
     },
     "5": {
-        "freq": 431,
+        "freq": 413,
         "bandwidth": 0.250,
         "power": 70.0,
         "signal_type": "ragged",
-        "mod": "АМ",
-        "text": "Hello! Hello!",
+        "mod": "ЧМн",
+        "text": "Hello! Do you hear me?",
         "source": "Радио",
         "X": "0.84",
         "Y": "0.7"
     },
     "6": {
-        "freq": 913,
-        "bandwidth": 5,
+        "freq": 927,
+        "bandwidth": 18,
         "power": 85.0,
         "signal_type": "points",
         "mod": "None",
@@ -77,14 +77,14 @@
         "Y": "0.09"
     },
     "7": {
-        "freq": 2300,
-        "bandwidth": 7,
+        "freq": 2327,
+        "bandwidth": 5,
         "power": 80.0,
         "signal_type": "smooth",
         "mod": "None",
         "text": "... ... ... ... ... ...",
         "source": "Дрон (Видео)",
-        "X": "-100",
-        "Y": "-100"
+        "X": "0.10",
+        "Y": "0.26"
     }
 }
