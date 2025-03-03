@@ -98,10 +98,11 @@ class AdministratorScreen(QDialog):
         self.ax.text(1, 1, f"({(coord_cent_y+coord_dif_y*self.scale)//60}°{(coord_cent_y+coord_dif_y*self.scale)%60}'N, {(coord_cent_x+coord_dif_x*self.scale)//60}°{(coord_cent_x+coord_dif_x*self.scale)%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
         
         for post in self.posts:
-            print(x, y)
             # Высчитываем координаты относительно масштаба 
             x = float(post[0]) / self.scale
             y = float(post[1]) / self.scale
+
+            print(x, y)
             
             # Проверяем что точно находится в границах отображаемой карты
             # Иначе рисуем на границе карты
@@ -114,7 +115,7 @@ class AdministratorScreen(QDialog):
 
             self.ax.plot(x, y, 'ks', markersize=8)  # ставим точку
             # подписываем координаты
-            self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(post[0]))//60}°{int(coord_start_y+coord_dif_y*2*float(post[0]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(post[1]))//60}°{int(coord_start_x+coord_dif_x*2*float(post[1]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+            self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(post[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(post[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(post[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(post[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
 
 
         for peleng in self.pelengs:
@@ -138,7 +139,7 @@ class AdministratorScreen(QDialog):
                     if self.cb_draw.isChecked():
                         self.ax.plot([center_x, x], [center_y, y], "r--", linewidth=2)
 
-            # self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(post[0]))//60}°{int(coord_start_y+coord_dif_y*2*float(post[0]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(post[1]))//60}°{int(coord_start_x+coord_dif_x*2*float(post[1]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+            self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(peleng[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(peleng[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(peleng[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
 
         self.fig.canvas.draw()
 

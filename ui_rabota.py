@@ -35,11 +35,18 @@ class RabotaScreen(QDialog):
 
 
     def translate_coordinates(self, y, x):
-        print(int(y[0:2]), int(y[3:5]))
-        print(int(x[0:2]), int(x[3:5]))
+        if y[3:5] == '00':
+            new_y = 0
+        else:
+            new_y = int(y[0:2])
 
-        new_y = (int(y[0:2])*60+int(y[3:5]) - 36*60 - 30) / (60 * 2) 
-        new_x = (int(x[0:2])*60+int(x[3:5]) - 51*60 - 50) / (60 * 8)
+        if x[3:5] == '00':
+            new_x = 0
+        else:
+            new_x = int(y[0:2])
+            
+        new_y = (int(y[0:2])*60+int(new_y) - 36*60 - 30) / (60 * 2) 
+        new_x = (int(x[0:2])*60+int(new_x) - 51*60 - 50) / (60 * 8)
         print(new_x, new_y)
         
         return (new_y, new_x)
@@ -74,8 +81,8 @@ class RabotaScreen(QDialog):
             self.tableWidget.insertRow(0)
 
         self.tableWidget.setItem(0, 0, QTableWidgetItem(self.lbl_name.text()))
-        self.tableWidget.setItem(0, 1, QTableWidgetItem("0.5"))
-        self.tableWidget.setItem(0, 2, QTableWidgetItem("0.5"))
+        self.tableWidget.setItem(0, 1, QTableWidgetItem("37°30'N"))
+        self.tableWidget.setItem(0, 2, QTableWidgetItem("55°50'E"))
         self.tableWidget.setItem(0, 3, QTableWidgetItem(self.lbl_adrr.text()))
         self.tableWidget.setItem(0, 4, QTableWidgetItem("МГц"))
 
@@ -99,15 +106,15 @@ class RabotaScreen(QDialog):
         
             print(y, x)
          
-            # if (x[0:1].isnumric() and x[3:4].isnumric() and x[2] == '.') and (y[0:1].isnumric() and y[3:4].isnumric() and y[2] == '.'):
+ 
             y, x = self.translate_coordinates(y, x)
 
             self.posts.append([x, y, name])
 
-            # self.posts.append([x, y, name])
-            #     self.lbl_error.show()
-            #     self.posts = []
-            #     break
+            if not ((x[0:1].isnumric() and x[0:1]!= '00' and x[3:4].isnumric() and x[2] == '.') and (y[0:1].isnumric() and y[0:1] != '00' and y[3:4].isnumric() and y[2] == '.')):
+                self.lbl_error.show()
+                self.posts = []
+                break
     
 
 
