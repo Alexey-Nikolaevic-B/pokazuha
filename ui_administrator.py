@@ -138,7 +138,7 @@ class AdministratorScreen(QDialog):
                     if self.cb_draw.isChecked():
                         self.ax.plot([center_x, x], [center_y, y], "r--", linewidth=2)
 
-            self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(post[0]))//60}°{int(coord_start_y+coord_dif_y*2*float(post[0]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(post[1]))//60}°{int(coord_start_x+coord_dif_x*2*float(post[1]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+            # self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(post[0]))//60}°{int(coord_start_y+coord_dif_y*2*float(post[0]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(post[1]))//60}°{int(coord_start_x+coord_dif_x*2*float(post[1]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
 
         self.fig.canvas.draw()
 

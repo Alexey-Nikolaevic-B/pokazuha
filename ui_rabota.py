@@ -130,10 +130,10 @@ class RabotaScreen(QDialog):
             elif x == 95:
                 self.lbl_progress.setText("Переход в режим готовности")
 
-            if x < 90: 
-                time.sleep(x * random.random() / 1000)
-            else:
-                time.sleep(0.1)
+            # if x < 90: 
+            #     time.sleep(x * random.random() / 1000)
+            # else:
+            #     time.sleep(0.1)
 
         self.w_progress.hide()
         self.frame.show()

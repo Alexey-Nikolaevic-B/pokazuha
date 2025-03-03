@@ -453,12 +453,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
      <string>Теория</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_test">
+   <widget class="QPushButton" name="btn_test_1">
     <property name="geometry">
      <rect>
       <x>840</x>
       <y>0</y>
-      <width>140</width>
+      <width>81</width>
       <height>30</height>
      </rect>
     </property>
@@ -469,7 +469,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
      <string notr="true">background-color: rgb(210, 210, 210)</string>
     </property>
     <property name="text">
-     <string>Тест</string>
+     <string>Тест 1</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_perehvat">
@@ -508,6 +508,25 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
      <string>Частоты</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_test_2">
+    <property name="geometry">
+     <rect>
+      <x>921</x>
+      <y>0</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(210, 210, 210)</string>
+    </property>
+    <property name="text">
+     <string>Тест 2</string>
     </property>
    </widget>
   </widget>

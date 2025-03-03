@@ -14,24 +14,19 @@ class TestScreen(QDialog):
     def __init__(self):
         super(TestScreen, self).__init__()
         
+        self.test_path = " "
         self.cur_task = 0
         self.image  = ["empty", "img\map.jpg"]
         self.tasks  = ["Английский перевод 1914 года, H. RackhamOn the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains", "Английский перевод 1914 года, H. RackhamOn the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains"]
         self.checks = ["1", "2"]
         self.answers = [["1", "2", "1", "2"], ["1", "2"]]
 
-        self.first = True
         self.n = len(self.tasks)
         self.grades = [60, 80, 90]
-        self.mark_1 = 2
-        self.mark_2 = 2
-        self.correct_1 = [0]*10
-        self.correct_2 = [0]*10
+        self.mark = 2
+        self.correct = [0]*10
         
         self.init_ui()
-
-        self.btn_test_1.clicked.connect(self.test_1)
-        # self.btn_test_2.clicked.connect(self.test_2)
 
         self.btn_backward.clicked.connect(lambda: self.update(0))
         self.btn_forward.clicked.connect(lambda: self.update(1))
@@ -43,18 +38,17 @@ class TestScreen(QDialog):
         self.answ_4.clicked.connect(self.check)
         self.answ_5.clicked.connect(self.check)
 
-    def test_1(self):
-        with open("variant/lesson.json", encoding='utf-8') as config_file:
+    def set_path(self, path):
+        self.test_path = path
+
+        with open(self.test_path, encoding='utf-8') as config_file:
             data = json.load(config_file)
         self.image   = data['image']
         self.tasks   = data['tasks']
         self.checks  = data['checks']
         self.answers = data['answers']
 
-        self.correct_1 = [0]*len(self.tasks)
-
         self.renew()
-
 
     def endTest(self):
         self.main_frame.hide()
@@ -65,15 +59,10 @@ class TestScreen(QDialog):
         for i in range(len(self.butttons)):
             if self.butttons[i].isChecked():
                 if str(i+1) == self.checks[self.cur_task]:
-                    if self.first:
-                        self.correct_1[self.cur_task] = 1
-                    else:
-                        self.correct_2[self.cur_task] = 1
+                    self.correct[self.cur_task] = 1
 
-        if self.first:
-            i = self.correct_1.count(1)
-        else: 
-            i = self.correct_2.count(1)
+
+        i = self.correct.count(1)
 
         per = i / len(self.tasks) * 100
         self.mark = 2
@@ -94,12 +83,7 @@ class TestScreen(QDialog):
         if self.mark== 5:
             self.setStyleSheet('background-color: rgb(147, 181, 72)')
 
-        if self.first:
-            i = self.correct_1.count(1)
-        else: 
-            i = self.correct_1.count(1)
-            b = self.correct_2.count(1)
-
+        # print(self.correct.count(1))
 
         self.lbl_mark.setText(str(self.mark))
         self.lbl_correct.setText(str(self.correct.count(1)) + " / " + str(len(self.correct)))
@@ -109,10 +93,7 @@ class TestScreen(QDialog):
         for i in range(len(self.butttons)):
             if self.butttons[i].isChecked():
                 if str(i+1) == self.checks[self.cur_task]:
-                    if self.first:
-                        self.correct_1[self.cur_task] = 1
-                    else: 
-                        self.correct_2[self.cur_task] = 1
+                    self.correct[self.cur_task] = 1
 
     def update(self, option):
         if (option == 0) and (self.cur_task > 0): 
@@ -170,10 +151,7 @@ class TestScreen(QDialog):
         self.btn_forward.setEnabled(True)
 
         self.setStyleSheet('background-color: rgb(35,38,50)')
-
-        self.lbl_task.setText("Вопрос " + str(self.cur_task + 1))
-        self.lbl_question.setText(self.tasks[self.cur_task])
-
+        
         self.btn_backward.setEnabled(False)
         self.btn_end_test.hide()
         self.pic_frame.hide()
@@ -185,8 +163,10 @@ class TestScreen(QDialog):
         self.answ_5.hide()
 
         self.end_frame.hide()
-        self.frame.hide()
+
         self.main_frame.show()
+
+        self.correct = [0]*len(self.tasks)
 
         # IMAGE
         if self.image[self.cur_task] == "empty":
@@ -200,8 +180,10 @@ class TestScreen(QDialog):
             image.setScaledContents(True)
             image.show()
 
+        # print(self.cur_task)
+        # print(self.tasks[self.cur_task])
         # QUESTION
-            self.lbl_question.setText(self.tasks[self.cur_task])
+        self.lbl_question.setText(self.tasks[self.cur_task])
 
         # CHECKS
         for i in range(5):
@@ -216,9 +198,8 @@ class TestScreen(QDialog):
         loadUi('qt/test.ui', self)
         self.setWindowTitle("Тестирование")
 
-        self.end_frame.hide()
         self.btn_backward.hide()
-        self.main_frame.hide()
+        self.btn_backward.hide()
 
         self.group = QButtonGroup()
         self.group.addButton(self.answ_1)
@@ -229,8 +210,6 @@ class TestScreen(QDialog):
 
         self.butttons = [self.answ_1, self.answ_2, self.answ_3, self.answ_4, self.answ_5]
 
-        self.btn_backward.setIconSize(QtCore.QSize(100,40))
-        self.btn_forward.setIconSize(QtCore.QSize(100,40))
         style_btn = "QPushButton {color: rgb(0, 0, 0); background-color : rgb(200, 200, 200)} QPushButton::hover {background-color: rgb(255, 255, 255)}"
         self.btn_backward.setStyleSheet(style_btn) 
         self.btn_forward.setStyleSheet(style_btn) 

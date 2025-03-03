@@ -227,9 +227,13 @@ class MainScreen(QDialog):
         self.administrator_window  = ui_administrator.AdministratorScreen()
         self.peleng_window         = ui_peleng.PelengScreen()
         self.perehvat_window       = ui_perehvat.PerehvatScreen()
-        self.test_window           = ui_test.TestScreen()
+        self.test_window_1         = ui_test.TestScreen()
+        self.test_window_2         = ui_test.TestScreen()
         self.frequencies_window    = ui_frequencies.FrequenciesScreen()
         self.perehvat_window.set_data(signals, filtered_freqs, self.selected_freq)
+
+        self.test_window_1.set_path("variant\lesson_1.json")
+        self.test_window_2.set_path("variant\lesson_2.json")
 
         self.btn_theory.clicked.connect(self.goto_theory)
 
@@ -238,7 +242,9 @@ class MainScreen(QDialog):
         self.btn_peleng.clicked.connect(self.show_peleng)
         self.btn_perehvat.clicked.connect(self.show_perehvat)
         self.btn_frequencies.clicked.connect(self.show_frequencies)
-        self.btn_test.clicked.connect(self.show_test)
+        
+        self.btn_test_1.clicked.connect(self.show_test_1)
+        self.btn_test_2.clicked.connect(self.show_test_2)
 
         self.btn_tehanaliz.clicked.connect(self.update_perehvat)
         self.btn_peleng_2.clicked.connect(self.update_frequencies)
@@ -339,8 +345,11 @@ class MainScreen(QDialog):
     def show_administrator(self):
         self.administrator_window.show()  
 
-    def show_test(self): 
-        self.test_window.show()  
+    def show_test_1(self): 
+        self.test_window_1.show()
+
+    def show_test_2(self): 
+        self.test_window_2.show()  
 
     def show_peleng(self):
         self.peleng_window.show()
@@ -371,7 +380,8 @@ class MainScreen(QDialog):
         self.btn_frequencies.setStyleSheet(style_btn)
         self.btn_theory.setStyleSheet(style_btn)
         self.btn_perehvat.setStyleSheet(style_btn)
-        self.btn_test.setStyleSheet(style_btn)
+        self.btn_test_1.setStyleSheet(style_btn)
+        self.btn_test_2.setStyleSheet(style_btn)
 
         # Подавление
         self.btn_z.setStyleSheet(style_btn)

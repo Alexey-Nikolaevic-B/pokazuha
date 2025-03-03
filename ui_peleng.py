@@ -82,14 +82,14 @@ class PelengScreen(QDialog):
         for element in self.found:
             r = np.arange(0.02, 1.01, 0.01)
             theta = [np.deg2rad(element[0])] * len(r)
-            self.ax.plot(theta, r, 'k', linewidth=0.5, color='white')
+            self.ax.plot(theta, r, 'w', linewidth=0.5, color='white')
 
-        self.theta_curcle = np.arange(0, 2*np.pi, 0.1)
+        self.theta_curcle = np.arange(0, 2*np.pi+0.1, 0.1)
         self.r_curcle = [0.1] * len(self.theta_curcle)
 
-        self.ax.plot(self.theta_curcle, self.r_curcle, 'k', linewidth=0.5, color='white')
+        self.ax.plot(self.theta_curcle, self.r_curcle, 'w', linewidth=0.5, color='white')
         r_curcle = [0.03] * len(self.theta_curcle)
-        self.ax.plot(self.theta_curcle, r_curcle, 'k', linewidth=4,)
+        self.ax.plot(self.theta_curcle, r_curcle, 'w', linewidth=4,)
 
 
         major_ticks = np.linspace(0, 2*np.pi, 24, endpoint=False)
@@ -106,7 +106,7 @@ class PelengScreen(QDialog):
         self.ax.set_theta_zero_location("N")
         self.ax.set_theta_direction(-1)
         self.ax.set_rlabel_position(-22.5)
-        
+        plt.style.use('dark_background')
 
         self.fig.canvas.draw()
 
