@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
 import numpy as np
+import json
 
 class FrequenciesScreen(QDialog):
 
@@ -24,9 +25,27 @@ class FrequenciesScreen(QDialog):
         self.init_ui()
 
 
+    def set_control(self):
+        self.t_control.setRowCount(0)
+
+        with open("control.json", encoding='utf-8') as config_file:
+            data = json.load(config_file)
+        self.freq = data['freq']
+        self.mod = data['mod']
+
+        for i in range(len(self.freq)):
+            rowPosition = self.t_control.rowCount()
+            self.t_control.insertRow(rowPosition)
+            self.t_control.setItem(rowPosition, 0, QTableWidgetItem(str(self.freq[i]) + "°"))
+            self.t_control.setItem(rowPosition, 1, QTableWidgetItem(str(self.mod[i])))
+
+
+
     def init_ui(self):
         loadUi('qt/frequencies.ui', self)
         self.setWindowTitle("Частоты")
+
+        self.set_control()
 
         table_zapret = self.t_zapret
         table_zapret.setStyleSheet("background-color: rgb(255,255,255)")

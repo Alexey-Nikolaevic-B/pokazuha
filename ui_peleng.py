@@ -27,20 +27,19 @@ class PelengScreen(QDialog):
 
         self.init_ui()
 
-        self.fig, self.ax = plt.subplots(figsize=(5, 5))
+        pelengs = [45, 54, 26, 100]
+
+        self.theta_curcle = np.arange(0, 2*np.pi, 0.1)
+        self.r_curcle = [0.1] * len(self.theta_curcle)
+
+        # self.polar_ax = self.fig.add_axes(self.ax.get_position(), projection='polar', frameon=False)
+        # self.polar_ax.set_theta_zero_location('N')
+
+        self.fig, self.ax = plt.subplots(subplot_kw={'projection': 'polar'})
         self.fig.patch.set_facecolor((35/256, 38/256, 50/256))
-        self.ax.axis('off')  
-        self.polar_ax = self.fig.add_axes(self.ax.get_position(), projection='polar', frameon=False)
-        self.polar_ax.set_theta_zero_location('N')
-        self.polar_ax.set_theta_direction(-1)
 
-        rings = np.linspace(0.15, 1.0, 2)
-        self.polar_ax.set_yticks(rings)
-        self.polar_ax.tick_params(axis='x', colors='white')
-        self.polar_ax.tick_params(axis='y', colors='white')
-
-        yax = self.ax.axes.get_xaxis()
-        yax = yax.set_visible(False)
+  # Move radial labels away from
+        
         radial = FigureCanvas(self.fig)
         self.control_layer.addWidget(radial,0,0)
 
@@ -72,23 +71,38 @@ class PelengScreen(QDialog):
 
     def plot_(self):
 
-        self.polar_ax.clear()
-        self.polar_ax.set_theta_zero_location('N')
-        self.polar_ax.set_theta_direction(-1)
+        self.ax.clear()
 
-        rings = np.linspace(0.15, 1.0, 2)
-        self.polar_ax.set_yticks(rings)
-        self.polar_ax.tick_params(axis='x', colors='white')
-        self.polar_ax.tick_params(axis='y', colors='white')
+        self.ax.tick_params(axis='x', colors='white')
+        self.ax.tick_params(axis='y', colors='white')
 
-        for peleng in self.found:
-            bearing_angle = np.radians(peleng[0])
-            self.polar_ax.plot([bearing_angle, bearing_angle], [0, 1], color='#FF2222', linewidth=4, zorder=1)
+        for element in self.found:
+            r = np.arange(0.02, 1.01, 0.01)
+            theta = [np.deg2rad(element[1])] * len(r)
+            self.ax.plot(theta, r, 'k', linewidth=0.5)
 
-            angle_label = f"{int(np.degrees(bearing_angle))}°"
-            self.polar_ax.annotate(angle_label, xy=(bearing_angle, 1.05), xytext=(bearing_angle, 1.1),
-                            ha='center', va='bottom', fontsize=12, color='white', weight='bold',
-                            bbox=dict(boxstyle='round,pad=0.1', fc='r', ec='none', alpha=0.7))
+        self.theta_curcle = np.arange(0, 2*np.pi, 0.1)
+        self.r_curcle = [0.1] * len(self.theta_curcle)
+
+        self.ax.plot(self.theta_curcle, self.r_curcle, 'k', linewidth=0.5)
+        r_curcle = [0.03] * len(self.theta_curcle)
+        self.ax.plot(self.theta_curcle, r_curcle, 'k', linewidth=4)
+
+
+        major_ticks = np.linspace(0, 2*np.pi, 24, endpoint=False)
+        minor_ticks = np.linspace(0, 2*np.pi, 10, endpoint=False)
+
+        self.ax.set_xticks(major_ticks, minor=False)
+        self.ax.set_xticks(minor_ticks, minor=True)
+
+        self.ax.set_rticks([])
+
+        self.ax.set_rmax(1)
+        self.ax.grid(False)
+
+        self.ax.set_theta_zero_location("N")
+        self.ax.set_theta_direction(-1)
+        self.ax.set_rlabel_position(-22.5)
         
 
         self.fig.canvas.draw()

@@ -21,7 +21,7 @@ class TestScreen(QDialog):
         self.answers = [["1", "2", "1", "2"], ["1", "2"]]
 
         self.n = len(self.tasks)
-        self.grades = [1, 3, 4] # ОЦЕНКИ. ЧТОБЫ ПОЛУЧИТЬ 3 НУЖНО НАБРАТЬ БОЛЬШЕ ОДНОГО, ЧТОБЫ ПОЛУЧИТЬ 4 - БОЛЬШЕ 3
+        self.grades = [60, 80, 90]
         self.mark = 2
         self.correct = [0]*10
         
@@ -42,12 +42,23 @@ class TestScreen(QDialog):
         self.end_frame.show()
 
         i = self.correct.count(1)
+
+        for i in range(len(self.butttons)):
+            if self.butttons[i].isChecked():
+                if str(i+1) == self.checks[self.cur_task]:
+                    self.correct[self.cur_task] = 1
+
+
+        i = self.correct.count(1)
+
+        per = i / len(self.tasks) * 100
         self.mark = 2
-        if i >= self.grades[2]:
+
+        if per >= self.grades[2]:
             self.mark = 5
-        elif i >= self.grades[1]:
+        elif per >= self.grades[1]:
             self.mark = 4
-        elif i >= self.grades[0]:
+        elif per >= self.grades[0]:
             self.mark = 3
 
         if self.mark == 2:
@@ -59,15 +70,17 @@ class TestScreen(QDialog):
         if self.mark== 5:
             self.setStyleSheet('background-color: rgb(147, 181, 72)')
 
+        print(self.correct.count(1))
+
         self.lbl_mark.setText(str(self.mark))
         self.lbl_correct.setText(str(self.correct.count(1)) + " / " + str(len(self.correct)))
 
     def check(self):
+        
         for i in range(len(self.butttons)):
             if self.butttons[i].isChecked():
                 if str(i+1) == self.checks[self.cur_task]:
                     self.correct[self.cur_task] = 1
-
 
     def update(self, option):
         if (option == 0) and (self.cur_task > 0): 
@@ -87,6 +100,12 @@ class TestScreen(QDialog):
 
         self.lbl_task.setText("Задание " + str(self.cur_task + 1))
         self.lbl_question.setText(self.tasks[self.cur_task])
+
+
+        self.group.setExclusive(False)
+        for i in range(len(self.butttons)):
+            self.butttons[i].setChecked(False)
+        self.group.setExclusive(True)
 
 
         # IMAGE
@@ -121,11 +140,11 @@ class TestScreen(QDialog):
         self.setStyleSheet('background-color: rgb(35,38,50)')
 
         self.lbl_task.setText("Вопрос " + str(self.cur_task + 1))
+        self.lbl_question.setText(self.tasks[self.cur_task])
 
         self.btn_backward.setEnabled(False)
         self.btn_end_test.hide()
         self.pic_frame.hide()
-
 
         self.answ_1.hide()
         self.answ_2.hide()
@@ -173,6 +192,15 @@ class TestScreen(QDialog):
     def init_ui(self):
         loadUi('qt/test.ui', self)
         self.setWindowTitle("Тестирование")
+
+        self.btn_backward.hide()
+
+        self.group = QButtonGroup()
+        self.group.addButton(self.answ_1)
+        self.group.addButton(self.answ_2)
+        self.group.addButton(self.answ_3)
+        self.group.addButton(self.answ_4)
+        self.group.addButton(self.answ_5)
 
         self.butttons = [self.answ_1, self.answ_2, self.answ_3, self.answ_4, self.answ_5]
 

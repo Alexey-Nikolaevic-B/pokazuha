@@ -71,7 +71,7 @@
     </column>
     <column>
      <property name="text">
-      <string>Пеленг</string>
+      <string>Описание</string>
      </property>
     </column>
    </widget>
@@ -199,7 +199,7 @@ font: 15pt &quot;MS Shell Dlg 2&quot;;</string>
     </column>
     <column>
      <property name="text">
-      <string>Характиристика</string>
+      <string>Описание</string>
      </property>
     </column>
    </widget>

@@ -31,9 +31,14 @@ class AdministratorScreen(QDialog):
         self.img_path = 'img\map_4.png'
         self.draw_path = True
 
-        self.posts  = []
-        # self.posts = [[0.2, 0.2, "Маджахет"], [0.7, 1.3, "Сатурн"]] # [X, Y, ПОЗЫВНОЙ]
-        self.pelengs = []                                         # [X, Y, ПЕЛЕНГ, ЧАСТОТА]
+        self.pelengs = []
+
+        # self.pelengs = [[0.5, 0.5, "Маджахет", 30], 
+        #              [1.4, 1.3, "Сатурн", 15],
+        #              [0.2, 0.2, "enemy", 50], 
+        #              [1.5, 0.4, "enemy", 40]] # [X, Y, ПОЗЫВНОЙ/тип, частота]
+        
+        self.posts = []
 
         with plt.ioff():
             self.fig, self.ax = plt.subplots(figsize=(5, 5))
@@ -54,15 +59,20 @@ class AdministratorScreen(QDialog):
         # self.btn_scale_100.clicked.connect(self.set_scale_2)
         # self.btn_scale_200.clicked.connect(self.set_scale_4)
 
+    def set_control(self):
+        with open("control.json", encoding='utf-8') as config_file:
+            data = json.load(config_file)
+         
+
     def set_posts(self, posts):
         self.posts = posts
 
         self.plot_map()
 
     def set_peleng(self, pelengs):
+        # self.pelengs = []
         self.pelengs.append(pelengs)
         self.pelengs = [list(t) for t in set(tuple(sublist) for sublist in  self.pelengs)]
-        # print(self.pelengs)
         self.plot_map()                
 
     def plot_map(self):
@@ -77,31 +87,31 @@ class AdministratorScreen(QDialog):
 
         self.ax.imshow(img, extent=[0, 1, 0, 1], aspect='auto')
         center_x, center_y = 0.5, 0.5
-        coord_cent_x, coord_cent_y = 37*60 + 30, 55*60 + 50
-        coord_dif_x, coord_dif_y = 1 * 60 * self.scale, 4 * 60 * self.scale
-        self.ax.plot(center_x, center_y, 'r^', markersize=15, label="Center")
-        self.ax.text(-1, -1, f"({(coord_cent_y-coord_dif_y)//60}°{(coord_cent_y-coord_dif_y)%60}', {(coord_cent_x-coord_dif_x)//60}°{(coord_cent_x-coord_dif_x)%60}')", fontsize=8, color='black', ha='left', va='bottom')
-        self.ax.text(-1, -1, f"({(coord_cent_y+coord_dif_y)//60}°{(coord_cent_y+coord_dif_y)%60}', {(coord_cent_x+coord_dif_x)//60}°{(coord_cent_x+coord_dif_x)%60}')", fontsize=8, color='black', ha='left', va='bottom')
+        coord_cent_x, coord_cent_y = 55*60 + 50, 37*60 + 30
+        coord_dif_x, coord_dif_y = 4 * 60, 1 * 60
+        self.ax.plot(center_x, center_y, 'k^', markersize=15, label="Center")
+        self.ax.text(0, 0, f"({(coord_cent_y-coord_dif_y*self.scale)//60}°{(coord_cent_y-coord_dif_y*self.scale)%60}'N, {(coord_cent_x-coord_dif_x*self.scale)//60}°{(coord_cent_x-coord_dif_x*self.scale)%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+        self.ax.text(1, 1, f"({(coord_cent_y+coord_dif_y*self.scale)//60}°{(coord_cent_y+coord_dif_y*self.scale)%60}'N, {(coord_cent_x+coord_dif_x*self.scale)//60}°{(coord_cent_x+coord_dif_x*self.scale)%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
         
-        # НАШИ ПОСТЫ
-        for post in self.posts: 
+        for post in self.posts:
+            # Высчитываем координаты относительно масштаба 
             x = float(post[0]) / self.scale
             y = float(post[1]) / self.scale
             
+            # Проверяем что точно находится в границах отображаемой карты
+            # Иначе рисуем на границе карты
             if abs(x) > 1 or abs(y) > 1:
                 factor = max(abs(x) + 0.1, abs(y) + 0.1)
                 x /= factor
                 y /= factor
-            
-            self.ax.plot(x, y, 'rs', markersize=10)  # ставим точку
 
-            self.ax.text(x, y, f"({(coord_cent_y+coord_dif_y*y)//60}°{(coord_cent_y+coord_dif_y*y)%60}',{(coord_cent_x+coord_dif_x*x)//60}°{(coord_cent_x+coord_dif_x*x)%60}')", fontsize=8, color='black', ha='left', va='bottom')
-            self.ax.text(x, y+0.02, f"{post[2]}", fontsize=14, color='red', ha='left', va='bottom')
-            # last_x, last_y = x, y
-        
-        # ПЕЛЕНГИ
-        last_x, last_y = None, None
-        
+            self.ax.text(x, y+0.04, f"{post[2]}", fontsize=14, color='black', ha='left', va='bottom')     
+
+            self.ax.plot(x, y, 'ks', markersize=8)  # ставим точку
+            # подписываем координаты
+            self.ax.text(x, y, f"({int(coord_cent_y+coord_dif_y*float(post[1]))//60}°{int(coord_cent_y+coord_dif_y*float(post[1]))%60}'N,{int(coord_cent_x+coord_dif_x*float(post[0]))//60}°{int(coord_cent_x+coord_dif_x*float(post[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+
+
         for peleng in self.pelengs:
             # Высчитываем координаты относительно масштаба 
             x = float(peleng[0]) / self.scale
@@ -114,17 +124,25 @@ class AdministratorScreen(QDialog):
                 x /= factor
                 y /= factor
             
-            self.ax.plot(x, y, 'bo', markersize=8)  # ставим точку
+            if peleng[2] == 'enemy':
+                self.ax.plot(x, y, 'bo', markersize=12)
+                self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='blue', ha='left', va='bottom')
+            else:
+                self.ax.plot(x, y, 'r.', markersize=12)
+                self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='red', ha='left', va='bottom')
+
 
             # подписываем координаты
-            self.ax.text(x, y, f"({(coord_cent_y+coord_dif_y*float(peleng[0]))//60}°{(coord_cent_y+coord_dif_y*float(peleng[0]))%60}', {(coord_cent_x+coord_dif_x*float(peleng[1]))//60}°{(coord_cent_x+coord_dif_x*float(peleng[1]))%60}')", fontsize=8, color='black', ha='left', va='bottom')
+            self.ax.text(x, y, f"({int(coord_cent_y+coord_dif_y*float(peleng[1]))//60}°{int(coord_cent_y+coord_dif_y*float(peleng[1]))%60}'N,{int(coord_cent_x+coord_dif_x*float(peleng[0]))//60}°{int(coord_cent_x+coord_dif_x*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
             last_x, last_y = x, y
         
             # Если поставлена галочка на отрисовку пеленга на карте
-            if draw_path and last_x is not None:
-                self.ax.plot([center_x, last_x], [center_y, last_y], 'b--', linewidth=2)
-                self.ax.text(x, y+0.02, f"{peleng[3]} МГц", 
-                        fontsize=12, color='blue', ha='left', va='bottom')
+            if draw_path and last_x is not None and peleng[2] != 'rab':
+                if peleng[2] == 'enemy':
+                    type = 'b--'
+                else:
+                    type = 'r--'
+                self.ax.plot([center_x, last_x], [center_y, last_y], type, linewidth=2)
 
         self.fig.canvas.draw()
 
@@ -175,14 +193,15 @@ class AdministratorScreen(QDialog):
             draw_path = True
         self.plot_map()
 
+    def clear_points(self):
+        self.pelengs = []
+        self.plot_map()
+
     def init_ui(self):
         loadUi('qt/administrator.ui', self)
-        self.setWindowTitle("Администратор")
 
         self.control_layer = self.Twidget
         self.control_layer = QGridLayout(self.control_layer)
 
         self.setWindowFlags(Qt.WindowStaysOnTopHint)
-        
             
-
