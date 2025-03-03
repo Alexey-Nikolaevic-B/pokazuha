@@ -35,15 +35,12 @@ class RabotaScreen(QDialog):
 
 
     def translate_coordinates(self, y, x):
-        new_x = (38*60+13 - 37*60 - 30) / 60 
-        new_y = (58*60+14 - 55*60 - 50) / 60 / 4
+        print(int(y[0:2]), int(y[3:5]))
+        print(int(x[0:2]), int(x[3:5]))
 
-        # y_range = 38.30 - 36.30  # 200
-        # x_range = 59.50 - 51.50  # 800
-        
-        # # Normalize the coordinates
-        # new_y = (float(y) - 36.30) / y_range
-        # new_x = (float(x) - 51.50) / x_range
+        new_y = (int(y[0:2])*60+int(y[3:5]) - 36*60 - 30) / (60 * 2) 
+        new_x = (int(x[0:2])*60+int(x[3:5]) - 51*60 - 50) / (60 * 8)
+        print(new_x, new_y)
         
         return (new_y, new_x)
 
@@ -83,9 +80,6 @@ class RabotaScreen(QDialog):
         self.tableWidget.setItem(0, 4, QTableWidgetItem("МГц"))
 
         self.posts = []
-
-        pattern_1 = re.compile(r'^(\d{2} \d{2})$')
-
         for i in range(1, self.tableWidget.rowCount()):
             name = ''
             x = ''
@@ -95,24 +89,27 @@ class RabotaScreen(QDialog):
             if  name_cell is not None and  name_cell.text() != '':
                 name = self.tableWidget.item(i,0).text()
             
-            name_x = self.tableWidget.item(i,1)
-            if  name_x is not None and  name_x.text() != '':
-                x = self.tableWidget.item(i,1).text()
-
-            name_y = self.tableWidget.item(i,2)
+            name_y = self.tableWidget.item(i,1)
             if  name_y is not None and  name_y.text() != '':
-                y = self.tableWidget.item(i,2).text()
-            
-            y = y.replace(',', '.')
-            x = x.replace(',', '.')
+                y = self.tableWidget.item(i,1).text()
 
+            name_x = self.tableWidget.item(i,2)
+            if  name_x is not None and  name_x.text() != '':
+                x = self.tableWidget.item(i,2).text()
+        
+            print(y, x)
+         
+            # if (x[0:1].isnumric() and x[3:4].isnumric() and x[2] == '.') and (y[0:1].isnumric() and y[3:4].isnumric() and y[2] == '.'):
             y, x = self.translate_coordinates(y, x)
-            
+
+            self.posts.append([x, y, name])
+
             # self.posts.append([x, y, name])
-            # if not pattern_1.match(str(x)) or not pattern_1.match(str(y)) or x == '' or y == '':
             #     self.lbl_error.show()
             #     self.posts = []
             #     break
+    
+
 
         self.w_progress.show()
         self.frame.hide()

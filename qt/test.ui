@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>958</width>
-    <height>657</height>
+    <height>776</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,6 +17,38 @@
    <string notr="true">background-color: rgb(35,38,50)</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="btn_test_1">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255,255,255)</string>
+        </property>
+        <property name="text">
+         <string>Тест 1</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_test_2">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255,255,255)</string>
+        </property>
+        <property name="text">
+         <string> Тест 2</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item>
     <widget class="QFrame" name="main_frame">
      <property name="frameShape">

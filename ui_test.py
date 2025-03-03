@@ -20,12 +20,18 @@ class TestScreen(QDialog):
         self.checks = ["1", "2"]
         self.answers = [["1", "2", "1", "2"], ["1", "2"]]
 
+        self.first = True
         self.n = len(self.tasks)
         self.grades = [60, 80, 90]
-        self.mark = 2
-        self.correct = [0]*10
+        self.mark_1 = 2
+        self.mark_2 = 2
+        self.correct_1 = [0]*10
+        self.correct_2 = [0]*10
         
         self.init_ui()
+
+        self.btn_test_1.clicked.connect(self.test_1)
+        # self.btn_test_2.clicked.connect(self.test_2)
 
         self.btn_backward.clicked.connect(lambda: self.update(0))
         self.btn_forward.clicked.connect(lambda: self.update(1))
@@ -37,6 +43,19 @@ class TestScreen(QDialog):
         self.answ_4.clicked.connect(self.check)
         self.answ_5.clicked.connect(self.check)
 
+    def test_1(self):
+        with open("variant/lesson.json", encoding='utf-8') as config_file:
+            data = json.load(config_file)
+        self.image   = data['image']
+        self.tasks   = data['tasks']
+        self.checks  = data['checks']
+        self.answers = data['answers']
+
+        self.correct_1 = [0]*len(self.tasks)
+
+        self.renew()
+
+
     def endTest(self):
         self.main_frame.hide()
         self.end_frame.show()
@@ -46,10 +65,15 @@ class TestScreen(QDialog):
         for i in range(len(self.butttons)):
             if self.butttons[i].isChecked():
                 if str(i+1) == self.checks[self.cur_task]:
-                    self.correct[self.cur_task] = 1
+                    if self.first:
+                        self.correct_1[self.cur_task] = 1
+                    else:
+                        self.correct_2[self.cur_task] = 1
 
-
-        i = self.correct.count(1)
+        if self.first:
+            i = self.correct_1.count(1)
+        else: 
+            i = self.correct_2.count(1)
 
         per = i / len(self.tasks) * 100
         self.mark = 2
@@ -70,7 +94,12 @@ class TestScreen(QDialog):
         if self.mark== 5:
             self.setStyleSheet('background-color: rgb(147, 181, 72)')
 
-        print(self.correct.count(1))
+        if self.first:
+            i = self.correct_1.count(1)
+        else: 
+            i = self.correct_1.count(1)
+            b = self.correct_2.count(1)
+
 
         self.lbl_mark.setText(str(self.mark))
         self.lbl_correct.setText(str(self.correct.count(1)) + " / " + str(len(self.correct)))
@@ -80,7 +109,10 @@ class TestScreen(QDialog):
         for i in range(len(self.butttons)):
             if self.butttons[i].isChecked():
                 if str(i+1) == self.checks[self.cur_task]:
-                    self.correct[self.cur_task] = 1
+                    if self.first:
+                        self.correct_1[self.cur_task] = 1
+                    else: 
+                        self.correct_2[self.cur_task] = 1
 
     def update(self, option):
         if (option == 0) and (self.cur_task > 0): 
@@ -153,17 +185,8 @@ class TestScreen(QDialog):
         self.answ_5.hide()
 
         self.end_frame.hide()
-
+        self.frame.hide()
         self.main_frame.show()
-
-        with open("variant/lesson.json", encoding='utf-8') as config_file:
-            data = json.load(config_file)
-        self.image   = data['image']
-        self.tasks   = data['tasks']
-        self.checks  = data['checks']
-        self.answers = data['answers']
-
-        self.correct = [0]*len(self.tasks)
 
         # IMAGE
         if self.image[self.cur_task] == "empty":
@@ -193,7 +216,9 @@ class TestScreen(QDialog):
         loadUi('qt/test.ui', self)
         self.setWindowTitle("Тестирование")
 
+        self.end_frame.hide()
         self.btn_backward.hide()
+        self.main_frame.hide()
 
         self.group = QButtonGroup()
         self.group.addButton(self.answ_1)
@@ -209,6 +234,4 @@ class TestScreen(QDialog):
         style_btn = "QPushButton {color: rgb(0, 0, 0); background-color : rgb(200, 200, 200)} QPushButton::hover {background-color: rgb(255, 255, 255)}"
         self.btn_backward.setStyleSheet(style_btn) 
         self.btn_forward.setStyleSheet(style_btn) 
-        self.btn_end_test.setStyleSheet(style_btn) 
-
-        self.renew()
+        self.btn_end_test.setStyleSheet(style_btn)
