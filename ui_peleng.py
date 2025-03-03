@@ -78,7 +78,7 @@ class PelengScreen(QDialog):
 
         for element in self.found:
             r = np.arange(0.02, 1.01, 0.01)
-            theta = [np.deg2rad(element[1])] * len(r)
+            theta = [np.deg2rad(element[0])] * len(r)
             self.ax.plot(theta, r, 'k', linewidth=0.5)
 
         self.theta_curcle = np.arange(0, 2*np.pi, 0.1)

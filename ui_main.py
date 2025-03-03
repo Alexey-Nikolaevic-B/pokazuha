@@ -207,7 +207,7 @@ class MainScreen(QDialog):
         self.btn_test.clicked.connect(self.show_test)
 
         self.btn_tehanaliz.clicked.connect(self.update_perehvat)
-
+        self.btn_peleng_2.clicked.connect(self.update_frequencies)
 
         self.btn_poisk.clicked.connect(lambda: self.poisk(False))
         self.btn_poisk2.clicked.connect(lambda: self.poisk(True))
@@ -226,6 +226,25 @@ class MainScreen(QDialog):
 
     def update_perehvat(self):
         self.perehvat_window.set_data(signals, filtered_freqs, self.selected_freq)
+
+    def update_frequencies(self):
+        self.selected_freq
+        self.lbl_frequency.setText(f"{self.selected_freq:.2f}")
+        up = self.selected_freq + 0.4
+        down = self.selected_freq - 0.4
+        found = False
+        for id, sig in signals.items():
+            if down <= sig.freq <= up:
+                self.lbl_peleng.setText(str(sig.bearing))
+                id = str(self.selected_id)
+                bearing = sig.bearing
+                self.found = [bearing,  sig.freq]
+                break
+        if not found:
+            self.selected_id = None
+
+        if len(self.found) != 0:
+            self.peleng_window.set_found(self.found)
     
     def poisk(self, peleng):
         self.search(peleng)
