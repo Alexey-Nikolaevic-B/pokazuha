@@ -32,7 +32,20 @@ class RabotaScreen(QDialog):
         self.btn_clear.clicked.connect(self.clear)
         self.btn_add.clicked.connect(self.add_row)
         self.btn_remove.clicked.connect(self.deleteSelectedRow)
-    
+
+
+    def translate_coordinates(self, y, x):
+        new_x = (38*60+13 - 37*60 - 30) / 60 
+        new_y = (58*60+14 - 55*60 - 50) / 60 / 4
+
+        # y_range = 38.30 - 36.30  # 200
+        # x_range = 59.50 - 51.50  # 800
+        
+        # # Normalize the coordinates
+        # new_y = (float(y) - 36.30) / y_range
+        # new_x = (float(x) - 51.50) / x_range
+        
+        return (new_y, new_x)
 
     def deleteSelectedRow(self):
         if self.tableWidget.selectedIndexes():
@@ -69,11 +82,9 @@ class RabotaScreen(QDialog):
         self.tableWidget.setItem(0, 3, QTableWidgetItem(self.lbl_adrr.text()))
         self.tableWidget.setItem(0, 4, QTableWidgetItem("МГц"))
 
-
         self.posts = []
 
-
-        pattern_1 = re.compile("^(\d+(?:\.\d+)?)$")
+        pattern_1 = re.compile(r'^(\d{2} \d{2})$')
 
         for i in range(1, self.tableWidget.rowCount()):
             name = ''
@@ -92,25 +103,22 @@ class RabotaScreen(QDialog):
             if  name_y is not None and  name_y.text() != '':
                 y = self.tableWidget.item(i,2).text()
             
+            y = y.replace(',', '.')
+            x = x.replace(',', '.')
 
-
-            # print("1", not pattern_1.match(str(x)))
-            # print("2", not pattern_1.match(str(y)))
-            # print("3", x == '')
-            # print("4", y == '')
+            y, x = self.translate_coordinates(y, x)
             
-            self.posts.append([x, y, name])
-            if not pattern_1.match(str(x)) or not pattern_1.match(str(y)) or x == '' or y == '':
-                self.lbl_error.show()
-                self.posts = []
-                break
+            # self.posts.append([x, y, name])
+            # if not pattern_1.match(str(x)) or not pattern_1.match(str(y)) or x == '' or y == '':
+            #     self.lbl_error.show()
+            #     self.posts = []
+            #     break
 
         self.w_progress.show()
         self.frame.hide()
 
         for x in range(100):
             self.pb_progressBar.setValue(x)
-
 
             if x == 10:
                 self.lbl_progress.setText("Проверка аппаратных компонентов")

@@ -214,6 +214,8 @@ class MainScreen(QDialog):
         self.btn_frequencies.clicked.connect(self.show_frequencies)
         self.btn_test.clicked.connect(self.show_test)
 
+        self.cb_mod.activated.connect(self.update_text)
+
         self.btn_tehanaliz.clicked.connect(self.update_perehvat)
         self.btn_peleng_2.clicked.connect(self.update_frequencies)
 
@@ -235,9 +237,20 @@ class MainScreen(QDialog):
     def update_perehvat(self):
         self.perehvat_window.set_data(signals, filtered_freqs, self.selected_freq)
 
+    def update_text(self):
+        self.selected_freq
+        up = self.selected_freq + 0.4
+        down = self.selected_freq - 0.4
+        for id, sig in signals.items():
+            if down <= sig.freq <= up and self.selected_id != None:
+                if sig.mod == self.cb_mod.currentText():
+                    self.lbl_output.setText(sig.text)
+                else:
+                    self.lbl_output.setText(self.random_sring())
+                break
+
     def update_frequencies(self):
         self.selected_freq
-        self.lbl_frequency.setText(f"{self.selected_freq:.2f}")
         up = self.selected_freq + 0.4
         down = self.selected_freq - 0.4
         found = False
@@ -251,9 +264,7 @@ class MainScreen(QDialog):
                 x = data[str(self.selected_id)]["X"]
                 y = data[str(self.selected_id)]["Y"]
 
-                self.found = [bearing,  self.selected_freq]
-
-                self.administrator_window.set_peleng([x, y, bearing,  self.selected_freq, True])
+                self.administrator_window.set_peleng([x, y, bearing,  sig.freq, True])
                 break
         if not found:
             self.selected_id = None

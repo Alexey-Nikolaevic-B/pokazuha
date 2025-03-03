@@ -37,6 +37,9 @@ class PelengScreen(QDialog):
 
         self.fig, self.ax = plt.subplots(subplot_kw={'projection': 'polar'})
         self.fig.patch.set_facecolor((35/256, 38/256, 50/256))
+        self.ax.set_facecolor('#232632')
+
+
 
   # Move radial labels away from
         
@@ -79,14 +82,14 @@ class PelengScreen(QDialog):
         for element in self.found:
             r = np.arange(0.02, 1.01, 0.01)
             theta = [np.deg2rad(element[0])] * len(r)
-            self.ax.plot(theta, r, 'k', linewidth=0.5)
+            self.ax.plot(theta, r, 'k', linewidth=0.5, color='white')
 
         self.theta_curcle = np.arange(0, 2*np.pi, 0.1)
         self.r_curcle = [0.1] * len(self.theta_curcle)
 
-        self.ax.plot(self.theta_curcle, self.r_curcle, 'k', linewidth=0.5)
+        self.ax.plot(self.theta_curcle, self.r_curcle, 'k', linewidth=0.5, color='white')
         r_curcle = [0.03] * len(self.theta_curcle)
-        self.ax.plot(self.theta_curcle, r_curcle, 'k', linewidth=4)
+        self.ax.plot(self.theta_curcle, r_curcle, 'k', linewidth=4,)
 
 
         major_ticks = np.linspace(0, 2*np.pi, 24, endpoint=False)

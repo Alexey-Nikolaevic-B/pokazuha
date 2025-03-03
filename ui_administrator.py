@@ -48,7 +48,8 @@ class AdministratorScreen(QDialog):
         self.control_layer.addWidget(radial,0,0)
         self.plot_map()
 
-        # self.btn_clear.clicked.connect(self.clear_signals)
+        self.btn_clear.clicked.connect(self.clear_points)
+        self.cb_draw.clicked.connect(self.plot_map)
 
         # self.btn_scale_50.clicked.connect(self.set_scale_1)
         # self.btn_scale_100.clicked.connect(self.set_scale_2)
@@ -127,11 +128,13 @@ class AdministratorScreen(QDialog):
                 if peleng[4]:
                     self.ax.plot(x, y, 'bo', markersize=12)
                     self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='blue', ha='left', va='bottom')
-                    self.ax.plot([center_x, x], [center_y, y], "b--", linewidth=2)
+                    if self.cb_draw.isChecked():
+                        self.ax.plot([center_x, x], [center_y, y], "b--", linewidth=2)
                 else:
                     self.ax.plot(x, y, 'ro', markersize=12)
                     self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='red', ha='left', va='bottom')
-                    self.ax.plot([center_x, x], [center_y, y], "r--", linewidth=2)
+                    if self.cb_draw.isChecked():
+                        self.ax.plot([center_x, x], [center_y, y], "r--", linewidth=2)
 
             self.ax.text(x, y, f"({int(coord_cent_y+coord_dif_y*float(peleng[1]))//60}°{int(coord_cent_y+coord_dif_y*float(peleng[1]))%60}'N,{int(coord_cent_x+coord_dif_x*float(peleng[0]))//60}°{int(coord_cent_x+coord_dif_x*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
 
@@ -143,6 +146,7 @@ class AdministratorScreen(QDialog):
 
     def init_ui(self):
         loadUi('qt/administrator.ui', self)
+        self.setWindowTitle("Администрирование")
         self.set_control()
 
         self.control_layer = self.Twidget

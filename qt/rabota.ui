@@ -79,12 +79,12 @@
     </column>
     <column>
      <property name="text">
-      <string>Координаты X</string>
+      <string>Широта</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Координаты Y</string>
+      <string>Долгота</string>
      </property>
     </column>
     <column>
