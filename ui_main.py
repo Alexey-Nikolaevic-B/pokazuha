@@ -243,6 +243,8 @@ class MainScreen(QDialog):
         self.btn_tehanaliz.clicked.connect(self.update_perehvat)
         self.btn_peleng_2.clicked.connect(self.update_frequencies)
 
+        self.cb_mod.activated.connect(self.update_text)
+
         self.btn_poisk.clicked.connect(lambda: self.poisk(False))
         self.btn_poisk2.clicked.connect(lambda: self.poisk(True))
         
@@ -251,6 +253,19 @@ class MainScreen(QDialog):
 
         self.btn_pusk.clicked.connect(self.true_suppress)
         self.btn_prr.clicked.connect(self.false_suppress)
+
+    def update_text(self):
+        self.selected_freq
+        up = self.selected_freq + 0.4
+        down = self.selected_freq - 0.4
+        mod =  self.cb_mod.currentText()
+        for id, sig in signals.items():
+            if down <= sig.freq <= up and self.selected_id != None:
+                if (sig.mod == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
+                    self.lbl_output.setText(sig.text)
+                else:
+                    self.lbl_output.setText(self.random_sring())
+                break
 
     def false_suppress(self):
         global suppress, suppress_matrix
@@ -472,7 +487,7 @@ class MainScreen(QDialog):
                     down = self.selected_freq - 0.4
                 if down <= sig.freq <= up:
                     self.selected_id = id
-                    if (data[str(id)]["mod"] == mod) and (not suppress) and (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10):
+                    if (sig.mod == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
                         self.lbl_output.setText(data[str(id)]["text"])  # Обновляем поле id
                     else:
                         self.lbl_output.setText(self.random_sring())
@@ -560,7 +575,7 @@ class MainScreen(QDialog):
                     else:
                         self.lbl_peleng.setText("-")
 
-                    if (data[str(id)]["mod"] == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
+                    if (sig.mod == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
                         self.lbl_output.setText(data[str(id)]["text"])  # Обновляем поле id
                     else:
                         self.lbl_output.setText(self.random_sring())
