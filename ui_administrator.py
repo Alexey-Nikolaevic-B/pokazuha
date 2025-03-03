@@ -32,12 +32,7 @@ class AdministratorScreen(QDialog):
         self.draw_path = True
 
         self.pelengs = []
-
-        # self.pelengs = [[0.5, 0.5, "Маджахет", 30], 
-        #              [1.4, 1.3, "Сатурн", 15],
-        #              [0.2, 0.2, "enemy", 50], 
-        #              [1.5, 0.4, "enemy", 40]] # [X, Y, ПОЗЫВНОЙ/тип, частота]
-        
+        self.control = []
         self.posts = []
 
         with plt.ioff():
@@ -62,7 +57,7 @@ class AdministratorScreen(QDialog):
     def set_control(self):
         with open("control.json", encoding='utf-8') as config_file:
             data = json.load(config_file)
-         
+        self.freq = data['freq']
 
     def set_posts(self, posts):
         self.posts = posts
@@ -73,6 +68,13 @@ class AdministratorScreen(QDialog):
         # self.pelengs = []
         self.pelengs.append(pelengs)
         self.pelengs = [list(t) for t in set(tuple(sublist) for sublist in  self.pelengs)]
+
+        for peleng in self.pelengs:
+            if peleng[3] in self.control:
+                peleng[4] = "False"
+            else:
+                peleng[4] = "True"
+        print(self.pelengs)
         self.plot_map()                
 
     def plot_map(self):
@@ -113,85 +115,27 @@ class AdministratorScreen(QDialog):
 
 
         for peleng in self.pelengs:
-            # Высчитываем координаты относительно масштаба 
             x = float(peleng[0]) / self.scale
             y = float(peleng[1]) / self.scale
             
-            # Проверяем что точно находится в границах отображаемой карты
-            # Иначе рисуем на границе карты
             if abs(x) > 1 or abs(y) > 1:
                 factor = max(abs(x) + 0.1, abs(y) + 0.1)
                 x /= factor
                 y /= factor
-            
-            if peleng[2] == 'enemy':
-                self.ax.plot(x, y, 'bo', markersize=12)
-                self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='blue', ha='left', va='bottom')
-            else:
-                self.ax.plot(x, y, 'r.', markersize=12)
-                self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='red', ha='left', va='bottom')
 
-
-            # подписываем координаты
-            self.ax.text(x, y, f"({int(coord_cent_y+coord_dif_y*float(peleng[1]))//60}°{int(coord_cent_y+coord_dif_y*float(peleng[1]))%60}'N,{int(coord_cent_x+coord_dif_x*float(peleng[0]))//60}°{int(coord_cent_x+coord_dif_x*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
-            last_x, last_y = x, y
-        
-            # Если поставлена галочка на отрисовку пеленга на карте
-            if draw_path and last_x is not None and peleng[2] != 'rab':
-                if peleng[2] == 'enemy':
-                    type = 'b--'
+            if x > 0 and y > 0:     
+                if peleng[4]:
+                    self.ax.plot(x, y, 'bo', markersize=12)
+                    self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='blue', ha='left', va='bottom')
+                    self.ax.plot([center_x, x], [center_y, y], "b--", linewidth=2)
                 else:
-                    type = 'r--'
-                self.ax.plot([center_x, last_x], [center_y, last_y], type, linewidth=2)
+                    self.ax.plot(x, y, 'r.', markersize=12)
+                    self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='red', ha='left', va='bottom')
+                    self.ax.plot([center_x, x], [center_y, y], "r--", linewidth=2)
+
+            self.ax.text(x, y, f"({int(coord_cent_y+coord_dif_y*float(peleng[1]))//60}°{int(coord_cent_y+coord_dif_y*float(peleng[1]))%60}'N,{int(coord_cent_x+coord_dif_x*float(peleng[0]))//60}°{int(coord_cent_x+coord_dif_x*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
 
         self.fig.canvas.draw()
-
-    # def change_draw_path(self):
-    #     if self.draw_path == True:
-    #         self.draw_path = False
-    #     else:
-    #         self.draw_path = True
-    #     self.plot_map()
-
-    # def clear_signals(self):
-    #     self.pelengs = []
-    #     self.plot_map()
-
-    # def set_scale_1(self):
-    #     self.scale = 1
-    #     self.img_path = "img\map_1.jpg"
-    #     self.plot_map()
-
-    # def set_scale_2(self):
-    #     self.scale = 2
-    #     self.img_path = "img\map_2.jpg"
-    #     self.plot_map()
-
-    # def set_scale_4(self):
-    #     self.scale = 4
-    #     self.img_path = "img\map_4.png"
-    #     self.plot_map()
-
-    # # БАРДУШКО
-    # Меняем масштаб карты (если нажата кнопка масштаба)
-    # def change_scale(self):
-    #     scale = scale_changed
-    #     if scale == 1:
-    #         image_path = "img/image_50000.jpg"
-    #     elif scale == 2:
-    #         image_path = "img/image_100000.jpg"
-    #     else:
-    #         image_path = "img/image_250000.jpg"
-    
-        # plot_xy_graph()
-
-    def change_draw_path(self):
-        global draw_path
-        if draw_path == True:
-            draw_path = False
-        else:
-            draw_path = True
-        self.plot_map()
 
     def clear_points(self):
         self.pelengs = []
@@ -199,6 +143,7 @@ class AdministratorScreen(QDialog):
 
     def init_ui(self):
         loadUi('qt/administrator.ui', self)
+        self.set_control()
 
         self.control_layer = self.Twidget
         self.control_layer = QGridLayout(self.control_layer)

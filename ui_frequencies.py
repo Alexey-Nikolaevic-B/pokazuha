@@ -39,8 +39,6 @@ class FrequenciesScreen(QDialog):
             self.t_control.setItem(rowPosition, 0, QTableWidgetItem(str(self.freq[i]) + "°"))
             self.t_control.setItem(rowPosition, 1, QTableWidgetItem(str(self.mod[i])))
 
-
-
     def init_ui(self):
         loadUi('qt/frequencies.ui', self)
         self.setWindowTitle("Частоты")

@@ -461,7 +461,7 @@ class MainScreen(QDialog):
                         y = data[str(self.selected_id)]["Y"]
                         self.found = [bearing,  self.selected_freq]
 
-                        self.administrator_window.set_peleng([x, y, bearing,  self.selected_freq])
+                        self.administrator_window.set_peleng([x, y, bearing,  self.selected_freq, True])
 
                     else:
                         self.lbl_peleng.setText("-")
