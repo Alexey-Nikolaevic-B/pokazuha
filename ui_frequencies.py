@@ -34,27 +34,29 @@ class FrequenciesScreen(QDialog):
         # print(self.perehavat)
         # print(self.freq)
 
-        self.t_zapret.setRowCount(0)
+        self.t_zapret_2.setRowCount(self.zapret_n)
 
         for perehavat in self.perehavat:
             if not (perehavat[3] in self.freq):
-                rowPosition = self.t_zapret.rowCount()
-                self.t_zapret.insertRow(rowPosition)
-                self.t_zapret.setItem(rowPosition, 0, QTableWidgetItem(str(perehavat[3])))
+                rowPosition = self.t_zapret_2.rowCount()
+                self.t_zapret_2.insertRow(rowPosition)
+                self.t_zapret_2.setItem(rowPosition, 0, QTableWidgetItem(str(perehavat[3])))
 
     def set_perehvat(self):
-        self.t_zapret.setRowCount(0)
+        self.t_zapret_2.setRowCount(0)
 
-        with open("perehvat.json", encoding='utf-8') as config_file:
+        with open("variant/perehvat.json", encoding='utf-8') as config_file:
             data = json.load(config_file)
         freq = data['freq']
         mod = data['mod']
 
+        self.zapret_n = len(freq)
+
         for i in range(len(freq)):
-            rowPosition = self.t_zapret.rowCount()
-            self.t_zapret.insertRow(rowPosition)
-            self.t_zapret.setItem(rowPosition, 0, QTableWidgetItem(str(freq[i]) + "°"))
-            self.t_zapret.setItem(rowPosition, 1, QTableWidgetItem(str(mod[i])))
+            rowPosition = self.t_zapret_2.rowCount()
+            self.t_zapret_2.insertRow(rowPosition)
+            self.t_zapret_2.setItem(rowPosition, 0, QTableWidgetItem(str(freq[i])))
+            self.t_zapret_2.setItem(rowPosition, 1, QTableWidgetItem(str(mod[i])))
 
     def set_control(self):
         self.t_control.setRowCount(0)
@@ -67,7 +69,7 @@ class FrequenciesScreen(QDialog):
         for i in range(len(self.freq)):
             rowPosition = self.t_control.rowCount()
             self.t_control.insertRow(rowPosition)
-            self.t_control.setItem(rowPosition, 0, QTableWidgetItem(str(self.freq[i]) + "°"))
+            self.t_control.setItem(rowPosition, 0, QTableWidgetItem(str(self.freq[i])))
             self.t_control.setItem(rowPosition, 1, QTableWidgetItem(str(self.mod[i])))
 
     def init_ui(self):
@@ -77,9 +79,8 @@ class FrequenciesScreen(QDialog):
         self.set_control()
         self.set_perehvat()
 
-        table_zapret = self.t_zapret
+        table_zapret = self.t_zapret_2
         table_zapret.setStyleSheet("background-color: rgb(255,255,255)")
-        table_zapret.setRowCount(0)
         
         header = table_zapret.horizontalHeader()
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
