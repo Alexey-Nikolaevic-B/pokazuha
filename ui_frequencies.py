@@ -83,7 +83,7 @@ class FrequenciesScreen(QDialog):
         table_zapret.setStyleSheet("background-color: rgb(255,255,255)")
         
         header = table_zapret.horizontalHeader()
-        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+        # header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
         header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
 
         delegate = AlignCenter(table_zapret)
@@ -108,6 +108,14 @@ class FrequenciesScreen(QDialog):
         self.btn_clear_2.setStyleSheet(style_btn)
 
         self.setWindowFlags(Qt.WindowStaysOnTopHint)
+
+        delegate = AlignJustify(self.t_zapret_2)
+        self.t_zapret_2.setItemDelegateForColumn(1, delegate)
+
+class AlignJustify(QtWidgets.QStyledItemDelegate):
+    def initStyleOption(self, option, index):
+        super(AlignJustify, self).initStyleOption(option, index)
+        option.displayAlignment = QtCore.Qt.AlignJustify
 
 class AlignCenter(QtWidgets.QStyledItemDelegate):
     def initStyleOption(self, option, index):
