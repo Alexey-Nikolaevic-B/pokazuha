@@ -242,11 +242,18 @@ class MainScreen(QDialog):
         down = self.selected_freq - 0.4
         found = False
         for id, sig in signals.items():
-            if down <= sig.freq <= up:
+            if down <= sig.freq <= up and self.selected_id != None:
                 self.lbl_peleng.setText(str(sig.bearing))
-                id = str(self.selected_id)
+                # id = str(self.selected_id)
                 bearing = sig.bearing
                 self.found = [bearing,  sig.freq]
+
+                x = data[str(self.selected_id)]["X"]
+                y = data[str(self.selected_id)]["Y"]
+
+                self.found = [bearing,  self.selected_freq]
+
+                self.administrator_window.set_peleng([x, y, bearing,  self.selected_freq, True])
                 break
         if not found:
             self.selected_id = None
@@ -409,7 +416,7 @@ class MainScreen(QDialog):
                     if data[str(id)]["mod"] == mod:
                         self.lbl_output.setText(data[str(id)]["text"])  # Обновляем поле id
                     else:
-                        self.lbl_output.setText("𐂧𑀤𐂨𑀥𐂩𑀦𐂪𑀧𐂫𑀨𐂬𑀩𐂭𑀪𐂮𑀫𐂯𑀬𐂰𑀭𐂱𑀮𐂲𑀯𐂳𑀰\n𐂴𑀱𐂵𑀲𐂶𑀳𐂷𑀴𐂸𑀵𐂹𑀶𐂺𑀷𐂻𑀸𐂼𑀹𐂽𑀺𐂾𑀻𐂿𑀼𐃀𑀽𐃁𑀾𐃂𑀿𐃃\n𑁀𐃄𑁁𐃅𑁂𐃆𑁃𐃇𑁄𐃈𑁅𐃉𑁆𐃊")
+                        self.lbl_output.setText(self.random_sring())
                     # self.id_display.setText(f"{self.selected_id}")
                     found = True
                     break
@@ -497,7 +504,7 @@ class MainScreen(QDialog):
                     if data[str(id)]["mod"] == mod:
                         self.lbl_output.setText(data[str(id)]["text"])  # Обновляем поле id
                     else:
-                        self.lbl_output.setText("𐍈ᚷ𑀓𐂦𑁦𑀢𐂧𑀤𐂨𑀥𐂩𑀦𐂪𑀧𐂫𑀨𐂬𑀩𐂭𑀪𐂮𑀫𐂯𑀬𐂰𑀭𐂱𑀮𐂲𑀯𐂳𑀰\n𐂴𑀱𐂵𑀲𐂶𑀳𐂷𑀴𐂸𑀵𐂹𑀶𐂺𑀷𐂻𑀸𐂼𑀹𐂽𑀺𐂾𑀻𐂿𑀼𐃀𑀽𐃁𑀾𐃂𑀿𐃃\n𑁀𐃄𑁁𐃅𑁂𐃆𑁃𐃇𑁄𐃈𑁅𐃉𑁆𐃊")
+                        self.lbl_output.setText(self.random_sring())
                     found = True
                     break
             self.lbl_frequency.setText(f"{self.selected_freq:.2f}")
@@ -519,10 +526,9 @@ class MainScreen(QDialog):
             self.canvas.draw()
             self.update(None)
 
-    def random_sring():
+    def random_sring(self):
         rands = ''
-
-        # for random.randrange(1, 200)
-
+        for i in range(random.randint(1, 100)):
+            rands = rands + chr(random.randint(1, 1000))
         return rands
 
