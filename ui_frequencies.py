@@ -28,7 +28,7 @@ class FrequenciesScreen(QDialog):
     def set_control(self):
         self.t_control.setRowCount(0)
 
-        with open("control.json", encoding='utf-8') as config_file:
+        with open("variant/control.json", encoding='utf-8') as config_file:
             data = json.load(config_file)
         self.freq = data['freq']
         self.mod = data['mod']

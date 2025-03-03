@@ -164,7 +164,7 @@ def filter_signal():
                     filtered_signal[:, i] += local_matrix[:, j]
 
 
-with open("signals.json", "r", encoding="utf-8") as file:
+with open("variant/signals.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 signals = {int(idx): SignalData(**info) for idx, info in data.items()}
 filter_signal()

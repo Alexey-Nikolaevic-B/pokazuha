@@ -156,7 +156,7 @@ class TestScreen(QDialog):
 
         self.main_frame.show()
 
-        with open("lesson.json", encoding='utf-8') as config_file:
+        with open("variant/lesson.json", encoding='utf-8') as config_file:
             data = json.load(config_file)
         self.image   = data['image']
         self.tasks   = data['tasks']
