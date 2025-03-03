@@ -149,7 +149,7 @@ class SignalData:
         dy = y2 - y1
         angle_rad = np.arctan2(-dy, dx)  # Инвертируем dy для часового направления
         angle_deg = np.degrees(angle_rad) % 360
-        return angle_deg
+        return angle_deg - 270
 
 def filter_signal():
     global filtered_signal
