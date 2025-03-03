@@ -219,6 +219,9 @@ class MainScreen(QDialog):
 
         self.btn_poisk.clicked.connect(lambda: self.poisk(False))
         self.btn_poisk2.clicked.connect(lambda: self.poisk(True))
+        
+        self.lbl_peleng_2.setText(f"{0:.2f}")
+        self.lbl_peleng.setText(f"{0:.2f}")
 
     def set_posts(self, data):  
         self.administrator_window.set_posts(data)
@@ -238,10 +241,14 @@ class MainScreen(QDialog):
     def update_frequencies(self):
         self.selected_freq
         self.lbl_frequency.setText(f"{self.selected_freq:.2f}")
-        up = self.selected_freq + 0.4
-        down = self.selected_freq - 0.4
         found = False
         for id, sig in signals.items():
+            if sig.bandwidth >= 1:
+                up = self.selected_freq + sig.bandwidth / 2
+                down = self.selected_freq - sig.bandwidth / 2
+            else:
+                up = self.selected_freq + 0.4
+                down = self.selected_freq - 0.4
             if down <= sig.freq <= up:
                 self.lbl_peleng.setText(str(sig.bearing))
                 id = str(self.selected_id)
@@ -346,9 +353,10 @@ class MainScreen(QDialog):
         base[:, :] = np.roll(base, shift=-2, axis=0)
         base[:, :] = np.clip(base, 0, None)
         for signal in signals.values():
-            local_matrix = signal.signal_matrix
-            local_matrix[:, :] = np.roll(local_matrix, shift=-2, axis=0)
-            local_matrix[:, :] = np.clip(local_matrix, 0, None)
+            if signal.right_freq >= low_freq and signal.left_freq <= high_freq:
+                local_matrix = signal.signal_matrix
+                local_matrix[:, :] = np.roll(local_matrix, shift=-2, axis=0)
+                local_matrix[:, :] = np.clip(local_matrix, 0, None)
         filter_signal()
         self.cax.set_data(filtered_signal)
         if self.selected_freq is not None and low_freq <= self.selected_freq <= high_freq:
@@ -395,15 +403,21 @@ class MainScreen(QDialog):
         self.control_layer.addWidget(radial,0,0)
 
     def on_click(self, event):
-
         mod =  self.cb_mod.currentText()
         if event.xdata is not None:
             self.selected_freq = event.xdata
             self.lbl_frequency.setText(f"{self.selected_freq:.2f}")
-            up = self.selected_freq + 0.4
-            down = self.selected_freq - 0.4
+            base_freqs = filtered_freqs + low_freq # частоты для отрисовки
+            id = np.searchsorted(base_freqs,  self.selected_freq)
+            self.lbl_peleng_2.setText(f"{filtered_signal[:,id].mean():.2f}")
             found = False
             for id, sig in signals.items():
+                if sig.bandwidth >= 1:
+                    up = self.selected_freq + sig.bandwidth / 2
+                    down = self.selected_freq - sig.bandwidth / 2
+                else:
+                    up = self.selected_freq + 0.4
+                    down = self.selected_freq - 0.4
                 if down <= sig.freq <= up:
                     self.selected_id = id
                     if data[str(id)]["mod"] == mod:
@@ -513,6 +527,9 @@ class MainScreen(QDialog):
                 last_freq = 0
 
             filter_signal()
+            base_freqs = filtered_freqs + low_freq # частоты для отрисовки
+            id = np.searchsorted(base_freqs,  self.selected_freq)
+            self.lbl_peleng_2.setText(f"{filtered_signal[:,id].mean():.2f}")
             self.cax.set_data(filtered_signal)
             self.cax.set_extent([low_freq, high_freq, time.max(), time.min()])
             self.ax.set_title(f"RF Spectrum ({low_freq:.1f} - {high_freq:.1f} MHz)")
