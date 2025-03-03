@@ -122,11 +122,11 @@ def add_signal(signal, center_freq, bandwidth, power=3.0, signal_type="ragged"):
 
         signal[t] += spectrum_slice
 
-add_signal(suppress_matrix, 10, 10, power=50.0, signal_type="smooth")
-add_signal(suppress_matrix, 2.5, 3.5, power=70.0, signal_type="smooth")
-add_signal(suppress_matrix, 7.5, 3.5, power=40.0, signal_type="smooth")
-add_signal(suppress_matrix, 12.5, 3.5, power=40.0, signal_type="smooth")
-add_signal(suppress_matrix, 17.5, 3.5, power=70.0, signal_type="smooth")
+add_signal(suppress_matrix, 10, 20, power=50.0, signal_type="smooth")
+add_signal(suppress_matrix, 2.5, 3.5, power=30.0, signal_type="smooth")
+add_signal(suppress_matrix, 7.5, 3.5, power=30.0, signal_type="smooth")
+add_signal(suppress_matrix, 12.5, 3.5, power=30.0, signal_type="smooth")
+add_signal(suppress_matrix, 17.5, 3.5, power=30.0, signal_type="smooth")
 
 class SignalData:
     def __init__(self, freq, bandwidth, power, signal_type, mod, text, source, X, Y):
@@ -240,8 +240,6 @@ class MainScreen(QDialog):
         self.btn_frequencies.clicked.connect(self.show_frequencies)
         self.btn_test.clicked.connect(self.show_test)
 
-        self.cb_mod.activated.connect(self.update_text)
-
         self.btn_tehanaliz.clicked.connect(self.update_perehvat)
         self.btn_peleng_2.clicked.connect(self.update_frequencies)
 
@@ -286,22 +284,9 @@ class MainScreen(QDialog):
     def update_perehvat(self):
         self.perehvat_window.set_data(signals, filtered_freqs, self.selected_freq)
 
-    def update_text(self):
-        self.selected_freq
-        up = self.selected_freq + 0.4
-        down = self.selected_freq - 0.4
-        for id, sig in signals.items():
-            if down <= sig.freq <= up and self.selected_id != None:
-                if sig.mod == self.cb_mod.currentText():
-                    self.lbl_output.setText(sig.text)
-                else:
-                    self.lbl_output.setText(self.random_sring())
-                break
-
     def update_frequencies(self):
         self.selected_freq
-        up = self.selected_freq + 0.4
-        down = self.selected_freq - 0.4
+        self.lbl_frequency.setText(f"{self.selected_freq:.2f}")
         found = False
         for id, sig in signals.items():
             if sig.bandwidth >= 1:
@@ -319,7 +304,9 @@ class MainScreen(QDialog):
                 x = data[str(self.selected_id)]["X"]
                 y = data[str(self.selected_id)]["Y"]
 
-                self.administrator_window.set_peleng([x, y, bearing,  sig.freq, True])
+                self.found = [bearing,  self.selected_freq]
+
+                self.administrator_window.set_peleng([x, y, bearing,  self.selected_freq, True])
                 break
         if not found:
             self.selected_id = None
@@ -486,7 +473,7 @@ class MainScreen(QDialog):
                     down = self.selected_freq - 0.4
                 if down <= sig.freq <= up:
                     self.selected_id = id
-                    if (data[str(id)]["mod"] == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
+                    if (data[str(id)]["mod"] == mod) and (not suppress) and (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10):
                         self.lbl_output.setText(data[str(id)]["text"])  # Обновляем поле id
                     else:
                         self.lbl_output.setText(self.random_sring())
