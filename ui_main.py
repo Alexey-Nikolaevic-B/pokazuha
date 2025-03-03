@@ -16,6 +16,7 @@ import matplotlib.animation as animation
 import numpy as np
 import json
 import math
+import random
 
 import ui_rabota
 import ui_administrator
@@ -517,4 +518,11 @@ class MainScreen(QDialog):
             self.ax.set_title(f"RF Spectrum ({low_freq:.1f} - {high_freq:.1f} MHz)")
             self.canvas.draw()
             self.update(None)
+
+    def random_sring():
+        rands = ''
+
+        # for random.randrange(1, 200)
+
+        return rands
 
