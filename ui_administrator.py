@@ -26,14 +26,14 @@ class AdministratorScreen(QDialog):
     def __init__(self):
         super(AdministratorScreen, self).__init__()
 
+        self.pelengs = []
+        self.control = []
+        self.posts = []
+
         self.init_ui()
         self.scale = 1
         self.img_path = 'img\map_4.png'
         self.draw_path = True
-
-        self.pelengs = []
-        self.control = []
-        self.posts = []
 
         with plt.ioff():
             self.fig, self.ax = plt.subplots(figsize=(5, 5))
@@ -57,7 +57,8 @@ class AdministratorScreen(QDialog):
     def set_control(self):
         with open("variant/control.json", encoding='utf-8') as config_file:
             data = json.load(config_file)
-        self.freq = data['freq']
+        self.control = data['freq']
+        self.control = list(map(int, self.control))
 
     def set_posts(self, posts):
         self.posts = posts
@@ -67,14 +68,13 @@ class AdministratorScreen(QDialog):
     def set_peleng(self, pelengs):
         # self.pelengs = []
         self.pelengs.append(pelengs)
-        self.pelengs = [list(t) for t in set(tuple(sublist) for sublist in  self.pelengs)]
+        self.pelengs = [list(t) for t in set(tuple(sublist) for sublist in self.pelengs)]
 
         for peleng in self.pelengs:
             if peleng[3] in self.control:
-                peleng[4] = "False"
+                peleng[4] = False
             else:
-                peleng[4] = "True"
-        print(self.pelengs)
+                peleng[4] = True
         self.plot_map()                
 
     def plot_map(self):
@@ -129,7 +129,7 @@ class AdministratorScreen(QDialog):
                     self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='blue', ha='left', va='bottom')
                     self.ax.plot([center_x, x], [center_y, y], "b--", linewidth=2)
                 else:
-                    self.ax.plot(x, y, 'r.', markersize=12)
+                    self.ax.plot(x, y, 'ro', markersize=12)
                     self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='red', ha='left', va='bottom')
                     self.ax.plot([center_x, x], [center_y, y], "r--", linewidth=2)
 
