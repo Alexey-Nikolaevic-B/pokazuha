@@ -55,7 +55,7 @@ class AdministratorScreen(QDialog):
         # self.btn_scale_200.clicked.connect(self.set_scale_4)
 
     def set_control(self):
-        with open("control.json", encoding='utf-8') as config_file:
+        with open("variant/control.json", encoding='utf-8') as config_file:
             data = json.load(config_file)
         self.freq = data['freq']
 
