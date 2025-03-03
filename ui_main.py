@@ -121,12 +121,12 @@ class SignalData:
         self.bandwidth = bandwidth
         self.power = power
         self.signal_type = signal_type
-        self.bearing = 10
         self.mod = mod
         self.text = text
         self.source = source
         self.X = X
         self.Y = Y
+        self.bearing = self.find_bearing(0.5, 0.5, float(X), float(Y))
 
         self.left_freq = freq - bandwidth / 2
         self.right_freq = freq + bandwidth / 2        
@@ -142,6 +142,13 @@ class SignalData:
         global max_power
         if max_power < self.power:
             max_power = self.power
+
+    def find_bearing(self, x1, y1, x2, y2):
+        dx = x2 - x1
+        dy = y2 - y1
+        angle_rad = np.arctan2(-dy, dx)  # Инвертируем dy для часового направления
+        angle_deg = np.degrees(angle_rad) % 360
+        return angle_deg
 
 def filter_signal():
     global filtered_signal
