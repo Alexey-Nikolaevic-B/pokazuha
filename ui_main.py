@@ -44,6 +44,12 @@ search_low = 20.0
 global search_hight # Верхняя частота для поиска 
 search_hight = 30.0
 
+global suppress
+suppress = False
+global suppress_freqs
+suppress_freqs = -30
+global suppress_matrix
+suppress_matrix = np.zeros((len(time), len(filtered_freqs)))
 
 def add_signal(signal, center_freq, bandwidth, power=3.0, signal_type="ragged"):
     time_len, freq_len = signal.shape
@@ -116,6 +122,12 @@ def add_signal(signal, center_freq, bandwidth, power=3.0, signal_type="ragged"):
 
         signal[t] += spectrum_slice
 
+add_signal(suppress_matrix, 10, 10, power=50.0, signal_type="smooth")
+add_signal(suppress_matrix, 2.5, 3.5, power=70.0, signal_type="smooth")
+add_signal(suppress_matrix, 7.5, 3.5, power=40.0, signal_type="smooth")
+add_signal(suppress_matrix, 12.5, 3.5, power=40.0, signal_type="smooth")
+add_signal(suppress_matrix, 17.5, 3.5, power=70.0, signal_type="smooth")
+
 class SignalData:
     def __init__(self, freq, bandwidth, power, signal_type, mod, text, source, X, Y):
         self.freq = freq
@@ -152,7 +164,7 @@ class SignalData:
         return int(angle_deg)
 
 def filter_signal():
-    global filtered_signal
+    global filtered_signal, suppress_freqs, suppress_matrix, suppress
     filtered_signal = base.copy()  # Начинаем с базового шума
     
     base_freqs = filtered_freqs + low_freq # частоты для отрисовки
@@ -170,6 +182,20 @@ def filter_signal():
                     else:
                         j = j + 1
                     filtered_signal[:, i] += local_matrix[:, j]
+    if suppress:
+        if (suppress_freqs + 10) >= low_freq and (suppress_freqs - 10) <= high_freq:
+            signal_freqs = (filtered_freqs + suppress_freqs - 10) # частоты сигнала
+            min = signal_freqs.min()
+            max = signal_freqs.max()
+            local_matrix = suppress_matrix
+            j = -1
+            for i in range(0, len(filtered_freqs)):  # Перебираем столбцы
+                if (min <= base_freqs[i] <= max):
+                    if j == -1:
+                        j = np.searchsorted(signal_freqs, base_freqs[i])
+                    else:
+                        j = j + 1
+                    filtered_signal[:, i] += local_matrix[:, j]        
 
 
 with open("variant/signals.json", "r", encoding="utf-8") as file:
@@ -222,6 +248,26 @@ class MainScreen(QDialog):
         
         self.lbl_peleng_2.setText(f"{0:.2f}")
         self.lbl_peleng.setText(f"{0:.2f}")
+
+        self.btn_pusk.clicked.connect(self.true_suppress)
+        self.btn_prr.clicked.connect(self.false_suppress)
+
+    def false_suppress(self):
+        global suppress, suppress_matrix
+        suppress = False
+        self.start_2.setEnabled(True)
+
+    def true_suppress(self):
+        global suppress
+        global suppress_freqs, suppress_matrix
+        suppress = True
+        self.start_2.setEnabled(False)
+        try:
+            suppress_freqs = float(self.start_2.text())
+        except ValueError:
+           suppress = False
+           self.start_2.setEnabled(True)
+
 
     def set_posts(self, data):  
         self.administrator_window.set_posts(data)
@@ -427,7 +473,7 @@ class MainScreen(QDialog):
                     down = self.selected_freq - 0.4
                 if down <= sig.freq <= up:
                     self.selected_id = id
-                    if data[str(id)]["mod"] == mod:
+                    if (data[str(id)]["mod"] == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
                         self.lbl_output.setText(data[str(id)]["text"])  # Обновляем поле id
                     else:
                         self.lbl_output.setText(self.random_sring())
@@ -515,7 +561,7 @@ class MainScreen(QDialog):
                     else:
                         self.lbl_peleng.setText("-")
 
-                    if data[str(id)]["mod"] == mod:
+                    if (data[str(id)]["mod"] == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
                         self.lbl_output.setText(data[str(id)]["text"])  # Обновляем поле id
                     else:
                         self.lbl_output.setText(self.random_sring())
