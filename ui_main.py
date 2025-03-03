@@ -116,12 +116,12 @@ def add_signal(signal, center_freq, bandwidth, power=3.0, signal_type="ragged"):
         signal[t] += spectrum_slice
 
 class SignalData:
-    def __init__(self, freq, bandwidth, power, signal_type, bearing, mod, text, source, X, Y):
+    def __init__(self, freq, bandwidth, power, signal_type, mod, text, source, X, Y):
         self.freq = freq
         self.bandwidth = bandwidth
         self.power = power
         self.signal_type = signal_type
-        self.bearing = bearing
+        self.bearing = 10
         self.mod = mod
         self.text = text
         self.source = source
