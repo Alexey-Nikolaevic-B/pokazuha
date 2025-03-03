@@ -532,8 +532,8 @@ class MainScreen(QDialog):
         global threshold, max_power, search_low, search_hight, last_freq
         global low_freq, high_freq
 
-        new_search_low   = int(self.lbl_search_low.text())
-        new_search_hight = int(self.lbl_search_hight.text())
+        new_search_low   = int(float(self.lbl_search_low.text()))
+        new_search_hight = int(float(self.lbl_search_hight.text()))
         new_threshold    = self.vs_porog.value() / 100
 
         mod =  self.cb_mod.currentText()
