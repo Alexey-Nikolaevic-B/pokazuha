@@ -147,9 +147,9 @@ class SignalData:
     def find_bearing(self, x1, y1, x2, y2):
         dx = x2 - x1
         dy = y2 - y1
-        angle_rad = np.arctan2(-dy, dx)  # Инвертируем dy для часового направления
-        angle_deg = np.degrees(angle_rad) % 360
-        return angle_deg - 270
+        angle_rad = np.arctan2(dy, dx)  # Убираем инверсию dy
+        angle_deg = (np.degrees(angle_rad)) % 360  # Корректируем угол
+        return int(angle_deg)
 
 def filter_signal():
     global filtered_signal
