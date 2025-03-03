@@ -47,7 +47,6 @@ class RabotaScreen(QDialog):
             
         new_y = (int(y[0:2])*60+int(new_y) - 36*60 - 30) / (60 * 2) 
         new_x = (int(x[0:2])*60+int(new_x) - 51*60 - 50) / (60 * 8)
-        print(new_x, new_y)
         
         return (new_y, new_x)
 
@@ -103,20 +102,22 @@ class RabotaScreen(QDialog):
             name_x = self.tableWidget.item(i,2)
             if  name_x is not None and  name_x.text() != '':
                 x = self.tableWidget.item(i,2).text()
-        
-            print(y, x)
-         
- 
-            y, x = self.translate_coordinates(y, x)
 
-            self.posts.append([x, y, name])
-
-            if not ((x[0:1].isnumric() and x[0:1]!= '00' and x[3:4].isnumric() and x[2] == '.') and (y[0:1].isnumric() and y[0:1] != '00' and y[3:4].isnumric() and y[2] == '.')):
+            if not ((str(x)[0:2].isdigit() and 
+                     str(x)[0:2] != '00' and 
+                     str(x)[3:5].isdigit())
+                    and 
+                    (str(y)[0:2].isdigit() and 
+                     str(y)[0:2] != '00' and 
+                     str(y)[3:5].isdigit()) 
+                     and 
+                    (len(x) == 5 and len(y) == 5)):
                 self.lbl_error.show()
                 self.posts = []
                 break
-    
-
+            else:
+                x_posts, y_posts = self.translate_coordinates(y, x)
+                self.posts.append([x_posts, y_posts, name])
 
         self.w_progress.show()
         self.frame.hide()

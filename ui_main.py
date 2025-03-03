@@ -473,7 +473,7 @@ class MainScreen(QDialog):
         self.canvas.mpl_connect("button_press_event", self.on_click)
         self.canvas.mpl_connect("scroll_event", self.on_scroll)
 
-        self.ani = animation.FuncAnimation(self.figure, self.update, interval=100, blit=False)
+        self.ani = animation.FuncAnimation(self.figure, self.update, interval=100, blit=False, cache_frame_data=False)
 
         radial = FigureCanvas(self.figure)
 

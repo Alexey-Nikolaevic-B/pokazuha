@@ -59,7 +59,7 @@ class TheoryScreen(QDialog):
         ax.set_ylabel('Амплитуда, В')
         ax.set_xlabel('Время, c')
         self.line1, = ax.plot([], [], lw=2, color='yellow')
-        self.anim1 = FuncAnimation(figure, self.update_plot1, frames=200, interval=20, blit=True)
+        self.anim1 = FuncAnimation(figure, self.update_plot1, frames=200, interval=20, blit=True, cache_frame_data=False)
 
         self.radial_1 = FigureCanvas(figure)
         self.control_layer.addWidget(self.radial_1,0,0)
@@ -84,7 +84,7 @@ class TheoryScreen(QDialog):
         ax_2.set_xlabel('Время, c')
 
         self.line2, = ax_2.plot([], [], lw=2, color='yellow')
-        self.anim2 = FuncAnimation(figure, self.update_plot2, frames=200, interval=20, blit=True)
+        self.anim2 = FuncAnimation(figure, self.update_plot2, frames=200, interval=20, blit=True, cache_frame_data=False)
 
         self.radial_2 = FigureCanvas(figure)
         self.control_layer.addWidget(self.radial_2,0,0)
