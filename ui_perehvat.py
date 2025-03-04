@@ -53,13 +53,19 @@ class PerehvatScreen(QDialog):
             signal = np.zeros_like(t)
             for signal_data in self.signals.values():
                 if signal_data.right_freq >= low_sp and signal_data.left_freq <= up_sp:
-                    signal_freqs = (self.filtered_freqs + signal_data.freq - 10) # частоты сигнала
-                    local_matrix = signal_data.signal_matrix
-                    for i in range(0, len(signal_freqs)):  # Перебираем столбцы
-                        if (low_sp <= signal_freqs[i] <= up_sp):
-                            amplitude = np.mean(local_matrix[:, i])  # Вычисляем среднее значение столбца
-                            if  amplitude > 0:
-                                signal += amplitude * np.sin(2 * np.pi * int(signal_freqs[i]) * t)
+                    if signal_data.source == 'Дрон (Телеметрия)':
+                        signal_freqs = (self.filtered_freqs + signal_data.freq - 10) # частоты сигнала
+                        signal_freqs_in_range = [freq for freq in signal_freqs if low_sp <= freq <= up_sp]
+                        for i in range(int(signal_freqs_in_range[0]), int(signal_freqs_in_range[-1]), 2):
+                                    signal += random.randint(int(signal_data.power) - 65, int(signal_data.power))  * np.sin(2 * np.pi * i * t)
+                    else:
+                        signal_freqs = (self.filtered_freqs + signal_data.freq - 10) # частоты сигнала
+                        local_matrix = signal_data.signal_matrix
+                        for i in range(0, len(signal_freqs)):  # Перебираем столбцы
+                            if (low_sp <= signal_freqs[i] <= up_sp):
+                                amplitude = np.mean(local_matrix[:, i])  # Вычисляем среднее значение столбца
+                                if  amplitude > 0:
+                                    signal += amplitude * np.sin(2 * np.pi * int(signal_freqs[i]) * t)
 
             noise = np.random.normal(0, 1, size=t.shape)
             signal = signal + noise
