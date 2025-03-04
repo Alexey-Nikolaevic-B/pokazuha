@@ -464,16 +464,14 @@ class MainScreen(QDialog):
         self.control_layer.addWidget(self.canvas)
         self.figure.patch.set_facecolor((35/256, 38/256, 50/256))
         self.cax = self.ax.imshow(filtered_signal, aspect='auto', cmap=hdsdr_cmap, vmin=0, vmax=120, origin='upper', extent=[low_freq, high_freq, time.max(), time.min()])
-        self.ax.set_xlabel("Frequency [MHz]")
-        self.ax.set_ylabel("Time [s]")
+        self.ax.set_xlabel("Частота, МГц")
+        self.ax.set_ylabel("Время, с")
 
         self.ax.tick_params(axis='x', colors='white')
         self.ax.tick_params(axis='y', colors='white')
         self.ax.xaxis.label.set_color('white')
         self.ax.yaxis.label.set_color('white')
         self.ax.title.set_color('white')
-
-        self.ax.set_title(f"RF Spectrum ({low_freq:.1f} - {high_freq:.1f} MHz)")
 
         self.selected_line, = self.ax.plot([], [], color='red', linestyle='-', linewidth=2)
         self.selected_freq = None
@@ -533,7 +531,6 @@ class MainScreen(QDialog):
         filter_signal()
         self.cax.set_data(filtered_signal)
         self.cax.set_extent([low_freq, high_freq, time.max(), time.min()])
-        self.ax.set_title(f"RF Spectrum ({low_freq:.1f} - {high_freq:.1f} MHz)")
         self.canvas.draw()
 
     def search(self, peleng):
