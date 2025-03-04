@@ -39,6 +39,8 @@ class PelengScreen(QDialog):
         self.fig.patch.set_facecolor((35/256, 38/256, 50/256))
         self.ax.set_facecolor('#232632')
 
+        self.btn_close.clicked.connect(self.close)
+
 
 
   # Move radial labels away from
