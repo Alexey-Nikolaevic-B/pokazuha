@@ -64,7 +64,7 @@ class AdministratorScreen(QDialog):
     def set_posts(self, posts):
         self.posts = posts
 
-        self.plot_map()
+        # self.plot_map()
 
     def set_peleng(self, pelengs):
         # self.pelengs = []

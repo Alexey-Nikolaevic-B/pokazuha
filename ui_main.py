@@ -349,6 +349,7 @@ class MainScreen(QDialog):
                 self.peleng_window.set_found(self.found)
 
     def show_administrator(self):
+        self.administrator_window.plot_map()
         self.administrator_window.show()  
 
     def show_test_1(self): 
