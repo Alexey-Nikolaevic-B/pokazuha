@@ -69,8 +69,8 @@ class PelengScreen(QDialog):
         for i in range(len(self.found)):
             rowPosition = self.tableWidget.rowCount()
             self.tableWidget.insertRow(rowPosition)
-            self.tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(self.found[i][1])))
-            self.tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(self.found[i][0])))
+            self.tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(self.found[i][1]) + " МГц"))
+            self.tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(self.found[i][0]) + "°"))
 
     def plot_(self):
 
@@ -113,7 +113,7 @@ class PelengScreen(QDialog):
 
     def init_ui(self):
         loadUi('qt/peleng.ui', self)
-        self.setWindowTitle("Круговая пеленговая панорам")
+        self.setWindowTitle("Круговая пеленговая панорама")
 
         self.control_layer = self.Twidget
         self.control_layer = QGridLayout(self.control_layer)   

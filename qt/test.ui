@@ -41,54 +41,6 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="pic_frame">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="0">
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="lbl_image">
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
        <widget class="QFrame" name="frame_4">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -195,6 +147,9 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
          </item>
         </layout>
        </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="pic_widget" native="true"/>
       </item>
       <item alignment="Qt::AlignBottom">
        <widget class="QFrame" name="frame_2">

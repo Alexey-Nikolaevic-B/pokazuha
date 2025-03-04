@@ -134,17 +134,19 @@ class AdministratorScreen(QDialog):
                 if peleng[4]:
                     if self.posts:
                         self.ax.plot(x, y, 'bo', markersize=10)
-                    self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='blue', ha='left', va='bottom')
+                        self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='blue', ha='left', va='bottom')
                     if self.cb_draw.isChecked():
                         self.ax.plot([center_x, x*scale], [center_y, y*scale], "b--", linewidth=1.5)
+                        self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='blue', ha='left', va='bottom')
                 else:
                     if self.posts:
                         self.ax.plot(x, y, 'ro', markersize=10)
-                    self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='red', ha='left', va='bottom')
+                        self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='red', ha='left', va='bottom')
                     if self.cb_draw.isChecked():
                         self.ax.plot([center_x, x*scale], [center_y, y*scale], "r--", linewidth=1.5)
-
-            self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(peleng[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(peleng[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(peleng[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+                        self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='red', ha='left', va='bottom')
+            if self.posts:
+                self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(peleng[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(peleng[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(peleng[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
 
         for post in self.posts:
             for peleng in self.pelengs:
