@@ -18,7 +18,7 @@ class TheoryScreen(QDialog):
     t = np.linspace(0, T, int(fs*T), endpoint=False)  # Временная ось
     Ac = 400
     Am = [1, 0.5, 0.3, 0.2, 0.1] # амплитуды модулирующих сигналов
-    fm = [10, 20, 30, 40, 50] # частоты модулирующих сигналов
+    fm = [10, 20, 40, 50, 60] # частоты модулирующих сигналов
     
 
     signal_goto_main   = pyqtSignal()

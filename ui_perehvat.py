@@ -82,7 +82,7 @@ class PerehvatScreen(QDialog):
             self.ax_sp.tick_params(axis='x', colors='white')  # Цвет цифр на оси X
             self.ax_sp.tick_params(axis='y', colors='white')  # Цвет цифр на оси Y
             self.ax_sp.set_xlabel('Частота, МГц', color='white')
-            self.ax_sp.set_ylabel('Амплитуда (дБ)', color='white')
+            self.ax_sp.set_ylabel('Амплитуда (логарифмическая шкала)', color='white')
             self.ax_sp.grid(True)
             self.figure_sp.canvas.draw()
         else:
