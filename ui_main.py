@@ -198,7 +198,7 @@ def filter_signal():
                     filtered_signal[:, i] += local_matrix[:, j]        
 
 
-with open("variant/signals.json", "r", encoding="utf-8") as file:
+with open("data/signals.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 signals = {int(idx): SignalData(**info) for idx, info in data.items()}
 filter_signal()
@@ -232,8 +232,8 @@ class MainScreen(QDialog):
         self.frequencies_window    = ui_frequencies.FrequenciesScreen()
         self.perehvat_window.set_data(signals, filtered_freqs, self.selected_freq)
 
-        self.test_window_1.set_path("variant\lesson_1.json")
-        self.test_window_2.set_path("variant\lesson_2.json")
+        self.test_window_1.set_path("data\lesson_1.json")
+        self.test_window_2.set_path("data\lesson_2.json")
 
         self.btn_theory.clicked.connect(self.goto_theory)
 

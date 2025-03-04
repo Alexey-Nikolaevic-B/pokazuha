@@ -45,7 +45,7 @@ class FrequenciesScreen(QDialog):
     def set_perehvat(self):
         self.t_zapret_2.setRowCount(0)
 
-        with open("variant/perehvat.json", encoding='utf-8') as config_file:
+        with open("data/perehvat.json", encoding='utf-8') as config_file:
             data = json.load(config_file)
         freq = data['freq']
         mod = data['mod']
@@ -61,7 +61,7 @@ class FrequenciesScreen(QDialog):
     def set_control(self):
         self.t_control.setRowCount(0)
 
-        with open("variant/control.json", encoding='utf-8') as config_file:
+        with open("data/control.json", encoding='utf-8') as config_file:
             data = json.load(config_file)
         self.freq = data['freq']
         self.mod = data['mod']
