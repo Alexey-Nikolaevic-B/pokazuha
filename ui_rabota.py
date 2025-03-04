@@ -118,7 +118,6 @@ class RabotaScreen(QDialog):
                 break
             else:
                 y_posts, x_posts = self.translate_coordinates(y, x)
-                print(y_posts, x_posts)
                 self.posts.append([x_posts, y_posts, name])
 
         for i in range(len(self.butttons)):
