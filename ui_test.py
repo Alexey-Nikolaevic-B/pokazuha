@@ -148,7 +148,7 @@ class TestScreen(QDialog):
             pass
         else:
             img = Image.open(self.image[self.cur_task])
-            self.ax.set_facecolor((80/256, 80/256, 80/256))
+            self.ax.set_facecolor((35/256, 38/256, 50/256))
 
             self.ax.set_xticks([])
             self.ax.set_yticks([])
@@ -180,7 +180,6 @@ class TestScreen(QDialog):
         
         self.btn_backward.setEnabled(False)
         self.btn_end_test.hide()
-        self.pic_frame.hide()
 
         self.answ_1.hide()
         self.answ_2.hide()
@@ -200,13 +199,13 @@ class TestScreen(QDialog):
             pass
         else:
             img = Image.open(self.image[self.cur_task])
-            self.ax.set_facecolor((80/256, 80/256, 80/256))
+            self.ax.set_facecolor((35/256, 38/256, 50/256))
 
             self.ax.set_xticks([])
             self.ax.set_yticks([])
             self.ax.set_frame_on(False)
 
-            self.ax.imshow(img, extent=[0, 1, 0, 1], aspect='auto')
+            self.ax.imshow(img, extent=[0, 1, 0, 1], aspect='equal')
             self.fig.canvas.draw()
 
             self.pic_widget.show()
