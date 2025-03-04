@@ -98,7 +98,6 @@ class AdministratorScreen(QDialog):
         self.ax.text(1, 1, f"({(coord_cent_y+coord_dif_y*self.scale)//60}°{(coord_cent_y+coord_dif_y*self.scale)%60}'N, {(coord_cent_x+coord_dif_x*self.scale)//60}°{(coord_cent_x+coord_dif_x*self.scale)%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
         
         for post in self.posts:
-            print(x, y)
             # Высчитываем координаты относительно масштаба 
             x = float(post[0]) / self.scale
             y = float(post[1]) / self.scale
@@ -114,7 +113,7 @@ class AdministratorScreen(QDialog):
 
             self.ax.plot(x, y, 'ks', markersize=8)  # ставим точку
             # подписываем координаты
-            self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(post[0]))//60}°{int(coord_start_y+coord_dif_y*2*float(post[0]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(post[1]))//60}°{int(coord_start_x+coord_dif_x*2*float(post[1]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+            self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(post[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(post[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(post[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(post[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
 
 
         for peleng in self.pelengs:
@@ -126,19 +125,48 @@ class AdministratorScreen(QDialog):
                 x /= factor
                 y /= factor
 
+            if self.posts:
+                scale = 1
+            else:
+                scale = 1
+
             if x > 0 and y > 0:     
                 if peleng[4]:
-                    self.ax.plot(x, y, 'bo', markersize=12)
+                    if self.posts:
+                        self.ax.plot(x, y, 'bo', markersize=10)
                     self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='blue', ha='left', va='bottom')
                     if self.cb_draw.isChecked():
-                        self.ax.plot([center_x, x], [center_y, y], "b--", linewidth=2)
+                        self.ax.plot([center_x, x*scale], [center_y, y*scale], "b--", linewidth=1.5)
                 else:
-                    self.ax.plot(x, y, 'ro', markersize=12)
+                    if self.posts:
+                        self.ax.plot(x, y, 'ro', markersize=10)
                     self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='red', ha='left', va='bottom')
                     if self.cb_draw.isChecked():
-                        self.ax.plot([center_x, x], [center_y, y], "r--", linewidth=2)
+                        self.ax.plot([center_x, x*scale], [center_y, y*scale], "r--", linewidth=1.5)
 
-            # self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(post[0]))//60}°{int(coord_start_y+coord_dif_y*2*float(post[0]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(post[1]))//60}°{int(coord_start_x+coord_dif_x*2*float(post[1]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+            self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(peleng[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(peleng[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(peleng[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+
+        for post in self.posts:
+            for peleng in self.pelengs:
+                x = float(peleng[0]) / self.scale
+                y = float(peleng[1]) / self.scale
+                
+                if abs(x) > 1 or abs(y) > 1:
+                    factor = max(abs(x) + 0.1, abs(y) + 0.1)
+                    x /= factor
+                    y /= factor
+
+                center_x = post[0]
+                center_y = post[1]
+                if x > 0 and y > 0:     
+                    if peleng[4]:
+                        if self.cb_draw.isChecked():
+                            self.ax.plot([center_x, x], [center_y, y], "b--", alpha=0.3, linewidth=1.5)
+                    else:
+                        if self.cb_draw.isChecked():
+                            self.ax.plot([center_x, x], [center_y, y], "r--", alpha=0.3, linewidth=1.5)
+
+                self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(peleng[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(peleng[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(peleng[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
 
         self.fig.canvas.draw()
 
