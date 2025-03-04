@@ -37,7 +37,7 @@ class FrequenciesScreen(QDialog):
         self.t_zapret_2.setRowCount(self.zapret_n)
 
         for perehavat in self.perehavat:
-            if not (perehavat[3] in self.freq):
+            if not (str(int(perehavat[3])) in self.freq):
                 rowPosition = self.t_zapret_2.rowCount()
                 self.t_zapret_2.insertRow(rowPosition)
                 self.t_zapret_2.setItem(rowPosition, 0, QTableWidgetItem(str(perehavat[3])))

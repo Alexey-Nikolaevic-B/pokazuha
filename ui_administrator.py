@@ -64,7 +64,7 @@ class AdministratorScreen(QDialog):
     def set_posts(self, posts):
         self.posts = posts
 
-        self.plot_map()
+        # self.plot_map()
 
     def set_peleng(self, pelengs):
         # self.pelengs = []
@@ -94,8 +94,8 @@ class AdministratorScreen(QDialog):
         coord_cent_x, coord_cent_y = 55*60 + 50, 37*60 + 30
         coord_dif_x, coord_dif_y = 4 * 60, 1 * 60
         self.ax.plot(center_x, center_y, 'k^', markersize=15, label="Center")
-        self.ax.text(0, 0, f"({(coord_cent_y-coord_dif_y*self.scale)//60}°{(coord_cent_y-coord_dif_y*self.scale)%60}'N, {(coord_cent_x-coord_dif_x*self.scale)//60}°{(coord_cent_x-coord_dif_x*self.scale)%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
-        self.ax.text(1, 1, f"({(coord_cent_y+coord_dif_y*self.scale)//60}°{(coord_cent_y+coord_dif_y*self.scale)%60}'N, {(coord_cent_x+coord_dif_x*self.scale)//60}°{(coord_cent_x+coord_dif_x*self.scale)%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+        self.ax.text(0, 0, f"{(coord_cent_y-coord_dif_y*self.scale)//60}°{(coord_cent_y-coord_dif_y*self.scale)%60}'N, {(coord_cent_x-coord_dif_x*self.scale)//60}°{(coord_cent_x-coord_dif_x*self.scale)%60}'E", fontsize=10, color='black', ha='left', va='bottom')
+        self.ax.text(1, 1, f"{(coord_cent_y+coord_dif_y*self.scale)//60}°{(coord_cent_y+coord_dif_y*self.scale)%60}'N, {(coord_cent_x+coord_dif_x*self.scale)//60}°{(coord_cent_x+coord_dif_x*self.scale)%60}'E", fontsize=10, color='black', ha='left', va='bottom')
         
         for post in self.posts:
             # Высчитываем координаты относительно масштаба 
@@ -113,7 +113,7 @@ class AdministratorScreen(QDialog):
 
             self.ax.plot(x, y, 'ks', markersize=8)  # ставим точку
             # подписываем координаты
-            self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(post[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(post[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(post[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(post[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+            self.ax.text(x, y, f"{int(coord_start_y+coord_dif_y*2*float(post[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(post[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(post[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(post[0]))%60}'E", fontsize=10, color='black', ha='left', va='bottom')
 
 
         for peleng in self.pelengs:
@@ -146,7 +146,7 @@ class AdministratorScreen(QDialog):
                         self.ax.plot([center_x, x*scale], [center_y, y*scale], "r--", linewidth=1.5)
                         self.ax.text(x, y+0.04, f"{peleng[3]} МГц", fontsize=12, color='red', ha='left', va='bottom')
             if self.posts:
-                self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(peleng[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(peleng[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(peleng[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+                self.ax.text(x, y, f"{int(coord_start_y+coord_dif_y*2*float(peleng[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(peleng[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(peleng[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(peleng[0]))%60}'E", fontsize=10, color='black', ha='left', va='bottom')
 
         for post in self.posts:
             for peleng in self.pelengs:
@@ -168,7 +168,7 @@ class AdministratorScreen(QDialog):
                         if self.cb_draw.isChecked():
                             self.ax.plot([center_x, x], [center_y, y], "r--", alpha=0.3, linewidth=1.5)
 
-                self.ax.text(x, y, f"({int(coord_start_y+coord_dif_y*2*float(peleng[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(peleng[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(peleng[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(peleng[0]))%60}'E)", fontsize=8, color='black', ha='left', va='bottom')
+                self.ax.text(x, y, f"{int(coord_start_y+coord_dif_y*2*float(peleng[1]))//60}°{int(coord_start_y+coord_dif_y*2*float(peleng[1]))%60}'N,{int(coord_start_x+coord_dif_x*2*float(peleng[0]))//60}°{int(coord_start_x+coord_dif_x*2*float(peleng[0]))%60}'E", fontsize=10, color='black', ha='left', va='bottom')
 
         self.fig.canvas.draw()
 
