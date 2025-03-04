@@ -139,7 +139,7 @@ class SignalData:
         self.source = source
         self.X = X
         self.Y = Y
-        self.bearing = self.find_bearing(0.5, 0.5, float(X), float(Y))
+        self.bearing = self.find_bearing(0.5, 0.5, float(Y), float(X))
 
         self.left_freq = freq - bandwidth / 2
         self.right_freq = freq + bandwidth / 2        
