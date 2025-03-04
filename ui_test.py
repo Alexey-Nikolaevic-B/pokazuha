@@ -10,6 +10,10 @@ import threading
 import time
 import json
 
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+
 from PyQt5.uic import loadUi
 import json
 from PIL import Image
@@ -242,6 +246,9 @@ class TestScreen(QDialog):
         self.group.addButton(self.answ_5)
 
         self.butttons = [self.answ_1, self.answ_2, self.answ_3, self.answ_4, self.answ_5]
+
+
+        self.setWindowFlags(Qt.WindowStaysOnTopHint)
 
         style_btn = "QPushButton {color: rgb(0, 0, 0); background-color : rgb(200, 200, 200)} QPushButton::hover {background-color: rgb(255, 255, 255)}"
         self.btn_backward.setStyleSheet(style_btn) 
