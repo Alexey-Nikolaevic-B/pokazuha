@@ -19,7 +19,8 @@ class QT_Controler(QObject):
     signal_goto_test        = pyqtSignal()
     signal_goto_main        = pyqtSignal()
     signal_goto_rabota      = pyqtSignal()
-    signal_save_posts    = pyqtSignal(list)
+    signal_save_posts       = pyqtSignal(list)
+    signal_com_pod          = pyqtSignal(int)
 
     def __init__(self):
         QObject.__init__(self)
@@ -37,11 +38,17 @@ class QT_Controler(QObject):
     def signals(self):
         self.main.signal_goto_theory.connect(self.gotoTheoryScreen)
         self.main.signal_goto_rabota.connect(self.gotoRabotaScreen)
+        self.rabota.signal_com_pod.connect(self.set_com_pod)
 
         self.theory.signal_goto_main.connect(self.gotoMainScreen)
         
         self.rabota.signal_goto_main.connect(self.gotoMainScreen)        
         self.rabota.signal_save_posts.connect(self.gotoMainScreen_posts)
+
+    def set_com_pod(self, com_pod):
+        self.status = com_pod
+        self.signal_com_pod.emit(self.status)
+        self.main.set_com_pod(self.status)
 
     def run(self):
         self.widget.addWidget(self.main)

@@ -20,6 +20,7 @@ class RabotaScreen(QDialog):
     
     signal_save_posts = pyqtSignal(list)
     signal_goto_main  = pyqtSignal()
+    signal_com_pod    = pyqtSignal(int)
     posts = []
     first_save = True
 
@@ -83,7 +84,7 @@ class RabotaScreen(QDialog):
         self.tableWidget.setItem(0, 1, QTableWidgetItem("37.30"))
         self.tableWidget.setItem(0, 2, QTableWidgetItem("55.50"))
         self.tableWidget.setItem(0, 3, QTableWidgetItem(self.lbl_adrr.text()))
-        self.tableWidget.setItem(0, 4, QTableWidgetItem("МГц"))
+        self.tableWidget.setItem(0, 4, QTableWidgetItem("УКВ"))
 
         self.posts = []
         for i in range(1, self.tableWidget.rowCount()):
@@ -120,6 +121,10 @@ class RabotaScreen(QDialog):
                 print(y_posts, x_posts)
                 self.posts.append([x_posts, y_posts, name])
 
+        for i in range(len(self.butttons)):
+            if self.butttons[i].isChecked():
+                self.signal_com_pod.emit(i)
+
         self.w_progress.show()
         self.frame.hide()
 
@@ -139,10 +144,10 @@ class RabotaScreen(QDialog):
             elif x == 95:
                 self.lbl_progress.setText("Переход в режим готовности")
 
-            # if x < 90: 
-            #     time.sleep(x * random.random() / 1000)
-            # else:
-            #     time.sleep(0.1)
+            if x < 90: 
+                time.sleep(0.005)
+            else:
+                time.sleep(0.005)
 
         self.w_progress.hide()
         self.frame.show()
@@ -150,6 +155,12 @@ class RabotaScreen(QDialog):
     def init_ui(self):
         loadUi('qt/rabota.ui', self)
         self.setWindowTitle("Работа")
+
+        self.group = QButtonGroup()
+        self.group.addButton(self.rb_com)
+        self.group.addButton(self.rb_pod)
+
+        self.butttons = [self.rb_com, self.rb_pod]
 
         self.w_progress.hide()
         self.lbl_error.hide()

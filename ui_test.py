@@ -30,7 +30,7 @@ class TestScreen(QDialog):
         self.answers = [["1", "2", "1", "2"], ["1", "2"]]
 
         self.n = len(self.tasks)
-        self.grades = [60, 80, 90]
+        self.grades = [40, 80, 90]
         self.mark = 2
         self.correct = [0]*10
         
@@ -132,7 +132,7 @@ class TestScreen(QDialog):
             self.btn_forward.setEnabled(False)
             self.btn_end_test.show()
 
-        self.lbl_task.setText("Задание " + str(self.cur_task + 1))
+        self.lbl_task.setText("Вопрос " + str(self.cur_task + 1))
         self.lbl_question.setText(self.tasks[self.cur_task])
 
 
@@ -178,7 +178,7 @@ class TestScreen(QDialog):
 
         self.setStyleSheet('background-color: rgb(35,38,50)')
         
-        self.btn_backward.setEnabled(False)
+        self.btn_backward.setEnabled(True)
         self.btn_end_test.hide()
 
         self.answ_1.hide()
@@ -233,9 +233,6 @@ class TestScreen(QDialog):
     def init_ui(self):
         loadUi('qt/test.ui', self)
         self.setWindowTitle("Тестирование")
-
-        self.btn_backward.hide()
-        self.btn_backward.hide()
 
         self.group = QButtonGroup()
         self.group.addButton(self.answ_1)

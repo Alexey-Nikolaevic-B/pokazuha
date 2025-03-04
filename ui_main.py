@@ -260,6 +260,12 @@ class MainScreen(QDialog):
         self.btn_pusk.clicked.connect(self.true_suppress)
         self.btn_prr.clicked.connect(self.false_suppress)
 
+    def set_com_pod(self, com_pod):
+        if com_pod:
+            self.rb_pod.setChecked(True)
+        else:
+            self.rb_com.setChecked(True)
+
     def update_text(self):
         self.selected_freq
         up = self.selected_freq + 0.4

@@ -33,7 +33,7 @@
 font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
         </property>
         <property name="text">
-         <string>Задание 1</string>
+         <string>Вопрос 1</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -67,7 +67,8 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
          <item>
           <widget class="QLabel" name="lbl_question">
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
            </property>
            <property name="text">
             <string>Вопрос</string>
@@ -98,7 +99,8 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
          <item>
           <widget class="QRadioButton" name="answ_1">
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
            </property>
            <property name="text">
             <string>Ответ 1</string>
@@ -108,7 +110,8 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
          <item>
           <widget class="QRadioButton" name="answ_2">
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
            </property>
            <property name="text">
             <string>Ответ 2</string>
@@ -118,7 +121,8 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
          <item>
           <widget class="QRadioButton" name="answ_3">
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
            </property>
            <property name="text">
             <string>Ответ 3</string>
@@ -128,7 +132,8 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
          <item>
           <widget class="QRadioButton" name="answ_4">
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
            </property>
            <property name="text">
             <string>Ответ 4</string>
@@ -138,7 +143,8 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
          <item>
           <widget class="QRadioButton" name="answ_5">
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
            </property>
            <property name="text">
             <string>Ответ 5</string>
