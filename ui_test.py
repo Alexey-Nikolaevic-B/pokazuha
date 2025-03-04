@@ -4,10 +4,18 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtGui, QtCore
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import*
+import matplotlib.pyplot as plt
 import re
 import threading
 import time
 import json
+
+from PyQt5.uic import loadUi
+import json
+from PIL import Image
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+
+import numpy as np
 
 class TestScreen(QDialog):
 
@@ -27,6 +35,19 @@ class TestScreen(QDialog):
         self.correct = [0]*10
         
         self.init_ui()
+
+        self.fig, self.ax = plt.subplots(figsize=(5, 5))
+        self.fig.patch.set_facecolor((35/256, 38/256, 50/256))
+        self.ax.set_facecolor((35/256, 38/256, 50/256))
+        self.ax.set_xticks([])
+        self.ax.set_yticks([])
+        self.ax.set_frame_on(False)
+
+        self.control_layer = self.pic_widget
+        self.control_layer = QGridLayout(self.control_layer)
+
+        radial = FigureCanvas(self.fig)
+        self.control_layer.addWidget(radial,0,0)
 
         self.btn_backward.clicked.connect(lambda: self.update(0))
         self.btn_forward.clicked.connect(lambda: self.update(1))
@@ -123,15 +144,20 @@ class TestScreen(QDialog):
 
         # IMAGE
         if self.image[self.cur_task] == "empty":
-            self.pic_frame.hide()
+            self.pic_widget.hide()
+            pass
         else:
-            self.pic_frame.show()
-            image = self.lbl_image
-            pixmap = QtGui.QPixmap(self.image[self.cur_task])
-            pixmap = pixmap.scaled(500, 500)
-            image.setPixmap(pixmap)
-            image.setScaledContents(True)
-            image.show()
+            img = Image.open(self.image[self.cur_task])
+            self.ax.set_facecolor((80/256, 80/256, 80/256))
+
+            self.ax.set_xticks([])
+            self.ax.set_yticks([])
+            self.ax.set_frame_on(False)
+
+            self.ax.imshow(img, extent=[0, 1, 0, 1], aspect='auto')
+            self.fig.canvas.draw()
+
+            self.pic_widget.show()
 
         # QUESTION
             self.lbl_question.setText(self.tasks[self.cur_task])
@@ -170,15 +196,26 @@ class TestScreen(QDialog):
 
         # IMAGE
         if self.image[self.cur_task] == "empty":
-            self.pic_frame.hide()
+            self.pic_widget.hide()
+            pass
         else:
-            self.pic_frame.show()
-            image = self.lbl_image
-            pixmap = QtGui.QPixmap(self.image[self.cur_task])
-            pixmap = pixmap.scaled(500, 500)
-            image.setPixmap(pixmap)
-            image.setScaledContents(True)
-            image.show()
+            img = Image.open(self.image[self.cur_task])
+            self.ax.set_facecolor((80/256, 80/256, 80/256))
+
+            self.ax.set_xticks([])
+            self.ax.set_yticks([])
+            self.ax.set_frame_on(False)
+
+            self.ax.imshow(img, extent=[0, 1, 0, 1], aspect='auto')
+            self.fig.canvas.draw()
+
+            self.pic_widget.show()
+            # image = self.lbl_image
+            # pixmap = QtGui.QPixmap(self.image[self.cur_task])
+            # pixmap = pixmap.scaled(500, 500)
+            # image.setPixmap(pixmap)
+            # image.setScaledContents(True)
+            # image.show()
 
         # print(self.cur_task)
         # print(self.tasks[self.cur_task])
