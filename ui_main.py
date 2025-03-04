@@ -577,6 +577,7 @@ class MainScreen(QDialog):
             for id, sig in signals.items():
                 if (down <= sig.freq <= up): # and (data[str(id)]["mod"] == mod)
                     self.selected_id = id
+                    self.frequencies_window.set_peleng([0, 0, sig.bearing,  self.selected_freq, True])
 
                     if peleng == True:
                         self.lbl_peleng.setText(str(sig.bearing))
@@ -587,7 +588,6 @@ class MainScreen(QDialog):
                         self.found = [bearing,  self.selected_freq]
 
                         self.administrator_window.set_peleng([x, y, bearing,  self.selected_freq, True])
-                        self.frequencies_window.set_peleng([x, y, bearing,  self.selected_freq, True])
 
                     else:
                         self.lbl_peleng.setText("-")
