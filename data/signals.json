@@ -1,6 +1,6 @@
 {
     "0": {
-        "freq": 54,
+        "freq": 137,
         "bandwidth": 0.350,
         "power": 71.0,
         "signal_type": "ragged",
@@ -11,7 +11,7 @@
         "Y": "0.8"
     },
     "1": {
-        "freq": 78,
+        "freq": 159,
         "bandwidth": 0.350,
         "power": 50.0,
         "signal_type": "ragged",
@@ -22,7 +22,7 @@
         "Y": "0.57"
     },
     "2": {
-        "freq": 127,
+        "freq": 175,
         "bandwidth": 0.250,
         "power": 70.0,
         "signal_type": "smooth",
@@ -33,7 +33,7 @@
         "Y": "0.66"
     },
     "3": {
-        "freq": 198,
+        "freq": 410,
         "bandwidth": 0.350,
         "power": 50.0,
         "signal_type": "ragged",
@@ -44,7 +44,7 @@
         "Y": "0.38"
     },
     "4": {
-        "freq": 213,
+        "freq": 437,
         "bandwidth": 0.250,
         "power": 45.0,
         "signal_type": "smooth",
@@ -55,7 +55,7 @@
         "Y": "0.1"
     },
     "5": {
-        "freq": 413,
+        "freq": 470,
         "bandwidth": 0.250,
         "power": 70.0,
         "signal_type": "ragged",
