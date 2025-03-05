@@ -18,6 +18,7 @@ import json
 import math
 import random
 import threading
+from time import sleep
 
 import pygame
 
@@ -220,6 +221,7 @@ class MainScreen(QDialog):
 
     def __init__(self):
         super(MainScreen, self).__init__()
+        pygame.mixer.init()
 
         self.init_ui()
 
@@ -280,12 +282,13 @@ class MainScreen(QDialog):
                 if (sig.source == "Радио"):
                     if (sig.mod == mod):
                         path = sig.audio
-                        self.play_sound(path)
                     else: 
                         path = "data/audio/noize.mp3"
                 else: 
                     path = sig.audio
 
+                # self.thread_counter = threading.Thread(target=self.play_sound(path), daemon=True)
+                # self.thread_sound.start()  
                 self.play_sound(path)
 
                 if (sig.mod == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
@@ -327,6 +330,7 @@ class MainScreen(QDialog):
         self.perehvat_window.set_data(signals, filtered_freqs, self.selected_freq)
 
     def update_frequencies(self):
+        pygame.mixer.music.stop()
         self.selected_freq
         self.lbl_frequency.setText(f"{self.selected_freq:.2f}")
         found = False
@@ -501,6 +505,7 @@ class MainScreen(QDialog):
         self.control_layer.addWidget(radial,0,0)
 
     def on_click(self, event):
+        pygame.mixer.music.stop()
         mod =  self.cb_mod.currentText()
         if event.xdata is not None:
             self.selected_freq = event.xdata
@@ -522,16 +527,14 @@ class MainScreen(QDialog):
                     if (sig.source == "Радио"):
                         if (sig.mod == mod):
                             path = sig.audio
-                            self.play_sound(path)
                         else: 
                             path = "data/audio/noize.mp3"
                     else: 
                         path = sig.audio
 
-                    self.play_sound(path)
-
                     # self.thread_counter = threading.Thread(target=self.play_sound(path), daemon=True)
-                    # self.thread_counter.start()
+                    # self.thread_sound.start()
+                    self.play_sound(path)                   
 
                     if (sig.mod == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
                         self.lbl_output.setText(data[str(id)]["text"])  # Обновляем поле id
@@ -564,6 +567,7 @@ class MainScreen(QDialog):
         self.canvas.draw()
 
     def search(self, peleng):
+        pygame.mixer.music.stop()
         global threshold, max_power, search_low, search_hight, last_freq
         global low_freq, high_freq
 
@@ -610,12 +614,13 @@ class MainScreen(QDialog):
                     if (sig.source == "Радио"):
                         if (sig.mod == mod):
                             path = sig.audio
-                            self.play_sound(path)
                         else: 
                             path = "data/audio/noize.mp3"
                     else: 
                         path = sig.audio
 
+                    # self.thread_counter = threading.Thread(target=self.play_sound(path), daemon=True)
+                    # self.thread_sound.start()  
                     self.play_sound(path)
 
                     if peleng == True:
@@ -666,7 +671,6 @@ class MainScreen(QDialog):
         return rands
     
     def play_sound(self, path):
-        pygame.mixer.init()
-        pygame.mixer.music.load(path)  # Load the sound file
-        pygame.mixer.music.play()
+        pygame.mixer.music.load(path)
+        pygame.mixer.music.play(-1)
 
