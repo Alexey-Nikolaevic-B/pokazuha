@@ -17,6 +17,9 @@ import numpy as np
 import json
 import math
 import random
+import threading
+
+import pygame
 
 import ui_rabota
 import ui_administrator
@@ -129,7 +132,7 @@ add_signal(suppress_matrix, 12.5, 3.5, power=30.0, signal_type="smooth")
 add_signal(suppress_matrix, 17.5, 3.5, power=30.0, signal_type="smooth")
 
 class SignalData:
-    def __init__(self, freq, bandwidth, power, signal_type, mod, text, source, X, Y):
+    def __init__(self, freq, bandwidth, power, signal_type, mod, text, source, audio, X, Y):
         self.freq = freq
         self.bandwidth = bandwidth
         self.power = power
@@ -137,6 +140,7 @@ class SignalData:
         self.mod = mod
         self.text = text
         self.source = source
+        self.audio = audio
         self.X = X
         self.Y = Y
         self.bearing = self.find_bearing(0.5, 0.5, float(Y), float(X))
@@ -273,6 +277,17 @@ class MainScreen(QDialog):
         mod =  self.cb_mod.currentText()
         for id, sig in signals.items():
             if down <= sig.freq <= up and self.selected_id != None:
+                if (sig.source == "Радио"):
+                    if (sig.mod == mod):
+                        path = sig.audio
+                        self.play_sound(path)
+                    else: 
+                        path = "data/audio/noize.mp3"
+                else: 
+                    path = sig.audio
+
+                self.play_sound(path)
+
                 if (sig.mod == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
                     self.lbl_output.setText(sig.text)
                 else:
@@ -503,6 +518,21 @@ class MainScreen(QDialog):
                     down = self.selected_freq - 0.4
                 if down <= sig.freq <= up:
                     self.selected_id = id
+
+                    if (sig.source == "Радио"):
+                        if (sig.mod == mod):
+                            path = sig.audio
+                            self.play_sound(path)
+                        else: 
+                            path = "data/audio/noize.mp3"
+                    else: 
+                        path = sig.audio
+
+                    self.play_sound(path)
+
+                    # self.thread_counter = threading.Thread(target=self.play_sound(path), daemon=True)
+                    # self.thread_counter.start()
+
                     if (sig.mod == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
                         self.lbl_output.setText(data[str(id)]["text"])  # Обновляем поле id
                     else:
@@ -577,6 +607,17 @@ class MainScreen(QDialog):
                     self.selected_id = id
                     self.frequencies_window.set_peleng([0, 0, sig.bearing,  self.selected_freq, True])
 
+                    if (sig.source == "Радио"):
+                        if (sig.mod == mod):
+                            path = sig.audio
+                            self.play_sound(path)
+                        else: 
+                            path = "data/audio/noize.mp3"
+                    else: 
+                        path = sig.audio
+
+                    self.play_sound(path)
+
                     if peleng == True:
                         self.lbl_peleng.setText(str(sig.bearing))
                         id = str(self.selected_id)
@@ -623,4 +664,9 @@ class MainScreen(QDialog):
         for i in range(random.randint(1, 100)):
             rands = rands + chr(random.randint(1, 1000))
         return rands
+    
+    def play_sound(self, path):
+        pygame.mixer.init()
+        pygame.mixer.music.load(path)  # Load the sound file
+        pygame.mixer.music.play()
 
