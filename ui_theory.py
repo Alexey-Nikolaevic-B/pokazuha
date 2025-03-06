@@ -14,11 +14,11 @@ from scipy.fftpack import fft, fftfreq
 
 class TheoryScreen(QDialog):
     fs = 10000 # частота дискретизации
-    T = 1  # Длительность сигнала в секундах
+    T = 1 # Длительность сигнала в секундах
     t = np.linspace(0, T, int(fs*T), endpoint=False)  # Временная ось
     Ac = 400
     Am = [1, 0.5, 0.3, 0.2, 0.1] # амплитуды модулирующих сигналов
-    fm = [10, 20, 40, 50, 60] # частоты модулирующих сигналов
+    fm = [390, 20, 40, 50, 60] # частоты модулирующих сигналов
     
 
     signal_goto_main   = pyqtSignal()
@@ -154,7 +154,7 @@ class TheoryScreen(QDialog):
         ax.set_facecolor('#232632')
         fig.patch.set_facecolor((80/256, 80/256, 80/256))
         ax.semilogy(freqs[:len(freqs)//2], np.abs(fft_spectrum[:len(fft_spectrum)//2]), color='yellow')
-        ax.set_xlim(fc - 200 - plus, fc + 200 + plus)
+        ax.set_xlim(fc - 1000 - plus, fc + 1000 + plus)
         ax.set_xlabel('Частота (Гц)')
         ax.set_ylabel('Амплитуда (логарифмическая шкала)')
         ax.set_title('Амплитудный спектр сигнала с шумом')
