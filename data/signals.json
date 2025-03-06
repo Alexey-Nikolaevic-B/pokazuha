@@ -60,11 +60,11 @@
         "Y": "0.1"
     },
     "5": {
-        "freq": 470,
+        "freq": 435,
         "bandwidth": 0.250,
         "power": 70.0,
         "signal_type": "ragged",
-        "mod": "ЧМн",
+        "mod": "ЧМ",
         "text": "Take cover 2 km east at Delta Shack, read back, over.",
         "source": "Радио",
         "audio": "data/audio/470.wav",
