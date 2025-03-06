@@ -283,7 +283,7 @@ class MainScreen(QDialog):
                     if (sig.mod == mod):
                         path = sig.audio
                     else: 
-                        path = "data/audio/noize.mp3"
+                        path = "data/audio/noize.wav"
                 else: 
                     path = sig.audio
 
@@ -528,7 +528,7 @@ class MainScreen(QDialog):
                         if (sig.mod == mod):
                             path = sig.audio
                         else: 
-                            path = "data/audio/noize.mp3"
+                            path = "data/audio/noize.wav"
                     else: 
                         path = sig.audio
 
@@ -615,7 +615,7 @@ class MainScreen(QDialog):
                         if (sig.mod == mod):
                             path = sig.audio
                         else: 
-                            path = "data/audio/noize.mp3"
+                            path = "data/audio/noize.wav"
                     else: 
                         path = sig.audio
 
