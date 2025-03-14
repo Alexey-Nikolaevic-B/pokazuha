@@ -226,6 +226,8 @@ class MainScreen(QDialog):
         self.init_ui()
 
         self.selected_freq = 150
+        self.suppresed = False
+        self.current_path = "data/audio/noize.wav"
 
         self.found = []
 
@@ -289,6 +291,8 @@ class MainScreen(QDialog):
 
                 # self.thread_counter = threading.Thread(target=self.play_sound(path), daemon=True)
                 # self.thread_sound.start()  
+
+                self.current_path = path
                 self.play_sound(path)
 
                 if (sig.mod == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
@@ -298,15 +302,23 @@ class MainScreen(QDialog):
                 break
 
     def false_suppress(self):
+        pygame.mixer.music.stop()
+        self.play_sound(self.current_path)                   
+
         global suppress, suppress_matrix
         suppress = False
         self.start_2.setEnabled(True)
 
     def true_suppress(self):
+        pygame.mixer.music.stop()
         global suppress
         global suppress_freqs, suppress_matrix
         suppress = True
         self.start_2.setEnabled(False)
+        self.lbl_output.setText(self.random_sring())
+        pygame.mixer.music.load("data/audio/noize.wav")
+        pygame.mixer.music.play(-1)
+
         try:
             suppress_freqs = float(self.start_2.text())
         except ValueError:
@@ -388,7 +400,7 @@ class MainScreen(QDialog):
         self.frequencies_window.show()
 
     def init_ui(self):
-        loadUi('qt\main.ui', self)
+        loadUi('qt\main — копия.ui', self)
         self.setWindowTitle("Лорандит")
 
         self.lbl_search_low.setValidator(QIntValidator(1, 10000, self))
@@ -444,14 +456,14 @@ class MainScreen(QDialog):
         style_btn_1 = "QPushButton {color: rgb(150, 150, 150); background-color : rgb(200, 200, 200); font: 20pt \"MS Shell Dlg 2\"} QPushButton::hover {background-color: rgb(255, 255, 255)}"
         style_btn_2 = "QPushButton {color: rgb(150, 150, 150); background-color : rgb(200, 200, 200); font: 10pt \"MS Shell Dlg 2\"} QPushButton::hover {background-color: rgb(255, 255, 255)}"
         style_btn_3 = "QPushButton {color: rgb(150, 150, 150); background-color : rgb(200, 200, 200); font: 20t \"MS Shell Dlg 2\"} QPushButton::hover {background-color: rgb(255, 255, 255)}"
-        self.btn_empty_2.setStyleSheet(style_btn_1)
+        self.btn_empty_2.setStyleSheet(style_btn_2)
         self.btn_empty_3.setStyleSheet(style_btn_2)
-        self.btn_empty_4.setStyleSheet(style_btn_1)
-        self.btn_empty_5.setStyleSheet(style_btn_1)
-        self.btn_empty_6.setStyleSheet(style_btn_1)
-        self.btn_empty_7.setStyleSheet(style_btn_1)
-        self.btn_empty_8.setStyleSheet(style_btn_1)
-        self.btn_empty_9.setStyleSheet(style_btn_3)
+        self.btn_empty_4.setStyleSheet(style_btn_2)
+        self.btn_empty_5.setStyleSheet(style_btn_2)
+        self.btn_empty_6.setStyleSheet(style_btn_2)
+        self.btn_empty_7.setStyleSheet(style_btn_2)
+        self.btn_empty_8.setStyleSheet(style_btn_2)
+        self.btn_empty_9.setStyleSheet(style_btn_2)
 
     def update(self, frame):
         base[:, :] = np.roll(base, shift=-2, axis=0)
@@ -534,6 +546,7 @@ class MainScreen(QDialog):
 
                     # self.thread_counter = threading.Thread(target=self.play_sound(path), daemon=True)
                     # self.thread_sound.start()
+                    self.current_path = path
                     self.play_sound(path)                   
 
                     if (sig.mod == mod) and ((not suppress) or (sig.freq >= suppress_freqs + 10 or sig.freq <= suppress_freqs - 10)):
@@ -671,6 +684,9 @@ class MainScreen(QDialog):
         return rands
     
     def play_sound(self, path):
-        pygame.mixer.music.load(path)
+        if suppress:
+            pygame.mixer.music.load("data/audio/noize.wav")
+        else:
+            pygame.mixer.music.load(path)
         pygame.mixer.music.play(-1)
 
