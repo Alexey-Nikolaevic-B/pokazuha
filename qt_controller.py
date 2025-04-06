@@ -12,6 +12,7 @@ import ui_theory
 import ui_perehvat
 import ui_rabota
 import ui_peleng
+import ui_menu
 
 class QT_Controler(QObject):
 
@@ -21,14 +22,20 @@ class QT_Controler(QObject):
     signal_goto_rabota      = pyqtSignal()
     signal_save_posts       = pyqtSignal(list)
     signal_com_pod          = pyqtSignal(int)
+    signal_lesson           = pyqtSignal(int)
 
     def __init__(self):
         QObject.__init__(self)
 
+
+
         self.widget = QtWidgets.QStackedWidget()
+
+        self.menu   = ui_menu.MenuScreen() 
         self.main   = ui_main.MainScreen()
         self.theory = ui_theory.TheoryScreen()
         self.rabota = ui_rabota.RabotaScreen()
+
         self.peleng = ui_peleng.PelengScreen()
         # self.perehvat = ui_perehvat.PerehvatScreen()
         
@@ -36,6 +43,8 @@ class QT_Controler(QObject):
         self.run()
 
     def signals(self):
+        self.menu.signal_lesson.connect(self.create_main)
+
         self.main.signal_goto_theory.connect(self.gotoTheoryScreen)
         self.main.signal_goto_rabota.connect(self.gotoRabotaScreen)
         self.rabota.signal_com_pod.connect(self.set_com_pod)
@@ -45,13 +54,20 @@ class QT_Controler(QObject):
         self.rabota.signal_goto_main.connect(self.gotoMainScreen)        
         self.rabota.signal_save_posts.connect(self.gotoMainScreen_posts)
 
+    def create_main(self, data):
+        self.posts = data
+        self.signal_lesson.emit(self.posts)
+        self.main.set_lesson(data)
+        self.gotoMainScreen()
+
+
     def set_com_pod(self, com_pod):
         self.status = com_pod
         self.signal_com_pod.emit(self.status)
         self.main.set_com_pod(self.status)
 
     def run(self):
-        self.widget.addWidget(self.main)
+        self.widget.addWidget(self.menu)
         self.widget.show()
 
     def gotoRabotaScreen(self):

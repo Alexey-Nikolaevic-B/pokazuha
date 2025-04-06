@@ -57,11 +57,13 @@ class TestScreen(QDialog):
         self.btn_forward.clicked.connect(lambda: self.update(1))
         self.btn_end_test.clicked.connect(self.endTest)
 
-        self.answ_1.clicked.connect(self.check)
-        self.answ_2.clicked.connect(self.check)
-        self.answ_3.clicked.connect(self.check)
-        self.answ_4.clicked.connect(self.check)
-        self.answ_5.clicked.connect(self.check)
+        self.answ_1.clicked.connect(self.check_singular)
+        self.answ_2.clicked.connect(self.check_singular)
+        self.answ_3.clicked.connect(self.check_singular)
+        self.answ_4.clicked.connect(self.check_singular)
+        self.answ_5.clicked.connect(self.check_singular)
+
+        self.le_answ.textChanged.connect(self.check_text)
 
     def set_path(self, path):
         self.test_path = path
@@ -77,6 +79,7 @@ class TestScreen(QDialog):
 
     def endTest(self):
         self.main_frame.hide()
+        self.le_answ.hide()
         self.end_frame.show()
 
         i = self.correct.count(1)
@@ -113,7 +116,13 @@ class TestScreen(QDialog):
         self.lbl_mark.setText(str(self.mark))
         self.lbl_correct.setText(str(self.correct.count(1)) + " / " + str(len(self.correct)))
 
-    def check(self):
+    def check_text(self):
+        if self.answers[self.cur_task][0] == "0":
+            input = self.le_answ.text()
+            if input in self.checks[self.cur_task]:
+                self.correct[self.cur_task] = 1
+
+    def check_singular(self):
         
         for i in range(len(self.butttons)):
             if self.butttons[i].isChecked():
@@ -129,6 +138,10 @@ class TestScreen(QDialog):
         self.btn_backward.setEnabled(True)
         self.btn_forward.setEnabled(True)
         self.btn_end_test.hide()
+        self.le_answ.hide()
+        self.frame_3.hide()
+
+        input = self.le_answ.clear()
 
         if (self.cur_task < 1):
             self.btn_backward.setEnabled(False)
@@ -144,7 +157,6 @@ class TestScreen(QDialog):
         for i in range(len(self.butttons)):
             self.butttons[i].setChecked(False)
         self.group.setExclusive(True)
-
 
         # IMAGE
         if self.image[self.cur_task] == "empty":
@@ -168,12 +180,21 @@ class TestScreen(QDialog):
 
         # CHECKS
         for i in range(5):
-            self.butttons[i].hide()
-            self.butttons[i].setChecked(False)
+                self.butttons[i].hide()
+                self.butttons[i].setChecked(False)
 
-        for i in range(len(self.answers[self.cur_task])):
-            self.butttons[i].setText(self.answers[self.cur_task][i])
-            self.butttons[i].show()
+        if self.answers[self.cur_task][0] == "0":
+            self.le_answ.show()
+            self.frame_3.hide()
+        if self.answers[self.cur_task][0] == "1":
+            self.frame_3.show()
+
+            for i in range(len(self.answers[self.cur_task][1])):
+                self.butttons[i].setText(self.answers[self.cur_task][1][i])
+                self.butttons[i].show()
+
+        elif self.answers[self.cur_task][0] == "0":
+            self.frame_3.show()
 
     def renew(self): 
         self.cur_task = 0
@@ -184,7 +205,8 @@ class TestScreen(QDialog):
         
         self.btn_backward.setEnabled(True)
         self.btn_end_test.hide()
-
+        self.le_answ.hide()
+        self.frame_3.hide()
         self.answ_1.hide()
         self.answ_2.hide()
         self.answ_3.hide()
@@ -226,12 +248,23 @@ class TestScreen(QDialog):
         self.lbl_question.setText(self.tasks[self.cur_task])
 
         # CHECKS
-        for i in range(5):
-            self.butttons[i].hide()
 
-        for i in range(len(self.answers[self.cur_task])):
-            self.butttons[i].setText(self.answers[self.cur_task][i])
-            self.butttons[i].show()
+        for i in range(5):
+                self.butttons[i].hide()
+                self.butttons[i].setChecked(False)
+
+        if self.answers[self.cur_task][0] == "0":
+            self.le_answ.show()
+            self.frame_3.hide()
+        if self.answers[self.cur_task][0] == "1":
+            self.frame_3.show()
+
+            for i in range(len(self.answers[self.cur_task][1])):
+                self.butttons[i].setText(self.answers[self.cur_task][1][i])
+                self.butttons[i].show()
+
+        elif self.answers[self.cur_task][0] == "0":
+            self.frame_3.show()
 
 
     def init_ui(self):
@@ -250,7 +283,7 @@ class TestScreen(QDialog):
 
         self.setWindowFlags(Qt.WindowStaysOnTopHint)
 
-        style_btn = "QPushButton {color: rgb(0, 0, 0); background-color : rgb(200, 200, 200)} QPushButton::hover {background-color: rgb(255, 255, 255)}"
+        style_btn = "QPushButton {color: rgb(0, 0, 0);  background-color : rgb(200, 200, 200)} QPushButton::hover {background-color: rgb(255, 255, 255)}"
         self.btn_backward.setStyleSheet(style_btn) 
         self.btn_forward.setStyleSheet(style_btn) 
         self.btn_end_test.setStyleSheet(style_btn)

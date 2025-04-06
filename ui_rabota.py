@@ -175,12 +175,12 @@ class RabotaScreen(QDialog):
         table.setStyleSheet("background-color: rgb(255,255,255)")
         table.setRowCount(0)
         
-        # header = table.horizontalHeader()
-        # header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
-        # header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
-        # header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
-        # header.setSectionResizeMode(3, QtWidgets.QHeaderView.Stretch)
-        # header.setSectionResizeMode(4, QtWidgets.QHeaderView.Stretch)
+        header = table.horizontalHeader()
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+        header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
+        header.setSectionResizeMode(3, QtWidgets.QHeaderView.Stretch)
+        header.setSectionResizeMode(4, QtWidgets.QHeaderView.Stretch)
 
         delegate = AlignCenter(table)
         table.setItemDelegateForColumn(0, delegate)

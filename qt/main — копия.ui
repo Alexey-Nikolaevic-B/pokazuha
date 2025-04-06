@@ -46,6 +46,12 @@
    </property>
    <item>
     <widget class="QWidget" name="widget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1">
       <property name="spacing">
        <number>0</number>
@@ -64,6 +70,12 @@
       </property>
       <item alignment="Qt::AlignTop">
        <widget class="QFrame" name="frame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -88,6 +100,12 @@
          </property>
          <item>
           <widget class="QPushButton" name="btn_rabota">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -101,6 +119,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="btn_administrator">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -114,6 +138,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="btn_peleng">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -127,6 +157,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="btn_perehvat">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -140,6 +176,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="btn_frequencies">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -153,6 +195,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="btn_theory">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -166,6 +214,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="btn_test_1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -173,12 +227,18 @@
             <string notr="true">background-color: rgb(210, 210, 210)</string>
            </property>
            <property name="text">
-            <string>Тест 1</string>
+            <string>Тест</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btn_test_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -186,7 +246,7 @@
             <string notr="true">background-color: rgb(210, 210, 210)</string>
            </property>
            <property name="text">
-            <string>Тест 2</string>
+            <string>Тест</string>
            </property>
           </widget>
          </item>
@@ -195,6 +255,12 @@
       </item>
       <item>
        <widget class="QFrame" name="frame_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -204,15 +270,27 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QFrame" name="frame_4">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
            <property name="frameShadow">
-            <enum>QFrame::Plain</enum>
+            <enum>QFrame::Raised</enum>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
              <widget class="QWidget" name="widget_8" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="styleSheet">
                <string notr="true"/>
               </property>
@@ -234,11 +312,17 @@
                </property>
                <item row="3" column="3">
                 <widget class="QFrame" name="frame_20">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
                  <property name="frameShadow">
-                  <enum>QFrame::Plain</enum>
+                  <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_10">
                   <property name="leftMargin">
@@ -255,6 +339,12 @@
                   </property>
                   <item>
                    <widget class="QLineEdit" name="lbl_search_low">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">background-color: rgb(212, 111, 68);
 border-radius: 10px;
@@ -270,6 +360,12 @@ border-radius: 10px;
                   </item>
                   <item>
                    <widget class="QLineEdit" name="lbl_search_hight">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">background-color: rgb(212, 111, 68);
 border-color: rgb(100, 100, 100);
@@ -288,6 +384,12 @@ border-radius: 10px;</string>
                </item>
                <item row="0" column="3">
                 <widget class="QLabel" name="l_begining_3">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">color: rgb(255, 255, 255);</string>
                  </property>
@@ -301,6 +403,12 @@ border-radius: 10px;</string>
                </item>
                <item row="3" column="0">
                 <widget class="QLabel" name="lbl_frequency">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">background-color: rgb(212, 111, 68)</string>
                  </property>
@@ -314,11 +422,17 @@ border-radius: 10px;</string>
                </item>
                <item row="2" column="3">
                 <widget class="QFrame" name="frame_28">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
                  <property name="frameShadow">
-                  <enum>QFrame::Plain</enum>
+                  <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_16">
                   <property name="spacing">
@@ -338,6 +452,12 @@ border-radius: 10px;</string>
                   </property>
                   <item>
                    <widget class="QLabel" name="lbl_19">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
@@ -351,8 +471,17 @@ border-radius: 10px;</string>
                   </item>
                   <item>
                    <widget class="QLabel" name="lbl_20">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);</string>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Sunken</enum>
                     </property>
                     <property name="text">
                      <string>Конец,МГц</string>
@@ -367,6 +496,12 @@ border-radius: 10px;</string>
                </item>
                <item row="3" column="1">
                 <spacer name="horizontalSpacer">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -380,6 +515,12 @@ border-radius: 10px;</string>
                </item>
                <item row="2" column="0">
                 <widget class="QLabel" name="lbl_18">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">color: rgb(255, 255, 255);</string>
                  </property>
@@ -396,6 +537,12 @@ border-radius: 10px;</string>
             </item>
             <item>
              <widget class="QFrame" name="frame_6">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
               </property>
@@ -405,6 +552,12 @@ border-radius: 10px;</string>
               <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,0">
                <item>
                 <widget class="QLabel" name="lbl_17">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">color: rgb(255, 255, 255);
 font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -418,10 +571,23 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                 </widget>
                </item>
                <item>
-                <widget class="QWidget" name="Twidget" native="true"/>
+                <widget class="QWidget" name="Twidget" native="true">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                </widget>
                </item>
                <item>
                 <widget class="QFrame" name="frame_7">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
@@ -437,6 +603,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                  <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1">
                   <item>
                    <widget class="QProgressBar" name="progressBar_2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="value">
                      <number>0</number>
                     </property>
@@ -450,6 +622,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item>
                    <widget class="QFrame" name="frame_11">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="accessibleName">
                      <string notr="true"/>
                     </property>
@@ -477,6 +655,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                      </property>
                      <item>
                       <widget class="QPushButton" name="btn_empty_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -490,6 +674,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_empty_3">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -503,6 +693,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_empty_4">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -516,6 +712,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_empty_5">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -529,6 +731,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_empty_6">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -542,6 +750,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_empty_7">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -555,6 +769,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_empty_8">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -568,6 +788,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_empty_9">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -593,15 +819,27 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
          </item>
          <item>
           <widget class="QFrame" name="frame_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
            <property name="frameShadow">
-            <enum>QFrame::Plain</enum>
+            <enum>QFrame::Raised</enum>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,0">
             <item>
              <widget class="QWidget" name="widget_9" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="styleSheet">
                <string notr="true"/>
               </property>
@@ -610,7 +848,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                 <number>0</number>
                </property>
                <property name="topMargin">
-                <number>0</number>
+                <number>5</number>
                </property>
                <property name="rightMargin">
                 <number>0</number>
@@ -623,11 +861,17 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                </property>
                <item row="1" column="1">
                 <widget class="QFrame" name="frame_29">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
                  <property name="frameShadow">
-                  <enum>QFrame::Plain</enum>
+                  <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_17">
                   <property name="leftMargin">
@@ -644,6 +888,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                   </property>
                   <item>
                    <widget class="QComboBox" name="cb_mod">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -679,6 +929,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item>
                    <widget class="QLabel" name="lbl_peleng">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">background-color: rgb(212, 111, 68)</string>
                     </property>
@@ -692,6 +948,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item>
                    <widget class="QLabel" name="lbl_peleng_2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">background-color: rgb(212, 111, 68)</string>
                     </property>
@@ -708,11 +970,17 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                </item>
                <item row="0" column="1">
                 <widget class="QFrame" name="frame_30">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
                  <property name="frameShadow">
-                  <enum>QFrame::Plain</enum>
+                  <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_18">
                   <property name="spacing">
@@ -732,6 +1000,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                   </property>
                   <item>
                    <widget class="QLabel" name="lbl_42">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -746,6 +1020,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item>
                    <spacer name="horizontalSpacer_4">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
@@ -759,6 +1039,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item>
                    <widget class="QLabel" name="lbl_16">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -773,6 +1059,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item>
                    <spacer name="horizontalSpacer_5">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
@@ -786,6 +1078,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item>
                    <widget class="QLabel" name="lbl_43">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -803,6 +1101,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                </item>
                <item row="1" column="0">
                 <spacer name="horizontalSpacer_3">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -819,15 +1123,27 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
             </item>
             <item>
              <widget class="QFrame" name="frame_8">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
               </property>
               <property name="frameShadow">
-               <enum>QFrame::Plain</enum>
+               <enum>QFrame::Raised</enum>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0,1,0">
                <item>
                 <widget class="QFrame" name="frame_9">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
@@ -837,6 +1153,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                  <layout class="QGridLayout" name="gridLayout">
                   <item row="1" column="5" colspan="2">
                    <widget class="QLabel" name="lbl_25">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -851,6 +1173,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="2" column="7">
                    <widget class="QLabel" name="lbl_24">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -865,6 +1193,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="3" column="7">
                    <widget class="QRadioButton" name="radioButton_9">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="text">
                      <string/>
                     </property>
@@ -872,6 +1206,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="2" column="4" colspan="3">
                    <widget class="QFrame" name="frame_12">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
@@ -881,6 +1221,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                     <layout class="QHBoxLayout" name="horizontalLayout_7">
                      <item>
                       <widget class="QLabel" name="lbl_21">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -895,6 +1241,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QLabel" name="lbl_22">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -909,6 +1261,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QLabel" name="lbl_23">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -926,15 +1284,27 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="4" column="4" colspan="4">
                    <widget class="QFrame" name="frame_15">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="frameShadow">
-                     <enum>QFrame::Plain</enum>
+                     <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_5">
                      <item>
                       <widget class="QPushButton" name="btn_adaptiv">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -948,6 +1318,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_control">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -961,6 +1337,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_doraz">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -977,6 +1359,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="3" column="4" colspan="3">
                    <widget class="QFrame" name="frame_18">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
@@ -1001,6 +1389,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </property>
                      <item>
                       <widget class="QRadioButton" name="radioButton_8">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="text">
                         <string/>
                        </property>
@@ -1008,6 +1402,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QRadioButton" name="radioButton_7">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="text">
                         <string/>
                        </property>
@@ -1015,6 +1415,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QRadioButton" name="radioButton_6">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="text">
                         <string/>
                        </property>
@@ -1025,15 +1431,27 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="4" column="0" colspan="3">
                    <widget class="QFrame" name="frame_14">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="frameShadow">
-                     <enum>QFrame::Plain</enum>
+                     <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_4">
                      <item>
                       <widget class="QPushButton" name="btn_z">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -1047,6 +1465,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_pusk">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -1060,6 +1484,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_prr">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -1076,6 +1506,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="4" column="3">
                    <spacer name="horizontalSpacer_2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
@@ -1089,6 +1525,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="3" column="1">
                    <widget class="QComboBox" name="cb_mod_2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1104,6 +1546,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="3" column="0">
                    <widget class="QLineEdit" name="start_2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">background-color: rgb(23,104,42);
 border-radius: 10px;
@@ -1119,6 +1567,12 @@ border-radius: 10px;
                   </item>
                   <item row="2" column="1">
                    <widget class="QLabel" name="lbl_27">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
@@ -1132,6 +1586,12 @@ border-radius: 10px;
                   </item>
                   <item row="2" column="0">
                    <widget class="QLabel" name="lbl_26">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
@@ -1145,6 +1605,12 @@ border-radius: 10px;
                   </item>
                   <item row="0" column="2" colspan="3">
                    <widget class="QLabel" name="lbl_13">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
@@ -1161,6 +1627,12 @@ border-radius: 10px;
                </item>
                <item>
                 <widget class="QFrame" name="frame_10">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
@@ -1170,6 +1642,12 @@ border-radius: 10px;
                  <layout class="QGridLayout" name="gridLayout_2">
                   <item row="2" column="8" colspan="2">
                    <widget class="QFrame" name="frame_21">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
@@ -1179,6 +1657,12 @@ border-radius: 10px;
                     <layout class="QHBoxLayout" name="horizontalLayout_20">
                      <item>
                       <widget class="Line" name="line_23">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">background-color:rgb(130, 130, 130)</string>
                        </property>
@@ -1189,6 +1673,12 @@ border-radius: 10px;
                      </item>
                      <item>
                       <widget class="QSlider" name="verticalSlider_6">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>SplitVCursor</cursorShape>
                        </property>
@@ -1214,6 +1704,12 @@ border-radius: 10px;
                      </item>
                      <item>
                       <widget class="Line" name="line_16">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">background-color:rgb(130, 130, 130)</string>
                        </property>
@@ -1226,10 +1722,23 @@ border-radius: 10px;
                    </widget>
                   </item>
                   <item row="2" column="0" colspan="2">
-                   <widget class="QDial" name="dial"/>
+                   <widget class="QDial" name="dial">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                   </widget>
                   </item>
                   <item row="4" column="0" colspan="2">
                    <widget class="QFrame" name="frame_16">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
@@ -1239,6 +1748,12 @@ border-radius: 10px;
                     <layout class="QHBoxLayout" name="horizontalLayout_8">
                      <item>
                       <widget class="QPushButton" name="btn_c_1">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -1252,6 +1767,12 @@ border-radius: 10px;
                      </item>
                      <item>
                       <widget class="QPushButton" name="btn_c_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -1268,6 +1789,12 @@ border-radius: 10px;
                   </item>
                   <item row="2" column="5" colspan="2">
                    <widget class="QFrame" name="frame_19">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
@@ -1277,6 +1804,12 @@ border-radius: 10px;
                     <layout class="QHBoxLayout" name="horizontalLayout_19">
                      <item>
                       <widget class="Line" name="line_21">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">background-color:rgb(130, 130, 130)</string>
                        </property>
@@ -1286,7 +1819,13 @@ border-radius: 10px;
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSlider" name="verticalSlider_5">
+                      <widget class="QSlider" name="verticalSlider">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>SplitVCursor</cursorShape>
                        </property>
@@ -1312,6 +1851,12 @@ border-radius: 10px;
                      </item>
                      <item>
                       <widget class="Line" name="line_22">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">background-color:rgb(130, 130, 130)</string>
                        </property>
@@ -1325,6 +1870,12 @@ border-radius: 10px;
                   </item>
                   <item row="4" column="5" colspan="2">
                    <widget class="QLabel" name="lbl_11">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
@@ -1338,6 +1889,12 @@ border-radius: 10px;
                   </item>
                   <item row="4" column="2" colspan="2">
                    <widget class="QLabel" name="lbl_10">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
@@ -1351,6 +1908,12 @@ border-radius: 10px;
                   </item>
                   <item row="2" column="2" colspan="2">
                    <widget class="QFrame" name="frame_17">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
@@ -1360,6 +1923,12 @@ border-radius: 10px;
                     <layout class="QHBoxLayout" name="horizontalLayout_9">
                      <item>
                       <widget class="Line" name="line_19">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">background-color:rgb(130, 130, 130)</string>
                        </property>
@@ -1369,7 +1938,13 @@ border-radius: 10px;
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSlider" name="vs_porog_2">
+                      <widget class="QSlider" name="vs_porog">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>SplitVCursor</cursorShape>
                        </property>
@@ -1398,6 +1973,12 @@ border-radius: 10px;
                      </item>
                      <item>
                       <widget class="Line" name="line_20">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">background-color:rgb(130, 130, 130)</string>
                        </property>
@@ -1411,6 +1992,12 @@ border-radius: 10px;
                   </item>
                   <item row="4" column="8" colspan="2">
                    <widget class="QLabel" name="lbl_12">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
@@ -1424,6 +2011,12 @@ border-radius: 10px;
                   </item>
                   <item row="0" column="0" rowspan="2" colspan="10">
                    <widget class="QLabel" name="l_begining_7">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
@@ -1441,7 +2034,7 @@ border-radius: 10px;
                <item>
                 <widget class="QFrame" name="frame_23">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -1456,199 +2049,19 @@ border-radius: 10px;
                   <property name="sizeConstraint">
                    <enum>QLayout::SetMinimumSize</enum>
                   </property>
-                  <item row="1" column="5" colspan="3">
-                   <widget class="QFrame" name="frame_25">
-                    <property name="frameShape">
-                     <enum>QFrame::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Plain</enum>
-                    </property>
-                    <layout class="QGridLayout" name="gridLayout_8">
-                     <property name="leftMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <item row="0" column="1">
-                      <widget class="QLabel" name="lbl_37">
-                       <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);
-font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
-                       </property>
-                       <property name="text">
-                        <string>Тест</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="2">
-                      <widget class="QLabel" name="lbl_38">
-                       <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);
-font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
-                       </property>
-                       <property name="text">
-                        <string>Сбой</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="lbl_36">
-                       <property name="styleSheet">
-                        <string notr="true">color: rgb(255, 255, 255);
-font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
-                       </property>
-                       <property name="text">
-                        <string>Работа</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="0" colspan="3">
-                      <widget class="QFrame" name="frame_31">
-                       <property name="frameShape">
-                        <enum>QFrame::StyledPanel</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Raised</enum>
-                       </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_13">
-                        <property name="spacing">
-                         <number>0</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
-                        </property>
-                        <item alignment="Qt::AlignHCenter">
-                         <widget class="QRadioButton" name="radioButton_14">
-                          <property name="text">
-                           <string/>
-                          </property>
-                         </widget>
-                        </item>
-                        <item alignment="Qt::AlignHCenter">
-                         <widget class="QRadioButton" name="radioButton_15">
-                          <property name="text">
-                           <string/>
-                          </property>
-                         </widget>
-                        </item>
-                        <item alignment="Qt::AlignHCenter">
-                         <widget class="QRadioButton" name="radioButton_13">
-                          <property name="text">
-                           <string/>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item row="0" column="0" colspan="8" alignment="Qt::AlignTop">
-                   <widget class="QLabel" name="lbl_15">
-                    <property name="styleSheet">
-                     <string notr="true">color: rgb(255, 255, 255);</string>
-                    </property>
-                    <property name="text">
-                     <string>Связь</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="4" rowspan="3" colspan="4">
-                   <widget class="QLabel" name="lbl_output_3">
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(23,104,42);
-border-radius: 10px;
-</string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignJustify|Qt::AlignTop</set>
-                    </property>
-                    <property name="wordWrap">
-                     <bool>true</bool>
-                    </property>
-                    <property name="margin">
-                     <number>10</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0" colspan="2" alignment="Qt::AlignLeft|Qt::AlignBottom">
-                   <widget class="QLabel" name="lbl_14">
-                    <property name="styleSheet">
-                     <string notr="true">color: rgb(255, 255, 255);
-font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
-                    </property>
-                    <property name="text">
-                     <string>Поле приема информационных сообщений</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="0" rowspan="3" colspan="3">
-                   <widget class="QLabel" name="lbl_output_2">
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(23,104,42);
-border-radius: 10px;
-</string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignJustify|Qt::AlignTop</set>
-                    </property>
-                    <property name="wordWrap">
-                     <bool>true</bool>
-                    </property>
-                    <property name="margin">
-                     <number>10</number>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="1" column="4">
                    <widget class="QFrame" name="frame_24">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="frameShadow">
-                     <enum>QFrame::Plain</enum>
+                     <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QGridLayout" name="gridLayout_7">
                      <property name="leftMargin">
@@ -1671,6 +2084,12 @@ border-radius: 10px;
                      </property>
                      <item row="1" column="0" colspan="3" alignment="Qt::AlignVCenter">
                       <widget class="QFrame" name="frame_27">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="frameShape">
                         <enum>QFrame::StyledPanel</enum>
                        </property>
@@ -1695,6 +2114,12 @@ border-radius: 10px;
                         </property>
                         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                          <widget class="QRadioButton" name="rb_com_3">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
                           <property name="cursor">
                            <cursorShape>ArrowCursor</cursorShape>
                           </property>
@@ -1708,6 +2133,12 @@ border-radius: 10px;
                         </item>
                         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                          <widget class="QRadioButton" name="rb_pod_3">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
                           <property name="text">
                            <string/>
                           </property>
@@ -1718,6 +2149,12 @@ border-radius: 10px;
                      </item>
                      <item row="0" column="0">
                       <widget class="QLabel" name="l_begining_20">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -1732,6 +2169,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item row="0" column="1">
                       <widget class="QLabel" name="lbl_35">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -1747,17 +2190,194 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                     </layout>
                    </widget>
                   </item>
-                  <item row="1" column="0">
-                   <widget class="QFrame" name="frame_26">
+                  <item row="1" column="5" colspan="3">
+                   <widget class="QFrame" name="frame_25">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="frameShadow">
-                     <enum>QFrame::Plain</enum>
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_8">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="1">
+                      <widget class="QLabel" name="lbl_37">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);
+font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+                       </property>
+                       <property name="text">
+                        <string>Тест</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="2">
+                      <widget class="QLabel" name="lbl_38">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);
+font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+                       </property>
+                       <property name="text">
+                        <string>Сбой</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="lbl_36">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);
+font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+                       </property>
+                       <property name="text">
+                        <string>Работа</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0" colspan="3">
+                      <widget class="QFrame" name="frame_31">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_13">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item alignment="Qt::AlignHCenter">
+                         <widget class="QRadioButton" name="radioButton_14">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                         </widget>
+                        </item>
+                        <item alignment="Qt::AlignHCenter">
+                         <widget class="QRadioButton" name="radioButton_15">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                         </widget>
+                        </item>
+                        <item alignment="Qt::AlignHCenter">
+                         <widget class="QRadioButton" name="radioButton_13">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QFrame" name="frame_26">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QGridLayout" name="gridLayout_6">
                      <item row="0" column="0">
                       <widget class="QLabel" name="l_begining_14">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
@@ -1771,6 +2391,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item row="1" column="2">
                       <widget class="QComboBox" name="cb_mod_4">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="cursor">
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
@@ -1786,6 +2412,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                      </item>
                      <item row="1" column="0" colspan="2">
                       <widget class="QLineEdit" name="lineEdit_4">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">background-color: rgb(23,104,42);
 border-radius: 10px;
@@ -1795,6 +2427,12 @@ border-radius: 10px;
                      </item>
                      <item row="0" column="1" colspan="2">
                       <widget class="QLabel" name="l_begining_16">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
                         <string notr="true">color: rgb(255, 255, 255);</string>
                        </property>
@@ -1809,8 +2447,92 @@ border-radius: 10px;
                     </layout>
                    </widget>
                   </item>
+                  <item row="0" column="0" colspan="8" alignment="Qt::AlignTop">
+                   <widget class="QLabel" name="lbl_15">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(255, 255, 255);</string>
+                    </property>
+                    <property name="text">
+                     <string>Связь</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="2" alignment="Qt::AlignLeft|Qt::AlignBottom">
+                   <widget class="QLabel" name="lbl_14">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(255, 255, 255);
+font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+                    </property>
+                    <property name="text">
+                     <string>Поле приема информационных сообщений</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="0" rowspan="3" colspan="3">
+                   <widget class="QLabel" name="lbl_output">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>200</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>400</width>
+                      <height>250</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(23,104,42);
+border-radius: 10px;
+</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignJustify|Qt::AlignTop</set>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                    <property name="margin">
+                     <number>10</number>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="3" column="4" colspan="2" alignment="Qt::AlignBottom">
                    <widget class="QLabel" name="lbl_28">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);
 font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -1823,11 +2545,56 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                     </property>
                    </widget>
                   </item>
+                  <item row="5" column="4" rowspan="3" colspan="4">
+                   <widget class="QLabel" name="lbl_output_2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>200</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>400</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(23,104,42);
+border-radius: 10px;
+</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignJustify|Qt::AlignTop</set>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                    <property name="margin">
+                     <number>10</number>
+                    </property>
+                   </widget>
+                  </item>
                  </layout>
                 </widget>
                </item>
                <item>
                 <widget class="QFrame" name="frame_32">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
@@ -1837,6 +2604,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                  <layout class="QGridLayout" name="gridLayout_9" columnstretch="0,0,0,0,0,0,0">
                   <item row="0" column="0">
                    <widget class="QPushButton" name="btn_poisk">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1850,6 +2623,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="0" column="1">
                    <widget class="QPushButton" name="btn_pauza">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1863,6 +2642,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="0" column="2" colspan="3">
                    <widget class="QPushButton" name="btn_peleng_2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1876,6 +2661,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="0" column="5">
                    <widget class="QPushButton" name="btn_test_svazi">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1889,6 +2680,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="0" column="6">
                    <widget class="QPushButton" name="btn_send">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1902,6 +2699,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="1" column="0">
                    <widget class="QPushButton" name="btn_poisk2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1915,6 +2718,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="1" column="1">
                    <widget class="QPushButton" name="btn_empty_10">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1928,6 +2737,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="1" column="2">
                    <widget class="QPushButton" name="btn_empty_11">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1941,6 +2756,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="1" column="3">
                    <widget class="QPushButton" name="btn_empty_12">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1954,6 +2775,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="1" column="4">
                    <widget class="QPushButton" name="btn_empty_13">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1967,6 +2794,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="1" column="5">
                    <widget class="QPushButton" name="btn_tehanaliz">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1980,6 +2813,12 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   </item>
                   <item row="1" column="6">
                    <widget class="QPushButton" name="btn_ask_coord">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>

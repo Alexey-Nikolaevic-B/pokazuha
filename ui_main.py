@@ -22,6 +22,7 @@ from time import sleep
 
 import pygame
 
+import ui_menu
 import ui_rabota
 import ui_administrator
 import ui_peleng
@@ -215,6 +216,7 @@ class MainScreen(QDialog):
     signal_goto_test     = pyqtSignal()
     signal_goto_rabota   = pyqtSignal()
     signal_current_freq  = pyqtSignal(float)
+    signal_lesson        = pyqtSignal(int)
 
     signal_poisk = pyqtSignal()
     selected_id  = 1
@@ -229,6 +231,9 @@ class MainScreen(QDialog):
         self.suppresed = False
         self.current_path = "data/audio/noize.wav"
 
+        self.lesson_1_path = "data/lesson_1.json"
+        self.lesson_2_path = "data/lesson_2.json"
+
         self.found = []
 
         self.rabota_window         = ui_rabota.RabotaScreen()
@@ -239,9 +244,6 @@ class MainScreen(QDialog):
         self.test_window_2         = ui_test.TestScreen()
         self.frequencies_window    = ui_frequencies.FrequenciesScreen()
         self.perehvat_window.set_data(signals, filtered_freqs, self.selected_freq)
-
-        self.test_window_1.set_path("data\lesson_1.json")
-        self.test_window_2.set_path("data\lesson_2.json")
 
         self.btn_theory.clicked.connect(self.goto_theory)
 
@@ -268,11 +270,15 @@ class MainScreen(QDialog):
         self.btn_pusk.clicked.connect(self.true_suppress)
         self.btn_prr.clicked.connect(self.false_suppress)
 
-    def set_com_pod(self, com_pod):
-        if com_pod:
-            self.rb_pod.setChecked(True)
-        else:
-            self.rb_com.setChecked(True)
+    def set_lesson(self, lesson):
+        self.btn_test_2.hide()
+        if lesson == 0:
+            self.btn_test_1.hide()
+        if lesson == 1:
+            self.test_window_1.set_path(self.lesson_1_path)
+        if lesson == 2:
+            self.test_window_1.set_path(self.lesson_2_path)
+
 
     def update_text(self):
         self.selected_freq

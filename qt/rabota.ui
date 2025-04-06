@@ -148,7 +148,7 @@
             <enum>QFrame::StyledPanel</enum>
            </property>
            <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
+            <enum>QFrame::Sunken</enum>
            </property>
            <layout class="QGridLayout" name="gridLayout_7">
             <property name="leftMargin">
@@ -163,14 +163,20 @@
             <property name="bottomMargin">
              <number>0</number>
             </property>
-            <property name="spacing">
+            <property name="horizontalSpacing">
              <number>0</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>10</number>
             </property>
             <item row="0" column="0">
              <widget class="QLabel" name="label_9">
               <property name="styleSheet">
                <string notr="true">color: rgb(255, 255, 255);
 font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Sunken</enum>
               </property>
               <property name="text">
                <string>    Сопряженные посты</string>
@@ -263,6 +269,12 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
             </item>
             <item row="1" column="0" colspan="2">
              <widget class="QTableWidget" name="tableWidget">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="styleSheet">
                <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
               </property>
@@ -382,7 +394,7 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
             <enum>QFrame::StyledPanel</enum>
            </property>
            <property name="frameShadow">
-            <enum>QFrame::Plain</enum>
+            <enum>QFrame::Raised</enum>
            </property>
            <layout class="QGridLayout" name="gridLayout">
             <property name="topMargin">
@@ -416,6 +428,9 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
                <enum>QFrame::Raised</enum>
               </property>
               <layout class="QGridLayout" name="gridLayout_2">
+               <property name="verticalSpacing">
+                <number>10</number>
+               </property>
                <item row="0" column="0">
                 <widget class="QLabel" name="label_4">
                  <property name="styleSheet">
@@ -429,6 +444,12 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
                </item>
                <item row="0" column="1" colspan="4">
                 <widget class="QLineEdit" name="lbl_name">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">background-color: rgb(212, 111, 68);
 border-radius: 10px;
@@ -472,6 +493,12 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
                </item>
                <item row="1" column="3">
                 <widget class="QLineEdit" name="lbl_name_5">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">background-color: rgb(212, 111, 68);
 border-radius: 10px;
@@ -568,6 +595,12 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
                </item>
                <item row="0" column="1">
                 <widget class="QLineEdit" name="lbl_cur_angle">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;
 background-color: rgb(212, 111, 68);
@@ -609,6 +642,12 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
                </item>
                <item row="0" column="1">
                 <widget class="QLineEdit" name="lbl_cur_angle_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">background-color: rgb(212, 111, 68);
 border-radius: 10px;
@@ -649,6 +688,12 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
                </item>
                <item row="0" column="1">
                 <widget class="QLineEdit" name="lbl_sector_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">background-color: rgb(212, 111, 68);
 border-radius: 10px;
@@ -689,6 +734,12 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
                </item>
                <item row="0" column="1">
                 <widget class="QLineEdit" name="lbl_adrr">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">background-color: rgb(212, 111, 68);
 border-radius: 10px;
@@ -770,6 +821,12 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
       </item>
       <item>
        <widget class="QProgressBar" name="pb_progressBar">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="value">
          <number>24</number>
         </property>
