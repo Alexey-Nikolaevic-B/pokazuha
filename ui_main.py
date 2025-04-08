@@ -212,6 +212,8 @@ filter_signal()
 
 class MainScreen(QDialog):
 
+
+    signal_com_pod       = pyqtSignal(int)
     signal_goto_theory   = pyqtSignal()
     signal_goto_test     = pyqtSignal()
     signal_goto_rabota   = pyqtSignal()
@@ -231,6 +233,8 @@ class MainScreen(QDialog):
         self.suppresed = False
         self.current_path = "data/audio/noize.wav"
 
+
+        self.lesson_0_path = "data/lesson_0.json"
         self.lesson_1_path = "data/lesson_1.json"
         self.lesson_2_path = "data/lesson_2.json"
 
@@ -270,10 +274,20 @@ class MainScreen(QDialog):
         self.btn_pusk.clicked.connect(self.true_suppress)
         self.btn_prr.clicked.connect(self.false_suppress)
 
+    def set_com_pod(self, com_pod):
+        self.status = com_pod
+        self.signal_com_pod.emit(self.status)
+        if com_pod == 0:
+            self.rb_com.setChecked(True)
+            self.rb_pod.setChecked(False)
+        else:
+            self.rb_pod.setChecked(True)
+            self.rb_com.setChecked(False)
+
     def set_lesson(self, lesson):
         self.btn_test_2.hide()
         if lesson == 0:
-            self.btn_test_1.hide()
+            self.test_window_1.set_path(self.lesson_0_path)
         if lesson == 1:
             self.test_window_1.set_path(self.lesson_1_path)
         if lesson == 2:
@@ -391,6 +405,7 @@ class MainScreen(QDialog):
         self.administrator_window.show()  
 
     def show_test_1(self): 
+        self.test_window_1.startTimer()
         self.test_window_1.show()
 
     def show_test_2(self): 
@@ -406,7 +421,7 @@ class MainScreen(QDialog):
         self.frequencies_window.show()
 
     def init_ui(self):
-        loadUi('qt\main — копия.ui', self)
+        loadUi('qt\main.ui', self)
         self.setWindowTitle("Лорандит")
 
         self.lbl_search_low.setValidator(QIntValidator(1, 10000, self))

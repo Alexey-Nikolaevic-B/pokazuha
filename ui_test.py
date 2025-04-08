@@ -18,7 +18,6 @@ from PyQt5.uic import loadUi
 import json
 from PIL import Image
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-
 import numpy as np
 
 class TestScreen(QDialog):
@@ -27,16 +26,20 @@ class TestScreen(QDialog):
         super(TestScreen, self).__init__()
         
         self.test_path = " "
-        self.cur_task = 0
+        self.cur_task = 300
         self.image  = ["empty", "img\map.jpg"]
         self.tasks  = ["Английский перевод 1914 года, H. RackhamOn the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains", "Английский перевод 1914 года, H. RackhamOn the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains"]
         self.checks = ["1", "2"]
         self.answers = [["1", "2", "1", "2"], ["1", "2"]]
+        self.selected_answers = []
+
+        self.thread_counter = threading.Thread(target=self.counter, daemon=True)
 
         self.n = len(self.tasks)
         self.grades = [40, 80, 90]
         self.mark = 2
         self.correct = [0]*10
+        self.test_sttarted = False
         
         self.init_ui()
 
@@ -63,13 +66,34 @@ class TestScreen(QDialog):
         self.answ_4.clicked.connect(self.check_singular)
         self.answ_5.clicked.connect(self.check_singular)
 
+        self.checkBox_1.clicked.connect(self.check_multiple)
+        self.checkBox_2.clicked.connect(self.check_multiple)
+        self.checkBox_3.clicked.connect(self.check_multiple)
+        self.checkBox_4.clicked.connect(self.check_multiple)
+        self.checkBox_5.clicked.connect(self.check_multiple)
+
         self.le_answ.textChanged.connect(self.check_text)
+
+    def startTimer(self):
+        if self.test_sttarted == False:
+            self.thread_counter.start()
+            self.test_sttarted = True
+
+    def counter(self):
+        while self.c >= 0:
+            mins, secs = divmod(self.c, 60) 
+            timer = '{:02d}:{:02d}'.format(mins, secs) 
+            self.c = self.c - 1
+            self.lbl_time.setText(str(timer))
+
+            time.sleep(1)
 
     def set_path(self, path):
         self.test_path = path
 
         with open(self.test_path, encoding='utf-8') as config_file:
             data = json.load(config_file)
+        self.c       = data['time']
         self.image   = data['image']
         self.tasks   = data['tasks']
         self.checks  = data['checks']
@@ -129,6 +153,17 @@ class TestScreen(QDialog):
                 if str(i+1) == self.checks[self.cur_task]:
                     self.correct[self.cur_task] = 1
 
+    def check_multiple(self):
+        
+        self.selected_answers = []
+        for i, checkbox in enumerate(self.buttons_check, start=1):
+            if checkbox.isChecked():
+                self.selected_answers.append(str(i))  # Convert to string to match your correct answers format
+        
+        # Check if the selected answers exactly match the correct answers
+        if sorted(self.selected_answers) == sorted(self.checks[self.cur_task]):
+            self.correct[self.cur_task] = 1
+
     def update(self, option):
         if (option == 0) and (self.cur_task > 0): 
             self.cur_task = self.cur_task - 1
@@ -140,6 +175,9 @@ class TestScreen(QDialog):
         self.btn_end_test.hide()
         self.le_answ.hide()
         self.frame_3.hide()
+        self.check_frame.hide()
+        self.selected_answers = []
+        
 
         input = self.le_answ.clear()
 
@@ -193,10 +231,14 @@ class TestScreen(QDialog):
                 self.butttons[i].setText(self.answers[self.cur_task][1][i])
                 self.butttons[i].show()
 
-        elif self.answers[self.cur_task][0] == "0":
-            self.frame_3.show()
+        if self.answers[self.cur_task][0] == "2":
+            self.check_frame.show()
 
-    def renew(self): 
+            for i in range(len(self.answers[self.cur_task][1])):
+                self.buttons_check[i].setText(self.answers[self.cur_task][1][i])
+                self.buttons_check[i].show()
+
+    def renew(self):
         self.cur_task = 0
 
         self.btn_forward.setEnabled(True)
@@ -214,6 +256,8 @@ class TestScreen(QDialog):
         self.answ_5.hide()
 
         self.end_frame.hide()
+        self.check_frame.hide()
+        self.check_frame.hide()
 
         self.main_frame.show()
 
@@ -263,8 +307,12 @@ class TestScreen(QDialog):
                 self.butttons[i].setText(self.answers[self.cur_task][1][i])
                 self.butttons[i].show()
 
-        elif self.answers[self.cur_task][0] == "0":
-            self.frame_3.show()
+        if self.answers[self.cur_task][0] == "2":
+            self.check_frame.show()
+
+            for i in range(len(self.answers[self.cur_task][1])):
+                self.buttons_check[i].setText(self.answers[self.cur_task][1][i])
+                self.buttons_check[i].show()
 
 
     def init_ui(self):
@@ -279,6 +327,16 @@ class TestScreen(QDialog):
         self.group.addButton(self.answ_5)
 
         self.butttons = [self.answ_1, self.answ_2, self.answ_3, self.answ_4, self.answ_5]
+
+        self.group_check = QButtonGroup()
+        self.group_check.setExclusive(False)
+        self.group_check.addButton(self.checkBox_1)
+        self.group_check.addButton(self.checkBox_2)
+        self.group_check.addButton(self.checkBox_3)
+        self.group_check.addButton(self.checkBox_4)
+        self.group_check.addButton(self.checkBox_5)
+
+        self.buttons_check = [self.checkBox_1, self.checkBox_2, self.checkBox_3, self.checkBox_4, self.checkBox_5]
 
 
         self.setWindowFlags(Qt.WindowStaysOnTopHint)
