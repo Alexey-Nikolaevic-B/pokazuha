@@ -22,8 +22,6 @@ class MenuScreen(QDialog):
 
     def init_ui(self):
         loadUi('qt/menu.ui', self)
-        self.setFixedWidth(980)
-        self.setFixedHeight(340)
 
         style_btn = "QPushButton {color: rgb(0, 0, 0); font: 20pt \"MS Shell Dlg 2\"; background-color : rgb(200, 200, 200)} QPushButton::hover {background-color: rgb(255, 255, 255)}"
         self.btn_prac.setStyleSheet(style_btn)
