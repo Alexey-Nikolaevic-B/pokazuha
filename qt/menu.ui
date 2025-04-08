@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>978</width>
-    <height>339</height>
+    <width>1058</width>
+    <height>623</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,57 +43,83 @@
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
-     <widget class="QPushButton" name="btn_control">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>10</y>
-        <width>300</width>
-        <height>300</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="btn_prac">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>400</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;MS Shell Dlg 2&quot;
 </string>
-      </property>
-      <property name="text">
-       <string>Технический контроль</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_analysis">
-      <property name="geometry">
-       <rect>
-        <x>650</x>
-        <y>10</y>
-        <width>300</width>
-        <height>300</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;
+        </property>
+        <property name="text">
+         <string>Практическое занятие</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="btn_control">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>400</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;MS Shell Dlg 2&quot;
 </string>
-      </property>
-      <property name="text">
-       <string>Технический анализ</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_prac">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>300</width>
-        <height>300</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;
+        </property>
+        <property name="text">
+         <string>Технический контроль</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="btn_analysis">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>400</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;MS Shell Dlg 2&quot;
 </string>
-      </property>
-      <property name="text">
-       <string>Практическое занятие</string>
-      </property>
-     </widget>
+        </property>
+        <property name="text">
+         <string>Технический анализ</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
