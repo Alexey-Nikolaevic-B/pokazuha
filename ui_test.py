@@ -146,6 +146,8 @@ class TestScreen(QDialog):
             input = self.le_answ.text()
             if input in self.checks[self.cur_task]:
                 self.correct[self.cur_task] = 1
+            else:
+                self.correct[self.cur_task] = 0
 
     def check_singular(self):
         
@@ -153,9 +155,11 @@ class TestScreen(QDialog):
             if self.butttons[i].isChecked():
                 if str(i+1) == self.checks[self.cur_task]:
                     self.correct[self.cur_task] = 1
+                else:
+                    self.correct[self.cur_task] = 0
+
 
     def check_multiple(self):
-        
         self.selected_answers = []
         for i, checkbox in enumerate(self.buttons_check, start=1):
             if checkbox.isChecked():
@@ -164,6 +168,8 @@ class TestScreen(QDialog):
         # Check if the selected answers exactly match the correct answers
         if sorted(self.selected_answers) == sorted(self.checks[self.cur_task]):
             self.correct[self.cur_task] = 1
+        else:
+            self.correct[self.cur_task] = 0
 
     def update(self, option):
         if (option == 0) and (self.cur_task > 0): 
@@ -179,6 +185,9 @@ class TestScreen(QDialog):
         self.check_frame.hide()
         self.selected_answers = []
         
+        for chech in self.buttons_check:
+            chech.hide()
+
 
         input = self.le_answ.clear()
 
