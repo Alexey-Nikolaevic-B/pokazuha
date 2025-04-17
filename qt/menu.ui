@@ -35,13 +35,13 @@
    <item row="1" column="0">
     <widget class="QFrame" name="frame_2">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(210, 210, 210)</string>
+      <string notr="true"/>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
+      <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
@@ -54,7 +54,7 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>200</width>
+          <width>400</width>
           <height>400</height>
          </size>
         </property>
@@ -65,7 +65,8 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 15pt &quot;MS Shell Dlg 2&quot;
+         <string notr="true">font: 15pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(210, 210, 210)
 </string>
         </property>
         <property name="text">
@@ -77,7 +78,7 @@
        <widget class="QPushButton" name="btn_control">
         <property name="minimumSize">
          <size>
-          <width>200</width>
+          <width>400</width>
           <height>400</height>
          </size>
         </property>
@@ -88,7 +89,8 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 15pt &quot;MS Shell Dlg 2&quot;
+         <string notr="true">font: 15pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(210, 210, 210)
 </string>
         </property>
         <property name="text">
@@ -100,7 +102,7 @@
        <widget class="QPushButton" name="btn_analysis">
         <property name="minimumSize">
          <size>
-          <width>200</width>
+          <width>400</width>
           <height>400</height>
          </size>
         </property>
@@ -111,7 +113,8 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 15pt &quot;MS Shell Dlg 2&quot;
+         <string notr="true">font: 15pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(210, 210, 210)
 </string>
         </property>
         <property name="text">

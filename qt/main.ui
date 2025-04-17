@@ -497,7 +497,7 @@ border-radius: 10px;</string>
                <item row="3" column="1">
                 <spacer name="horizontalSpacer">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -851,7 +851,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
                 <number>5</number>
                </property>
                <property name="rightMargin">
-                <number>0</number>
+                <number>5</number>
                </property>
                <property name="bottomMargin">
                 <number>0</number>
@@ -1021,7 +1021,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   <item>
                    <spacer name="horizontalSpacer_4">
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
@@ -1060,7 +1060,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   <item>
                    <spacer name="horizontalSpacer_5">
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
@@ -1102,7 +1102,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                <item row="1" column="0">
                 <spacer name="horizontalSpacer_3">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -1507,7 +1507,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                   <item row="4" column="3">
                    <spacer name="horizontalSpacer_2">
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
@@ -1679,6 +1679,12 @@ border-radius: 10px;
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
                        <property name="cursor">
                         <cursorShape>SplitVCursor</cursorShape>
                        </property>
@@ -1826,6 +1832,12 @@ border-radius: 10px;
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
                        <property name="cursor">
                         <cursorShape>SplitVCursor</cursorShape>
                        </property>
@@ -1945,6 +1957,12 @@ border-radius: 10px;
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
                        <property name="cursor">
                         <cursorShape>SplitVCursor</cursorShape>
                        </property>
@@ -2048,6 +2066,9 @@ border-radius: 10px;
                  <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0,0,0,0,0,0,0">
                   <property name="sizeConstraint">
                    <enum>QLayout::SetMinimumSize</enum>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>15</number>
                   </property>
                   <item row="1" column="4">
                    <widget class="QFrame" name="frame_24">
@@ -2497,13 +2518,13 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                     <property name="minimumSize">
                      <size>
                       <width>350</width>
-                      <height>0</height>
+                      <height>50</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
                       <width>350</width>
-                      <height>250</height>
+                      <height>16777215</height>
                      </size>
                     </property>
                     <property name="styleSheet">
@@ -2556,7 +2577,7 @@ font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
                     <property name="minimumSize">
                      <size>
                       <width>350</width>
-                      <height>0</height>
+                      <height>50</height>
                      </size>
                     </property>
                     <property name="maximumSize">
