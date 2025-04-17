@@ -99,7 +99,7 @@ class PerehvatScreen(QDialog):
             signal = np.zeros_like(t)
             for signal_data in self.signals.values():
                 if signal_data.freq >= low_sp and signal_data.freq <= up_sp:
-                    if signal_data.source == 'Радио':
+                    if signal_data.source == 'Радио' or signal_data.source == 'Радио (Шифрованный)':
                         modulating = 0.5*np.sin(2*np.pi*100*t) + 0.2*np.sin(2*np.pi*250*t) + 0.7*np.sin(2*np.pi*300*t)     
                         if signal_data.mod == "АМ":
                             modulating = 0.5*np.sin(2*np.pi*100*t) + 0.2*np.sin(2*np.pi*250*t) + 0.7*np.sin(2*np.pi*300*t) +\

@@ -525,7 +525,7 @@ class MainScreen(QDialog):
         self.ax.yaxis.label.set_color('white')
         self.ax.title.set_color('white')
 
-        self.selected_line, = self.ax.plot([], [], color='red', linestyle='-', linewidth=2)
+        self.selected_line, = self.ax.plot([], [], color='red', linestyle='-', linewidth=1)
         self.selected_freq = None
 
         self.canvas.mpl_connect("button_press_event", self.on_click)
