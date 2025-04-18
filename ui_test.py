@@ -206,6 +206,12 @@ class TestScreen(QDialog):
             self.butttons[i].setChecked(False)
         self.group.setExclusive(True)
 
+
+        self.group_check.setExclusive(False)
+        for i in range(len(self.buttons_check)):
+            self.buttons_check[i].setChecked(False)
+        
+
         # IMAGE
         if self.image[self.cur_task] == "empty":
             self.pic_widget.hide()
