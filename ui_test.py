@@ -20,6 +20,12 @@ from PIL import Image
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import numpy as np
 
+import sys, os
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 class TestScreen(QDialog):
 
     def __init__(self):
@@ -92,7 +98,7 @@ class TestScreen(QDialog):
     def set_path(self, path):
         self.test_path = path
 
-        with open(self.test_path, encoding='utf-8') as config_file:
+        with open(resource_path(self.test_path), encoding='utf-8') as config_file:
             data = json.load(config_file)
         self.c       = data['time']
         self.image   = data['image']
@@ -211,7 +217,7 @@ class TestScreen(QDialog):
             self.pic_widget.hide()
             pass
         else:
-            img = Image.open(self.image[self.cur_task])
+            img = Image.open(resource_path(self.image[self.cur_task]))
             self.ax.set_facecolor((35/256, 38/256, 50/256))
 
             self.ax.set_xticks([])
@@ -278,7 +284,7 @@ class TestScreen(QDialog):
             self.pic_widget.hide()
             pass
         else:
-            img = Image.open(self.image[self.cur_task])
+            img = Image.open(resource_path(self.image[self.cur_task]))
             self.ax.set_facecolor((35/256, 38/256, 50/256))
 
             self.ax.set_xticks([])
@@ -326,7 +332,7 @@ class TestScreen(QDialog):
 
 
     def init_ui(self):
-        loadUi('qt/test.ui', self)
+        loadUi(resource_path('qt/test.ui'), self)
         self.setWindowTitle("Тестирование")
 
         self.group = QButtonGroup()

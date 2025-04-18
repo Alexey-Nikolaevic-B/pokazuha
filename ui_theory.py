@@ -11,6 +11,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.fftpack import fft, fftfreq
 
+import sys, os
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 class TheoryScreen(QDialog):
     fs = 10000 # частота дискретизации
     T = 1  # Длительность сигнала в секундах
@@ -222,7 +228,7 @@ class TheoryScreen(QDialog):
         self.signal_goto_main.emit()
 
     def init_ui(self):
-        loadUi('qt/theory.ui', self)
+        loadUi(resource_path('qt/theory.ui'), self)
         self.setWindowTitle("Теория")
         
         self.control_layer_4 = self.widget_4

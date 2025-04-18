@@ -18,6 +18,12 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import numpy as np
 import json
 
+import sys, os
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 class FrequenciesScreen(QDialog):
 
     def __init__(self):
@@ -45,7 +51,7 @@ class FrequenciesScreen(QDialog):
     def set_perehvat(self):
         self.t_zapret_2.setRowCount(0)
 
-        with open("data/perehvat.json", encoding='utf-8') as config_file:
+        with open(resource_path("data/perehvat.json"), encoding='utf-8') as config_file:
             data = json.load(config_file)
         freq = data['freq']
         mod = data['mod']
@@ -61,7 +67,7 @@ class FrequenciesScreen(QDialog):
     def set_control(self):
         self.t_control.setRowCount(0)
 
-        with open("data/control.json", encoding='utf-8') as config_file:
+        with open(resource_path("data/control.json"), encoding='utf-8') as config_file:
             data = json.load(config_file)
         self.freq = data['freq']
         self.mod = data['mod']
@@ -73,7 +79,7 @@ class FrequenciesScreen(QDialog):
             self.t_control.setItem(rowPosition, 1, QTableWidgetItem(str(self.mod[i])))
 
     def init_ui(self):
-        loadUi('qt/frequencies.ui', self)
+        loadUi(resource_path('qt/frequencies.ui'), self)
         self.setWindowTitle("Частоты")
 
         self.set_control()
