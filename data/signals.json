@@ -68,39 +68,39 @@
         "text": "... ... ... ... ... ...",
         "source": "Радио (Шифрованный)",
         "audio": "data/audio/shifr.mp3",
-        "X": "0.84",
+        "X": "0.45",
         "Y": "0.75"
     },
     "6": {
         "freq": 375,
         "bandwidth": 0.250,
-        "power": 70.0,
+        "power": 30.0,
         "signal_type": "ragged",
-        "mod": "ЧМ",
+        "mod": "ЧМн",
         "text": "... ... ... ... ... ...",
         "source": "Радио (Шифрованный)",
         "audio": "data/audio/shifr.mp3",
-        "X": "0.84",
-        "Y": "0.75"
+        "X": "0.80",
+        "Y": "0.90"
     },
     "7": {
         "freq": 435,
         "bandwidth": 0.250,
-        "power": 70.0,
+        "power": 90.0,
         "signal_type": "ragged",
-        "mod": "ЧМ",
+        "mod": "ФМн",
         "text": "... ... ... ... ... ...",
         "source": "Радио (Шифрованный)",
         "audio": "data/audio/shifr.mp3",
-        "X": "0.84",
-        "Y": "0.75"
+        "X": "0.82",
+        "Y": "0.79"
     },
     "8": {
         "freq": 535,
         "bandwidth": 0.250,
-        "power": 70.0,
+        "power": 140.0,
         "signal_type": "ragged",
-        "mod": "ЧМ",
+        "mod": "ЧМн",
         "text": "... ... ... ... ... ...",
         "source": "Радио (Шифрованный)",
         "audio": "data/audio/shifr.mp3",
@@ -108,9 +108,21 @@
         "Y": "0.75"
     },
     "9": {
+        "freq": 870,
+        "bandwidth": 10,
+        "power": 70,
+        "signal_type": "points",
+        "mod": "None",
+        "text": "... ... ... ... ... ...",
+        "source": "Дрон (Телеметрия)",
+        "audio": "data/audio/927.wav",
+        "X": "0.45",
+        "Y": "0.02"
+    },
+    "10": {
         "freq": 927,
         "bandwidth": 18,
-        "power": 85.0,
+        "power": 125,
         "signal_type": "points",
         "mod": "None",
         "text": "... ... ... ... ... ...",
@@ -119,7 +131,19 @@
         "X": "0.32",
         "Y": "0.09"
     },
-    "10": {
+    "11": {
+        "freq": 1197,
+        "bandwidth": 5,
+        "power": 80.0,
+        "signal_type": "digital",
+        "mod": "None",
+        "text": "... ... ... ... ... ...",
+        "source": "Дрон (Видео)",
+        "audio": "data/audio/1197.mp3",
+        "X": "0.11",
+        "Y": "0.77"
+    },
+    "12": {
         "freq": 2327,
         "bandwidth": 5,
         "power": 80.0,

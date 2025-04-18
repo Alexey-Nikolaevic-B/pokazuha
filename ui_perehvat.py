@@ -15,6 +15,12 @@ from matplotlib.animation import FuncAnimation
 import numpy as np
 import random
 
+import sys, os
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 class PerehvatScreen(QDialog):
     
     def __init__(self):
@@ -152,7 +158,7 @@ class PerehvatScreen(QDialog):
             self.figure_sp.canvas.draw()
 
     def init_ui(self):
-        loadUi('qt/perehvat.ui', self)
+        loadUi(resource_path('qt/perehvat.ui'), self)
         self.setWindowTitle("Перехват")
 
         self.control_layer = self.widget

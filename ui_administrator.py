@@ -21,6 +21,12 @@ from mpl_interactions import ioff, panhandler, zoom_factory
 
 draw_path=True
 
+import sys, os
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 class AdministratorScreen(QDialog):
 
     def __init__(self):
@@ -32,7 +38,7 @@ class AdministratorScreen(QDialog):
 
         self.init_ui()
         self.scale = 1
-        self.img_path = 'img\map_4.png'
+        self.img_path = resource_path('img\map_4.png')
         self.draw_path = True
 
         with plt.ioff():
@@ -56,7 +62,7 @@ class AdministratorScreen(QDialog):
         # self.btn_scale_200.clicked.connect(self.set_scale_4)
 
     def set_control(self):
-        with open("data/control.json", encoding='utf-8') as config_file:
+        with open(resource_path("data/control.json"), encoding='utf-8') as config_file:
             data = json.load(config_file)
         self.control = data['freq']
         self.control = list(map(int, self.control))
@@ -177,7 +183,7 @@ class AdministratorScreen(QDialog):
         self.plot_map()
 
     def init_ui(self):
-        loadUi('qt/administrator.ui', self)
+        loadUi(resource_path('qt/administrator.ui'), self)
         self.setWindowTitle("Администрирование")
         self.set_control()
 

@@ -6,6 +6,12 @@ from PyQt5.QtCore import pyqtSignal
 
 from PyQt5.uic import loadUi
 
+import sys, os
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 class MenuScreen(QDialog):
     signal_lesson = pyqtSignal(int)
 
@@ -21,7 +27,7 @@ class MenuScreen(QDialog):
         self.signal_lesson.emit(lesson)
 
     def init_ui(self):
-        loadUi('qt/menu.ui', self)
+        loadUi(resource_path('qt/menu.ui'), self)
 
         style_btn = "QPushButton {color: rgb(0, 0, 0); font: 20pt \"MS Shell Dlg 2\"; background-color : rgb(200, 200, 200)} QPushButton::hover {background-color: rgb(255, 255, 255)}"
         self.btn_prac.setStyleSheet(style_btn)

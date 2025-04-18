@@ -16,6 +16,12 @@ import time
 import re
 import random
 
+import sys, os
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 class RabotaScreen(QDialog):
     
     signal_save_posts = pyqtSignal(list)
@@ -152,7 +158,7 @@ class RabotaScreen(QDialog):
         self.frame.show()
 
     def init_ui(self):
-        loadUi('qt/rabota.ui', self)
+        loadUi(resource_path('qt/rabota.ui'), self)
         self.setWindowTitle("Работа")
 
         self.group = QButtonGroup()

@@ -22,6 +22,12 @@ from time import sleep
 
 import pygame
 
+import sys, os
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 import ui_menu
 import ui_rabota
 import ui_administrator
@@ -142,7 +148,7 @@ class SignalData:
         self.mod = mod
         self.text = text
         self.source = source
-        self.audio = audio
+        self.audio = resource_path(audio)
         self.X = X
         self.Y = Y
         self.bearing = self.find_bearing(0.5, 0.5, float(Y), float(X))
@@ -204,7 +210,7 @@ def filter_signal():
                     filtered_signal[:, i] += local_matrix[:, j]        
 
 
-with open("data/signals.json", "r", encoding="utf-8") as file:
+with open(resource_path("data/signals.json"), "r", encoding="utf-8") as file:
     data = json.load(file)
 signals = {int(idx): SignalData(**info) for idx, info in data.items()}
 filter_signal()
@@ -231,12 +237,12 @@ class MainScreen(QDialog):
 
         self.selected_freq = 150
         self.suppresed = False
-        self.current_path = "data/audio/noize.wav"
+        self.current_path = resource_path("data/audio/noize.wav")
 
 
-        self.lesson_0_path = "data/lesson_0.json"
-        self.lesson_1_path = "data/lesson_1.json"
-        self.lesson_2_path = "data/lesson_2.json"
+        self.lesson_0_path = resource_path("data/lesson_0.json")
+        self.lesson_1_path = resource_path("data/lesson_1.json")
+        self.lesson_2_path = resource_path("data/lesson_2.json")
 
         self.found = []
 
@@ -305,7 +311,7 @@ class MainScreen(QDialog):
                     if (sig.mod == mod):
                         path = sig.audio
                     else: 
-                        path = "data/audio/noize.wav"
+                        path = resource_path("data/audio/noize.wav")
                 else: 
                     path = sig.audio
 
@@ -336,7 +342,7 @@ class MainScreen(QDialog):
         suppress = True
         self.start_2.setEnabled(False)
         self.lbl_output.setText(self.random_sring())
-        pygame.mixer.music.load("data/audio/noize.wav")
+        pygame.mixer.music.load(resource_path("data/audio/noize.wav"))
         pygame.mixer.music.play(-1)
 
         try:
@@ -421,7 +427,7 @@ class MainScreen(QDialog):
         self.frequencies_window.show()
 
     def init_ui(self):
-        loadUi('qt\main.ui', self)
+        loadUi(resource_path('qt\main.ui'), self)
         self.setWindowTitle("Лорандит")
 
         self.lbl_search_low.setValidator(QIntValidator(1, 10000, self))
@@ -561,7 +567,7 @@ class MainScreen(QDialog):
                         if (sig.mod == mod):
                             path = sig.audio
                         else: 
-                            path = "data/audio/noize.wav"
+                            path = resource_path("data/audio/noize.wav")
                     else: 
                         path = sig.audio
 
@@ -649,7 +655,7 @@ class MainScreen(QDialog):
                         if (sig.mod == mod):
                             path = sig.audio
                         else: 
-                            path = "data/audio/noize.wav"
+                            path = resource_path("data/audio/noize.wav")
                     else: 
                         path = sig.audio
 
@@ -706,7 +712,7 @@ class MainScreen(QDialog):
     
     def play_sound(self, path):
         if suppress:
-            pygame.mixer.music.load("data/audio/noize.wav")
+            pygame.mixer.music.load(resource_path("data/audio/noize.wav"))
         else:
             pygame.mixer.music.load(path)
         pygame.mixer.music.play(-1)

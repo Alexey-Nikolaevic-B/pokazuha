@@ -17,6 +17,12 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
 import numpy as np
 
+import sys, os
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 
 class PelengScreen(QDialog):
 
@@ -114,7 +120,7 @@ class PelengScreen(QDialog):
 
 
     def init_ui(self):
-        loadUi('qt/peleng.ui', self)
+        loadUi(resource_path('qt/peleng.ui'), self)
         self.setWindowTitle("Круговая пеленговая панорама")
 
         self.control_layer = self.Twidget
